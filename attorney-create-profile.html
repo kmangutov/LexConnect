@@ -1,0 +1,101 @@
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+
+<div class="container">
+	<div class="header-short">
+		<h3 class="title"><img src="imgs/logo.png" width="32px" height="32px"> LexConnect</h3>
+	</div>
+	<div class="row">
+
+		<div class="six columns">
+			<div class="loginBox">
+
+				<!-- NAME -->
+				<div class="row">
+					<div class="six columns">
+						<label for="firstNameInput">First name</label>
+						<input class="u-full-width" type="text" name="firstName" id="firstNameInput" required>
+					</div>
+
+					<div class="six columns">
+						<label for="lastNameInput">Last name</label>
+						<input class="u-full-width" type="text" name="lastName" id="lastNameInput" required>
+					</div>
+				</div>
+
+				<!-- PHONE -->
+				<label for="firstNameInput">Phone number</label>
+				<input class="u-full-width" type="text" name="phone" id="phoneInput" required>
+
+				<!-- URL -->
+				<label for="urlInput">Website</label>
+				<input class="u-full-width" type="text" name="website" id="urlInput" required>
+
+				<!-- ADDR -->
+				<label for="primaryAddressInput">Business address</label>
+				<input class="u-full-width" type="text" name="phone" id="primaryAddressInput" placeholder="Primary" required>
+				<input class="u-full-width" type="text" name="phone" id="secondaryAddressInput" placeholder="Secondary" required>
+
+				<!-- FIRM SIZE -->
+				<label for="firmSizeInput">Firm size</label>
+				<select class="u-full-width"  id="firmSizeInput" name="firmSize" required>
+					<option value="solo">Solo</option>
+					<option value="2-9">2-9</option>
+					<option value="10-24">10-24</option>
+					<option value="25-49">25-49</option>
+					<option value="50-99">50-99</option>
+					<option value="100+">100+</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="six columns">
+			<div class="loginBox">
+
+				<!-- PRACTICE -->
+				<label for="practiceInput">Practice area(s)</label>
+				<select multiple="multiple" class="u-full-width" size="7" id="practiceInput" name="practices">
+					<option value="contracts">Contracts</option>
+					<option value="labor">Labor/employement</option>
+					<option value="divorce">Divorce</option>
+					<option value="injury">Personal injury</option>
+					<option value="criminal">Criminal defense</option>
+					<option value="immigration">Immigration</option>
+					<option value="probate">Probate</option>
+				</select>
+
+				<!-- FREE CONSULTATION -->
+				<label for="consultationInput">Offer free consultation</label>
+				<select class="u-full-width"  id="firmSizeInput" name="firmSize" required>
+					<option value="invalid"></option>
+					<option value="true">Yes</option>
+					<option value="false">No</option>
+				</select>
+
+				<label for="updatesInput">Email update frequency</label>
+				<select class="u-full-width"  id="updateInputs" name="updates" required>
+					<option value="real-time">Real-time</option>
+					<option value="daily">Daily digest</option>
+				</select>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="row">
+		<button class="button-primary u-pull-right">Sign Up</button>
+	</div>
+
+</div>
+
+
+
+
+</body>
+</html>
