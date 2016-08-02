@@ -1,0 +1,33 @@
+.container {
+	max-width: 800px;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.title {
+	margin-bottom: 5rem;
+}
+
+.header {
+	margin-top: 18rem;
+	text-align: center;
+}
+
+.header-short {
+	margin-top: 8rem;
+	text-align: center;
+}
+
+.loginBox {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.equidistant {
+	display: flex;
+ 	justify-content: space-between;
+}
+
+select {
+	height: auto !important;
+}
