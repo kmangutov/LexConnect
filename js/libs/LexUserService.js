@@ -21,7 +21,7 @@ var LexUserService = function(type) {
 			});
 		},
 
-		register: function(data, success, fail) {
+		register: function(data, pass, fail) {
 
 			service.get({user: data.user}, function(response) {
 
@@ -32,7 +32,7 @@ var LexUserService = function(type) {
 				else {
 					console.log(JSON.stringify(data));
 					service.post(data, function(response2) {
-						success(response2);
+						pass(response2);
 					});
 				}
 			});
