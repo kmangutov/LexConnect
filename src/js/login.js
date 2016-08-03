@@ -1,6 +1,6 @@
 
 
-var userService = LexUserService("attorneys")
+var userService = LexUserService(_USE_DB);
 
 var getForm = function() {
 	var user = $("#emailInput").val();
@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 		var success = function(data) {
 			Lockr.set("user", data);	
-			window.location.href = "attorney-create-profile.html";
+			window.location.href = _LOGIN_NEXT_PAGE;
 		};
 
 		var fail = function(data) {
@@ -33,7 +33,7 @@ $(document).ready(function() {
 
 		var success = function(data) {
 			Lockr.set("user", data);
-			window.location.href = "attorney-create-profile.html";
+			window.location.href = _REGISTER_NEXT_PAGE;
 		};
 
 		var fail = function(data) {
