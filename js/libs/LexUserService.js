@@ -1,5 +1,17 @@
 //type == "attorneys" or "clients"
 
+var _getLoggedInUser = function() {
+	var user = Lockr.get("user");
+	return user[0];
+
+}
+
+var _getLoggedInUserId = function() {
+	var user = _getLoggedInUser();
+	var userId = user["_id"]["$oid"];
+	return userId;
+}
+
 var LexUserService = function(type) {
 
 	var service = LexConnectService(type);
@@ -35,6 +47,19 @@ var LexUserService = function(type) {
 						pass(response2);
 					});
 				}
+			});
+		},
+
+		put: function(id, data, pass, fail) {
+
+			var query = {"_id": {"$oid": id}};
+			service.put(query, data, function(response) {
+
+				if(response["n"] == 1)
+					pass(response);
+				else
+					fail(response);
+
 			});
 		}
 

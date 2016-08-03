@@ -13,11 +13,12 @@ var getForm = function() {
 };
 
 $(document).ready(function() {
-
+	
 	$("#login").click(function() {
 
 		var success = function(data) {
-			console.log("login success " + JSON.stringify(data));
+			Lockr.set("user", data);	
+			window.location.href = "attorney-create-profile.html";
 		};
 
 		var fail = function(data) {
@@ -26,13 +27,13 @@ $(document).ready(function() {
 
 		userService.login(getForm(), success, fail);
 
-
 	});
 
 	$("#signup").click(function() {
 
 		var success = function(data) {
-			console.log("signup success " + JSON.stringify(data));
+			Lockr.set("user", data);
+			window.location.href = "attorney-create-profile.html";
 		};
 
 		var fail = function(data) {

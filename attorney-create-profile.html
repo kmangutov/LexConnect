@@ -30,17 +30,17 @@
 				</div>
 
 				<!-- PHONE -->
-				<label for="firstNameInput">Phone number</label>
+				<label for="phoneInput">Phone number</label>
 				<input class="u-full-width" type="text" name="phone" id="phoneInput" required>
 
 				<!-- URL -->
 				<label for="urlInput">Website</label>
-				<input class="u-full-width" type="text" name="website" id="urlInput" required>
+				<input class="u-full-width" type="text" name="url" id="urlInput" required>
 
 				<!-- ADDR -->
 				<label for="primaryAddressInput">Business address</label>
-				<input class="u-full-width" type="text" name="phone" id="primaryAddressInput" placeholder="Primary" required>
-				<input class="u-full-width" type="text" name="phone" id="secondaryAddressInput" placeholder="Secondary" required>
+				<input class="u-full-width" type="text" name="primaryAddress" id="primaryAddressInput" placeholder="Primary" required>
+				<input class="u-full-width" type="text" name="secondaryAddress" id="secondaryAddressInput" placeholder="Secondary" required>
 
 				<!-- FIRM SIZE -->
 				<label for="firmSizeInput">Firm size</label>
@@ -72,14 +72,14 @@
 
 				<!-- FREE CONSULTATION -->
 				<label for="consultationInput">Offer free consultation</label>
-				<select class="u-full-width"  id="firmSizeInput" name="firmSize" required>
+				<select class="u-full-width" id="consultationInput" name="firmSize">
 					<option value="invalid"></option>
 					<option value="true">Yes</option>
 					<option value="false">No</option>
 				</select>
 
 				<label for="updatesInput">Email update frequency</label>
-				<select class="u-full-width"  id="updateInputs" name="updates" required>
+				<select class="u-full-width" id="updatesInput" name="updates">
 					<option value="real-time">Real-time</option>
 					<option value="daily">Daily digest</option>
 				</select>
@@ -89,11 +89,18 @@
 
 	</div>
 	<div class="row">
-		<button class="button-primary u-pull-right">Sign Up</button>
+		<button id="signup" class="button-primary u-pull-right">Sign Up</button>
 	</div>
 
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.10.0/validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js"></script>
+<script src="js/libs/md5.js"></script>
+<script src="js/libs/LexConnectService.js"></script>
+<script src="js/libs/LexUserService.js"></script>
+<script src="js/attorney-create-profile.js"></script>
 
 
 
