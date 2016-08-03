@@ -20,7 +20,6 @@ var getForm = function() {
 
 	inputs.forEach(function(input) {
 		var val = $("#" + input + "Input").val();
-		console.log(input + ":\t\t" + val);
 		data[input] = val;
 	});
 
