@@ -35,6 +35,20 @@ var LexConnectService = function(type) {
         console.log("LexConnectService fail: " + JSON.stringify(e));
         alert("Problem: " + JSON.stringify(e));
       });
+    },
+
+    put: function(query, data, f) {
+      $.ajax( {url: db + "&q=" + JSON.stringify(query),
+        data: JSON.stringify(data),
+        type: "PUT",
+        contentType: "application/json",
+        success: function(data) {
+          f(data);
+        }})
+      .fail(function(e) {
+        console.log("LexConnectService fail: " + JSON.stringify(e));
+        alert("Problem: " + JSON.stringify(e));
+      });
     }
 
   }
