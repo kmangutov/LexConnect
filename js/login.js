@@ -32,6 +32,7 @@ $(document).ready(function() {
 	$("#signup").click(function() {
 
 		var success = function(data) {
+			console.log("SIGNUP SUCCESS: " + JSON.stringify(data))
 			Lockr.set("user", data);
 			window.location.href = _REGISTER_NEXT_PAGE;
 		};

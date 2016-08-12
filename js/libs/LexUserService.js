@@ -47,7 +47,10 @@ var LexUserService = function(type) {
 				else {
 					console.log(JSON.stringify(data));
 					service.post(data, function(response2) {
-						pass(response2);
+						
+						service.get({user: data.user}, function(response3) {
+							pass(response3);
+						});
 					});
 				}
 			});
