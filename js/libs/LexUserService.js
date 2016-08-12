@@ -8,6 +8,9 @@ var _getLoggedInUser = function() {
 
 var _getLoggedInUserId = function() {
 	var user = _getLoggedInUser();
+
+	console.log(JSON.stringify(user))
+
 	var userId = user["_id"]["$oid"];
 	return userId;
 }
