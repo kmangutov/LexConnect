@@ -1,22 +1,60 @@
 
-<ul id="breadcrumbs">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<div class="container">
+	<div class="header-short">
+		<h3 class="title"><img src="imgs/logo.png" width="32px" height="32px"> LexConnect</h3>
+	</div>
+
+	<div id="breadcrumbs">
 	<template v-for="item in items">
-		<li>
-			{{ item.question }} - {{ item.answer }}
-		</li>
+		<div class="row">
+			<div class="six columns">
+				{{ item.question }}
+			</div>
+
+			<div class="six columns">
+				{{ item.answer }}
+			</div>
+		</div>
+		<br>
 	</template>
-</ul>
+	</div>
 
-<div id="question">
-	{{ question }}
+
+		<div id="question">
+			{{ question }}
+		</div><Br>
+
+		<div id="options">
+			<template v-for="item in items">
+				<button class="button-secondary" v-on:click="select(item.val, item.key)">{{ item.key }}</button><Br>
+			</template>
+		</div>
+
+		<div class="row">
+			<button id="submit" class="button-primary u-pull-right" v-show="show">Find an attorney</button>
+		</div>
+
+		<!--<ul id="options">
+			<li v-for="item in items" v-on:click="select(item.val, item.key)">
+				{{ item.key }}
+			</li>	
+		</ul>-->
+	</div>
 </div>
-
-<ul id="options">
-	<li v-for="item in items" v-on:click="select(item.val, item.key)">
-		{{ item.key }}
-	</li>	
-</ul>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 <script src="js/libs/tree/QuestionTree.js"></script>
 <script src="js/client-new-query.js"></script>
+
+</body>
+</html>

@@ -32,6 +32,14 @@ var vue_breadcrumbs = new Vue({
 	},
 });
 
+var vue_submit = new Vue({
+	el: '#submit',
+
+	data: {
+		show: false
+	}
+});
+
 ///////////////////////////////////////////////////
 
 var mapToObjArr = function(map) {
@@ -59,13 +67,6 @@ var breadcrumbs = [];
 
 var selectOption = function(id, text) {
 
-	if(id === -1) {
-		alert("End test");
-		return;
-	}
-
-	var futureNode = tree[id];
-
 	var historyElement = {	
 		question_id: vue_question.question_id,
 		question: vue_question.question,
@@ -73,8 +74,20 @@ var selectOption = function(id, text) {
 	}
 
 	breadcrumbs.push(historyElement);
-	console.log(JSON.stringify(breadcrumbs));
 	vue_breadcrumbs.items = breadcrumbs;
+
+	if(id === -1) {
+		vue_submit.show = true;
+
+		vue_question.question = "";
+		vue_question.question_id = -1;
+		vue_options.items = [];
+
+		return;
+	}
+
+	var futureNode = tree[id];
+
 
 	loadTreeId(id);
 }
