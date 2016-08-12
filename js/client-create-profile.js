@@ -33,7 +33,8 @@ $(document).ready(function() {
 		//TODO: VALIDATE FORM
 
 		var success = function() {
-			alert("Success");
+
+			window.location.href = "client-new-query.html";
 		};
 
 		var fail = function() {

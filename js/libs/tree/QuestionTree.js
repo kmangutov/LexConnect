@@ -61,10 +61,8 @@ var QuestionTree = (function() {
 		get: function() {
 			console.log(entry)
 			return QUESTION_MAP;
-		}
+		},
+
+		root: entry 
 	}
 })();
-
-var tree = QuestionTree.get();
-
-console.log(JSON.stringify(tree));
