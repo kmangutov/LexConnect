@@ -1,5 +1,10 @@
 
+
+var tree = QuestionTree.get();
+var breadcrumbs = [];
 var loadTreeId = function() {}
+
+var queryService = LexQueryService();
 
 var vue_question = new Vue({
 	el: '#question',
@@ -37,6 +42,15 @@ var vue_submit = new Vue({
 
 	data: {
 		show: false
+	},
+
+	methods: {
+		submit: function() {
+
+			queryService.postQuery(breadcrumbs, function(response) {
+				window.location.href = "client-dashboard.html";
+			});
+		}
 	}
 });
 
@@ -62,8 +76,6 @@ var mapToObjArr = function(map) {
 	return arr;
 }
 
-var tree = QuestionTree.get();
-var breadcrumbs = [];
 
 var selectOption = function(id, text) {
 
