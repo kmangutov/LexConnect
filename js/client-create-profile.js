@@ -32,8 +32,8 @@ $(document).ready(function() {
 
 		//TODO: VALIDATE FORM
 
-		var success = function() {
-
+		var success = function(response) {
+			alert(JSON.stringify(response));
 			window.location.href = "client-new-query.html";
 		};
 

@@ -30,8 +30,8 @@ $(document).ready(function() {
 
 	$("#signup").click(function() {
 
-		var success = function() {
-			alert("Success");
+		var success = function(response) {
+			alert("Success" + JSON.stringify(response));
 		};
 
 		var fail = function() {

@@ -11,7 +11,7 @@ var LexConnectService = function(type) {
 
   return {
   
-    get: function(f) {
+    getAll: function(f) {
       $.get(db, function(data) {
         f(data);
       });

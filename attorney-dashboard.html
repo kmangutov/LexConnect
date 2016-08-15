@@ -12,39 +12,19 @@
 <div class="container">
 	<div class="header-short">
 		<h3 class="title"><img src="imgs/logo.png" width="32px" height="32px"> LexConnect</h3>
+		<span class="sub-title">Attorney Dashboard</span>
 	</div>
 
-	<div id="breadcrumbs">
-	<template v-for="item in items">
+	<div id="queries">
+	<template v-for="query in queries">
 		<div class="row">
-			<div class="six columns">
-				{{ item.question }}
-			</div>
-
-			<div class="six columns">
-				{{ item.answer }}
-			</div>
+			{{ query.user_id }} -- {{ query.user }}
+			<br>
 		</div>
 		<br>
 	</template>
 	</div>
 
-
-		<div id="question">
-			{{ question }}
-		</div><Br>
-
-		<div id="options">
-			<template v-for="item in items">
-				<button class="button-secondary" v-on:click="select(item.val, item.key)">{{ item.key }}</button><Br>
-			</template>
-		</div>
-
-		<div class="row">
-			<button v-on:click="submit()" id="submit" class="button-primary u-pull-right" v-show="show">Find an attorney</button>
-		</div>
-
-	</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -54,7 +34,7 @@
 <script src="js/libs/LexConnectService.js"></script>
 <script src="js/libs/LexUserService.js"></script>
 <script src="js/libs/LexQueryService.js"></script>
-<script src="js/client-new-query.js"></script>
+<script src="js/attorney-dashboard.js"></script>
 
 </body>
 </html>
