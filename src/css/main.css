@@ -1,3 +1,8 @@
+
+.app_container {
+	padding: 20px;
+}
+
 .container {
 	max-width: 800px;
 	width: 80%;

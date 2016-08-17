@@ -3,43 +3,105 @@ var queryService = LexQueryService();
 var clientsService = LexConnectService("clients")
 
 
+var joinedQueries = [];
 var vue_queries = new Vue({
 	el: '#queries',
 	
 	data: {
-		queries: []
+		queries: [],
+		showSelected: false,
+		selectedItem: {},
+	},
+
+	methods: {
+		select: function(id) {
+			console.log("Select " + JSON.stringify(this.queries[id]));
+
+
+			this.showSelected = true;
+			this.selectedItem = this.queries[id];
+		}
 	}
 });
 
-//var 
+
+
+var dump = function(text, obj) {
+	console.log("[" + text + "]:\t" + JSON.stringify(obj));
+}
+
+//var `
+
+var mergeObjects = function(a, b, next) {
+	var newObj = {};
+
+	for(var k in a) {
+		newObj[k] = a[k];
+	}
+
+	for(var k in b) {
+		newObj[k] = b[k];
+	}
+
+	next(newObj);
+}
+
+var mergeUserQuery = function(user, query, next) {
+	var newObj = {user: "", query: ""};
+
+	for(var k in user) {
+		newObj["user"][k] = user[k];
+	}
+
+	for(var k in query) {
+		newObj["query"][k] = query[k]
+	}
+
+	next(newObj);
+}
+
+var joinUserQuery = function(query, next) {
+
+	var userIdFilter = {
+		"_id": {
+			"$oid": query.user_id
+		}
+	};
+
+	clientsService.get(userIdFilter, function(userObj) {
+
+		var userClone = JSON.parse(JSON.stringify(userObj))[0];
+		mergeObjects(userClone, query, next);
+	});
+}
+
+var appentToNewArray = function(original, newItem) {
+	var ret = [];
+	for(var i = 0; i < original.length; i++)
+		ret[i] = original[i];
+	ret[i] = newItem;
+	return ret;
+}
+
+var queriesLoaded = function(queries) {
+	queries.forEach(function(query) {
+		joinUserQuery(query, function(joined){
+
+			joined["id"] = joinedQueries.length;
+			joinedQueries = appentToNewArray(joinedQueries, joined);
+		
+			vue_queries.queries = joinedQueries;
+			vue_queries.string = JSON.stringify(joined);
+
+		});
+	});
+}
 
 $(document).ready(function() {
 
-	alert("ready");
 	queryService.getQueries(function(data) {
 		//console.log(JSON.stringify(data));
 		vue_queries.queries = data;
-
-		for(var i = 0; i < data.length; i++) {
-			var datum = data[i];
-			//console.log(JSON.stringify(datum) +",\n");
-
-			var userIdFilter = {
-				"_id": {
-					"$oid": datum.user_id
-				}
-			};
-
-			clientsService.get(userIdFilter, function(userObj) {
-				//vue_queries.queries[i].user = userObj;
-				//^^ why doesnt this work wtf
-				console.log(i);
-
-				console.log(JSON.stringify(data[i]));
-
-				data[i].user = userObj;
-				vue_queries.queries = data;
-			});
-		}
+		queriesLoaded(data);
 	});
 });

@@ -12,20 +12,54 @@
 <div class="container">
 	<div class="header-short">
 		<h3 class="title"><img src="imgs/logo.png" width="32px" height="32px"> LexConnect</h3>
-		<span class="sub-title">Attorney Dashboard</span>
-	</div>
-
-	<div id="queries">
-	<template v-for="query in queries">
-		<div class="row">
-			{{ query.user_id }} -- {{ query.user }}
-			<br>
-		</div>
+		<p class="sub-title">Attorney Dashboard</p>
 		<br>
-	</template>
+	</div>
+</div>
+
+<div id="queries" class="app_container row">
+	<div class="four columns">
+			<table>
+				<tr>
+					<th>First</th>
+					<th>Last</th>
+				</tr>
+
+			<template v-for="query in queries">
+
+				<tr v-on:click="select(query.id)">
+					<td>{{ query.firstName }} * {{ query.id }}</td>
+					<td>{{ query.lastName }}</td>
+				</tr>
+
+
+				<br>
+			</template>
+			</table>
 	</div>
 
+	<div class="eight columns">
+
+
+
+		{{ selectedItem.firstName }}
+		<!--
+		<template v-for="breadcrumb in selected.breadcrumbs">
+			<div class="row">
+				<div class="six columns">
+					{{ item.question }}
+				</div>
+
+				<div class="six columns">
+					{{ item.answer }}
+				</div>
+			</div>
+			<br>
+		</template>-->
+
+	</div>
 </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
