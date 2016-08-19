@@ -31,7 +31,7 @@ $(document).ready(function() {
 	$("#signup").click(function() {
 
 		var success = function(response) {
-			alert("Success" + JSON.stringify(response));
+			window.location.href = "attorney-dashboard.html";
 		};
 
 		var fail = function() {

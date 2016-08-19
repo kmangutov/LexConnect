@@ -22,6 +22,18 @@ var LexQueryService = function() {
 		getQueries: function(pass, fail) {
 
 			service.getAll(pass);
+		},
+
+		connectAttorney: function(filter, query, attorney) {
+
+			var interestedAttorneys = [] || query.interestedAttorneys;
+			interestedAttorneys.push(attorney);
+
+			query.interestedAttorneys = interestedAttorneys;
+
+			service.put(filter, query, function(resp) {
+				alert(JSON.stringify(resp));
+			});
 		}
 	}
 }
