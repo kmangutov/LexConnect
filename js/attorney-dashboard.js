@@ -20,6 +20,21 @@ var vue_queries = new Vue({
 
 			this.showSelected = true;
 			this.selectedItem = this.queries[id];
+		},
+
+		connect: function(id) {
+
+			var attorneyId = _getLoggedInUserId();
+			alert("Connect " + attorneyId + " to " + id);
+
+
+			var queryIdFilter = {
+				"_id": {
+					"$oid": id
+				}
+			};
+
+			queryService.connectAttorney(queryIdFilter, this.selectedItem, _getLoggedInUser());
 		}
 	}
 });
