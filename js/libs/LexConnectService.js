@@ -18,6 +18,7 @@ var LexConnectService = function(type) {
     },
 
     get: function(query, f) {
+      alert(db + "&q=" + JSON.stringify(query));
       $.get(db + "&q=" + JSON.stringify(query), function(data) {
         f(data);
       }); 

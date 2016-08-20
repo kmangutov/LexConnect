@@ -24,6 +24,22 @@ var LexQueryService = function() {
 			service.getAll(pass);
 		},
 
+		getMyQuery: function(f) {
+
+			var userId = _getLoggedInUserId();
+			var userIdFilter = {
+				"user_id":  userId
+			}
+
+			service.get(userIdFilter, function(myQuery) {
+
+				console.log("got " + JSON.stringify(myQuery));
+				f();
+			});
+
+		},
+
+
 		connectAttorney: function(filter, query, attorney) {
 
 			var interestedAttorneys = [] || query.interestedAttorneys;
