@@ -1,4 +1,24 @@
 
+.card {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #BBB;
+
+
+	padding: 15px;
+	margin: 10px;
+
+	text-align: left;
+}
+
+.card-hover:hover {
+	background-color: #DDD;
+}
+
+.hovered{
+	background-color: #BBB;
+}
+
 .app_container {
 	padding: 20px;
 }

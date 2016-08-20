@@ -18,28 +18,25 @@
 </div>
 
 <div id="queries" class="app_container row">
-	<div class="four columns">
-			<table>
-				<tr>
-					<th>First</th>
-					<th>Last</th>
-				</tr>
+	<div class="six columns">
 
-			<template v-for="query in queries">
-
-				<tr v-on:click="select(query.id)">
-					<td>{{ query.firstName }}</td>
-					<td>{{ query.lastName }}</td>
-				</tr>
+<center>
+<div>
+<template v-for="query in queries">
+	<div v-bind:class="{hovered:(query.id===selectedId)}" class="card card-hover" v-on:click="select(query.id)">
 
 
-				<br>
-			</template>
-			</table>
+		{{ query.employer }}, {{ query.occupation }} - ${{ query.income }} Yearly<br>
+		{{ query.query[0].question }}: <B>{{ query.query[0].answer }}</B>
+
+	</div>
+</template>
+</div>
+</center>
+
 	</div>
 
-	<div class="eight columns">
-
+	<div class="six columns card"  v-if="selectedId != -1">
 		<template v-for="item in selectedItem.query">
 			<div class="row">
 				<div class="six columns">
