@@ -11,6 +11,7 @@ var vue_queries = new Vue({
 		queries: [],
 		showSelected: false,
 		selectedItem: {},
+		selectedId: -1,
 	},
 
 	methods: {
@@ -20,6 +21,7 @@ var vue_queries = new Vue({
 
 			this.showSelected = true;
 			this.selectedItem = this.queries[id];
+			this.selectedId = id;
 		},
 
 		connect: function(id) {
@@ -118,5 +120,6 @@ $(document).ready(function() {
 		//console.log(JSON.stringify(data));
 		vue_queries.queries = data;
 		queriesLoaded(data);
+		console.log(JSON.stringify(data[0]))
 	});
 });
