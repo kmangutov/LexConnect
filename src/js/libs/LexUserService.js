@@ -58,14 +58,29 @@ var LexUserService = function(type) {
 
 		put: function(id, data, pass, fail) {
 
-			var query = {"_id": {"$oid": id}};
-			service.put(query, data, function(response) {
+			var _getLoggedInUser = function() {
+				var user = Lockr.get("user");
+				return user[0];
+			}
 
-				if(response["n"] == 1)
+			var mergeObjects = function(a, b, next) {
+				var newObj = {};
+
+				for(var k in a) {
+					newObj[k] = a[k];
+				}
+
+				for(var k in b) {
+					newObj[k] = b[k];
+				}
+
+				next(newObj);
+			}
+
+			mergeObjects(data, _getLoggedInUser(), function(merged) {
+				service.put(id, merged, function(response) {
 					pass(response);
-				else
-					fail(response);
-
+				});
 			});
 		}
 

@@ -14,7 +14,7 @@ var LexQueryService = function() {
 			};
 
 			service.post(struct, function(response){
-				alert("response: " + JSON.stringify(response));
+				//alert("response: " + JSON.stringify(response));
 				pass(response);
 			});
 		},
@@ -31,24 +31,39 @@ var LexQueryService = function() {
 				"user_id":  userId
 			}
 
-			service.get(userIdFilter, function(myQuery) {
-
-				console.log("got " + JSON.stringify(myQuery));
-				f();
-			});
-
+			service.get(userIdFilter, f);
+	
 		},
 
 
-		connectAttorney: function(filter, query, attorney) {
+		connectAttorney: function(queryId, query, attorneyId) {
 
+			console.log("Interested attorneys " + query.interestedAttorneys);
+			
 			var interestedAttorneys = [] || query.interestedAttorneys;
-			interestedAttorneys.push(attorney);
+			interestedAttorneys.push({attorneyId: attorneyId, timestamp: new Date()});
 
 			query.interestedAttorneys = interestedAttorneys;
 
-			service.put(filter, query, function(resp) {
+			service.put(queryId, query, function(resp) {
 				alert(JSON.stringify(resp));
+			});
+		},
+
+		connectClientToAttorney: function(query, attorneyId, next) {
+
+			var queryId = query["_id"]["$oid"];
+
+			var connectedAttorneys = [] || query.connectedAttorneys;
+			connectedAttorneys.push({attorneyId: attorneyId, timestamp: new Date()})
+
+			query.connectedAttorneys = connectedAttorneys;
+
+			//TODO: alert attorney via email
+
+			service.put(queryId, query, function(resp) {
+				dump("LexQueryService::connectClientToAttorney ", resp);
+				next();
 			});
 		}
 	}
