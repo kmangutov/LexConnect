@@ -27,7 +27,11 @@
 
 
 		{{ query.employer }}, {{ query.occupation }} - ${{ query.income }} Yearly<br>
-		{{ query.query[0].question }}: <B>{{ query.query[0].answer }}</B>
+		{{ query.query[0].question }}: <B>{{ query.query[0].answer }}</B><br>
+
+		<div v-if="query.connected">
+			<b>Connected!</b>
+		</div>
 
 	</div>
 </template>
@@ -37,6 +41,9 @@
 	</div>
 
 	<div class="six columns card"  v-if="selectedId != -1">
+
+		<div v-if="selectedItem.connected"><b>{{ selectedItem.firstName }} {{ selectedItem.lastName }} has connected with you!</b><br> Reach out to him at {{ selectedItem.user }} or {{ selectedItem.phoneNumber }}.</div><br><br>
+
 		<template v-for="item in selectedItem.query">
 			<div class="row">
 				<div class="six columns">

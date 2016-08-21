@@ -1,8 +1,44 @@
-<h1>client dashboard</h1>
 
 
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div class="container">
+	<div class="header-short">
+		<h3 class="title"><img src="imgs/logo.png" width="32px" height="32px"> LexConnect</h3>
+		<p class="sub-title">Client Dashboard</p>
+		<br>
+	</div>
+</div>
 
 
+<div id="attorneys" class="app_container row">
+
+	<div class="six columns"><center>
+		<template v-for="attorney in attorneys">
+			{{ JSON.stringify(attorney) }}
+
+			<div class="card card-hover" v-bind:class="{hovered:(attorney.id===selectedId)}" v-on:click="select(attorney['_id']['$oid'])">
+				Attorney {{ attorney.firstName }} {{ attorney.lastName }} wishes to connect with you!<br>
+				
+
+			</div>
+		</template>
+	</center></div>
+
+	<div class="six columns card" v-if="selectedId != -1">
+			Website: <a href="{{attorney.url}}" target="_blank">{{selectedItem.url}}</a><br>
+			Practice address: {{ selectedItem.primaryAddress }}, {{ selectedItem.secondaryAddress }}
+			<Br><br>
+			<button id="connect" class="button-primary" v-on:click="connect(selectedItem['_id']['$oid'])">Connect</button>
+	</div>
+
+</div>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -13,3 +49,5 @@
 <script src="js/libs/LexUserService.js"></script>
 <script src="js/libs/LexQueryService.js"></script>
 <script src="js/client-dashboard.js"></script>
+</body>
+</html>

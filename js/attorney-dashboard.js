@@ -3,6 +3,12 @@ var queryService = LexQueryService();
 var clientsService = LexConnectService("clients")
 
 
+var isConnectedToAttorney = function(query) {
+	return query.connectedAttorneys.find(function(currentAttorneyId) {
+		currentAttorneyId === _getLoggedInUserId();
+	});
+}
+
 var joinedQueries = [];
 var vue_queries = new Vue({
 	el: '#queries',
@@ -12,6 +18,10 @@ var vue_queries = new Vue({
 		showSelected: false,
 		selectedItem: {},
 		selectedId: -1,
+		connectedIds: [],
+
+		selectedConnected: false,
+		selectedClientData: {},
 	},
 
 	methods: {
@@ -29,14 +39,7 @@ var vue_queries = new Vue({
 			var attorneyId = _getLoggedInUserId();
 			alert("Connect " + attorneyId + " to " + id);
 
-
-			var queryIdFilter = {
-				"_id": {
-					"$oid": id
-				}
-			};
-
-			queryService.connectAttorney(queryIdFilter, this.selectedItem, _getLoggedInUser());
+			queryService.connectAttorney(id, this.selectedItem, attorneyId);
 		}
 	}
 });
@@ -45,22 +48,6 @@ var vue_queries = new Vue({
 
 var dump = function(text, obj) {
 	console.log("[" + text + "]:\t" + JSON.stringify(obj));
-}
-
-//var `
-
-var mergeObjects = function(a, b, next) {
-	var newObj = {};
-
-	for(var k in a) {
-		newObj[k] = a[k];
-	}
-
-	for(var k in b) {
-		newObj[k] = b[k];
-	}
-
-	next(newObj);
 }
 
 var mergeUserQuery = function(user, query, next) {
@@ -85,31 +72,45 @@ var joinUserQuery = function(query, next) {
 		}
 	};
 
-	clientsService.get(userIdFilter, function(userObj) {
+	clientsService.getId(query.user_id, function(userObj) {
 
-		var userClone = JSON.parse(JSON.stringify(userObj))[0];
-		mergeObjects(userClone, query, next);
+		dump("joinUserQuery userObj", userObj);
+		mergeObjects(userObj, query, next);
 	});
-}
-
-var appentToNewArray = function(original, newItem) {
-	var ret = [];
-	for(var i = 0; i < original.length; i++)
-		ret[i] = original[i];
-	ret[i] = newItem;
-	return ret;
 }
 
 var queriesLoaded = function(queries) {
 	queries.forEach(function(query) {
 		joinUserQuery(query, function(joined){
 
+			alert(_getLoggedInUserId());
+			dump("after joinUserQuery", joined);
 			joined["id"] = joinedQueries.length;
-			joinedQueries = appentToNewArray(joinedQueries, joined);
+
+			var connectedAttorneys = joined.connectedAttorneys || [];
+			joined["connected"] = false;
+			dump("connectedAttorneys ", connectedAttorneys);
+
+			connectedAttorneys.forEach(function(connectionObject) {
+
+				var connectedId = connectionObject["attorneyId"];
+
+				alert(_getLoggedInUserId() + "==" + connectedId + "?");
+				if(_getLoggedInUserId() === connectedId) {
+					//we are conneceted to this guy
+					alert("yes");
+					joined["connected"] = true;
+				}
+			});
+
+			joinedQueries = appendToNewArray(joinedQueries, joined);
+			vue_queries.queries = joinedQueries;
+/*
+			joinedQueries = appendToNewArray(joinedQueries, joined);
 		
 			vue_queries.queries = joinedQueries;
 			vue_queries.string = JSON.stringify(joined);
-
+*/
 		});
 	});
 }

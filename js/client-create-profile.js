@@ -33,12 +33,12 @@ $(document).ready(function() {
 		//TODO: VALIDATE FORM
 
 		var success = function(response) {
-			alert(JSON.stringify(response));
+			//alert(JSON.stringify(response));
 			window.location.href = "client-new-query.html";
 		};
 
-		var fail = function() {
-			alert("Fail");
+		var fail = function(response) {
+			alert("Fail: " + JSON.stringify(response));
 		}
 
 		var userId = _getLoggedInUserId();
