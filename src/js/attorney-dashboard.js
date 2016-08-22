@@ -37,7 +37,7 @@ var vue_queries = new Vue({
 		connect: function(id) {
 
 			var attorneyId = _getLoggedInUserId();
-			alert("Connect " + attorneyId + " to " + id);
+			alert("We will inform the client about your interest!");
 
 			queryService.connectAttorney(id, this.selectedItem, attorneyId);
 		}
@@ -83,7 +83,6 @@ var queriesLoaded = function(queries) {
 	queries.forEach(function(query) {
 		joinUserQuery(query, function(joined){
 
-			alert(_getLoggedInUserId());
 			dump("after joinUserQuery", joined);
 			joined["id"] = joinedQueries.length;
 
@@ -95,10 +94,8 @@ var queriesLoaded = function(queries) {
 
 				var connectedId = connectionObject["attorneyId"];
 
-				alert(_getLoggedInUserId() + "==" + connectedId + "?");
 				if(_getLoggedInUserId() === connectedId) {
 					//we are conneceted to this guy
-					alert("yes");
 					joined["connected"] = true;
 				}
 			});
