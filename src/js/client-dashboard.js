@@ -43,16 +43,23 @@ var vue_interestedAttorneys = new Vue({
 			//update attorney
 			attorneysService.getId(attorneyId, function(attorneyObject) {
 
-
-
 				var connectedQueries = appendToNewArray(attorneyObject["connectedQueries"] || [], {queryId: queryId, timestamp: new Date()});
 
 				attorneyObject.connectedQueries = connectedQueries;
 				attorneysService.put(attorneyId, attorneyObject, function(result) {
 					dump("client-dashboard::connect updated attorney! ", result);
-				});/*objectId, data, f*/
-			});
+				});
+
+
+				//send email to attorney
+				emailjs.send("gmail","client_connect", {
+					recipientEmail: attorneyObject.user 
+				});
 			
+
+			});
+
+
 		}
 	}
 });
@@ -61,11 +68,15 @@ var withMyQuery = function(query, f) {
 
 	dump("withMyQuery ", query);
 
+	alert("Interested attorneysd raw array: " + JSON.stringify(query.interestedAttorneys))
 	query.interestedAttorneys.forEach(function(interestedAttorney) {
 		attorneysService.getId(interestedAttorney["attorneyId"], function(attorneyObject) {
+ 
+			alert("Intersted attorney:" + JSON.stringify(attorneyObject));
 
 			var interestedAttorneys = vue_interestedAttorneys.attorneys || [];
 			vue_interestedAttorneys.attorneys = appendToNewArray(interestedAttorneys, attorneyObject);
+			dump("attorneys array", vue_interestedAttorneys.attorneys)
 		});
 	});
 	f();
