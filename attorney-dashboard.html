@@ -42,7 +42,7 @@
 
 	<div class="six columns card"  v-if="selectedId != -1">
 
-		<div v-if="selectedItem.connected"><b>{{ selectedItem.firstName }} {{ selectedItem.lastName }} has connected with you!</b><br> Reach out to him at {{ selectedItem.user }} or {{ selectedItem.phoneNumber }}.</div><br><br>
+		<div v-if="selectedItem.connected"><b>{{ selectedItem.firstName }} {{ selectedItem.lastName }} has connected with you!</b><br> Reach out to him at {{ selectedItem.user }} or {{ selectedItem.phone }}.</div><br><br>
 
 		<template v-for="item in selectedItem.query">
 			<div class="row">
