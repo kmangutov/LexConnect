@@ -24,13 +24,15 @@ var vue_queries = new Vue({
 		selectedClientData: {},
 	},
 
+	// id refers to obj.id, not array index...
 	methods: {
 		select: function(id) {
-			console.log("Select " + JSON.stringify(this.queries[id]));
-
+			this.selectedItem = this.queries.filter(function(query) {
+				return query.id == id;
+			})[0];
 
 			this.showSelected = true;
-			this.selectedItem = this.queries[id];
+			//this.selectedItem = this.queries[id];
 			this.selectedId = id;
 		},
 
@@ -101,13 +103,11 @@ var queriesLoaded = function(queries) {
 			});
 
 			joinedQueries = appendToNewArray(joinedQueries, joined);
+			joinedQueries.sort(function(a, b) {
+				return new Date(b.timestamp) - new Date(a.timestamp);
+			});
+
 			vue_queries.queries = joinedQueries;
-/*
-			joinedQueries = appendToNewArray(joinedQueries, joined);
-		
-			vue_queries.queries = joinedQueries;
-			vue_queries.string = JSON.stringify(joined);
-*/
 		});
 	});
 }

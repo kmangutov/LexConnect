@@ -26,9 +26,16 @@ var getForm = function() {
 	return data;
 }
 
+var setButtonsEnabled = function(enabled) {
+	$("#signup").prop("disabled", !enabled);
+}
+
 $(document).ready(function() {
 
+	setButtonsEnabled(true);
+
 	$("#signup").click(function() {
+		setButtonsEnabled(false);
 
 		var success = function(response) {
 			window.location.href = "attorney-dashboard.html";
@@ -36,6 +43,7 @@ $(document).ready(function() {
 
 		var fail = function() {
 			alert("Fail");
+			setButtonsEnabled(true);
 		}
 
 		var userId = _getLoggedInUserId();

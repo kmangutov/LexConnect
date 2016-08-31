@@ -3,8 +3,15 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("user_81tqLSAubmxRExsZGUvH5");
+   })();
+</script>
 </head>
 
 <body>
@@ -15,6 +22,7 @@
 		<p class="sub-title">Attorney Dashboard</p>
 		<br>
 	</div>
+	<p>All interested clients will be displayed here. Select clients whose cases you are interested in and press 'Connect' to express interest in them. When a client accepts a connection, their contact information will be revealed.</p>
 </div>
 
 <div id="queries" class="app_container row">
@@ -23,15 +31,20 @@
 <center>
 <div>
 <template v-for="query in queries">
-	<div v-bind:class="{hovered:(query.id===selectedId)}" class="card card-hover" v-on:click="select(query.id)">
+	<div v-bind:class="{'hovered':(query.id===selectedId && !query.connected), 'card-connected':(query.connected)}" class="card card-hover" v-on:click="select(query.id)">
 
 
-		{{ query.employer }}, {{ query.occupation }} - ${{ query.income }} Yearly<br>
+		<span class="timestamp">Query submitted {{ query.timestamp }}</span><br>		<div v-if="query.connected">
+			<b>Connected with {{ query.firstName }} {{ query.lastName }}!</b>
+		</div>
+
+		Works at <u>{{ query.employer }}</u> as a <u>{{ query.occupation }}</u>. ${{ query.income }} yearly income<br>
+
+		<br>{{ query.primaryAddress }}<br>{{ query.secondaryAddress }}<br><br>
+
 		{{ query.query[0].question }}: <B>{{ query.query[0].answer }}</B><br>
 
-		<div v-if="query.connected">
-			<b>Connected!</b>
-		</div>
+
 
 	</div>
 </template>
@@ -40,9 +53,9 @@
 
 	</div>
 
-	<div class="six columns card"  v-if="selectedId != -1">
+	<div class="six columns card" v-bind:class="{'card-connected':(selectedItem.connected)}" v-if="selectedId != -1">
 
-		<div v-if="selectedItem.connected"><b>{{ selectedItem.firstName }} {{ selectedItem.lastName }} has connected with you!</b><br> Reach out to him at {{ selectedItem.user }} or {{ selectedItem.phone }}.</div><br><br>
+		<div v-if="selectedItem.connected"><b>{{ selectedItem.firstName }} {{ selectedItem.lastName }} has connected with you!</b><br> Reach out to {{ selectedItem.firstName }} at <u>{{ selectedItem.user }}</u> or <u>{{ selectedItem.phone }}</u>.</div><br><br>
 
 		<template v-for="item in selectedItem.query">
 			<div class="row">

@@ -31,11 +31,15 @@
 
 	<div class="six columns"><center>
 		<template v-for="attorney in attorneys">
-			{{ JSON.stringify(attorney) }}
 
 			<div class="card card-hover" v-bind:class="{hovered:(attorney.id===selectedId)}" v-on:click="select(attorney['_id']['$oid'])">
+
+				<span class="timestamp">Matched {{ query.timestamp }}</span><br>
 				Attorney {{ attorney.firstName }} {{ attorney.lastName }} wishes to connect with you!<br>
-				
+
+				<br>{{ attorney.primaryAddress }}<br>{{ attorney.secondaryAddress }}<br><br>
+
+				Firm size: {{ attorney.firmSize }}
 
 			</div>
 		</template>

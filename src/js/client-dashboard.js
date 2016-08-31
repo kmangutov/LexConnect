@@ -37,7 +37,7 @@ var vue_interestedAttorneys = new Vue({
 		connect: function(attorneyId) {
 			var queryId = this.query['_id']['$oid'];
 			queryService.connectClientToAttorney(this.query, attorneyId, function() {
-				alert("This attorney will reach out to you soon!");
+				alert("We will inform this attorney of your desire to speak!");
 			});
 
 			//update attorney
@@ -68,14 +68,20 @@ var withMyQuery = function(query, f) {
 
 	dump("withMyQuery ", query);
 
-	alert("Interested attorneysd raw array: " + JSON.stringify(query.interestedAttorneys))
 	query.interestedAttorneys.forEach(function(interestedAttorney) {
 		attorneysService.getId(interestedAttorney["attorneyId"], function(attorneyObject) {
- 
-			alert("Intersted attorney:" + JSON.stringify(attorneyObject));
 
 			var interestedAttorneys = vue_interestedAttorneys.attorneys || [];
-			vue_interestedAttorneys.attorneys = appendToNewArray(interestedAttorneys, attorneyObject);
+			attorneyObject.timestamp = interestedAttorney.timestamp;
+			attorneyObject.id = interestedAttorneys.length;
+			//vue_interestedAttorneys.attorneys = appendToNewArray(interestedAttorneys, attorneyObject);
+
+			var newAttorneyArray = appendToNewArray(interestedAttorneys, attorneyObject);
+			newAttorneyArray.sort(function(a, b) {
+				return new Date(b.timestamp) - new Date(a.timestamp);
+			});
+			vue_interestedAttorneys.attorneys = newAttorneyArray;
+
 			dump("attorneys array", vue_interestedAttorneys.attorneys)
 		});
 	});
