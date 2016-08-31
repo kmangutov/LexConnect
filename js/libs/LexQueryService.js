@@ -14,7 +14,6 @@ var LexQueryService = function() {
 			};
 
 			service.post(struct, function(response){
-				//alert("response: " + JSON.stringify(response));
 				pass(response);
 			});
 		},
@@ -38,6 +37,8 @@ var LexQueryService = function() {
 
 		connectAttorney: function(queryId, query, attorneyId) {
 
+			alert(JSON.stringify(query));
+			
 			console.log("Interested attorneys " + query.interestedAttorneys);
 			
 			var interestedAttorneys = [] || query.interestedAttorneys;
@@ -46,7 +47,7 @@ var LexQueryService = function() {
 			query.interestedAttorneys = interestedAttorneys;
 
 			service.put(queryId, query, function(resp) {
-				alert(JSON.stringify(resp));
+				//alert(JSON.stringify(resp));
 			});
 		},
 
@@ -65,6 +66,8 @@ var LexQueryService = function() {
 				dump("LexQueryService::connectClientToAttorney ", resp);
 				next();
 			});
+
+
 		}
 	}
 }

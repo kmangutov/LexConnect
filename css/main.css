@@ -11,12 +11,22 @@
 	text-align: left;
 }
 
+.card-connected {
+	background-color: #90EE90;
+}
+
+.timestamp {
+	color: #AAA;
+	font-style: italic;
+	font-family: Lato;
+}
+
 .card-hover:hover {
 	background-color: #DDD;
 }
 
-.hovered{
-	background-color: #BBB;
+.hovered {
+	background-color: #EEE;
 }
 
 .app_container {

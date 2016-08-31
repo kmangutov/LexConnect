@@ -12,9 +12,17 @@ var getForm = function() {
 	}
 };
 
+var setButtonsEnabled = function(enabled) {
+	$("#login").prop("disabled", !enabled);
+	$("#signup").prop("disabled", !enabled);
+}
+
 $(document).ready(function() {
 	
+	setButtonsEnabled(true);
 	$("#login").click(function() {
+
+		setButtonsEnabled(false);
 
 		var success = function(data) {
 			Lockr.set("user", data);	
@@ -23,6 +31,7 @@ $(document).ready(function() {
 
 		var fail = function(data) {
 			alert("Invalid credentials");
+			setButtonsEnabled(true);
 		};
 
 		userService.login(getForm(), success, fail);
@@ -30,6 +39,8 @@ $(document).ready(function() {
 	});
 
 	$("#signup").click(function() {
+
+		setButtonsEnabled(false);
 
 		var success = function(data) {
 			console.log("SIGNUP SUCCESS: " + JSON.stringify(data))
@@ -39,6 +50,7 @@ $(document).ready(function() {
 
 		var fail = function(data) {
 			alert("Email is taken");
+			setButtonsEnabled(true);h
 		};
 
 		userService.register(getForm(), success, fail);
