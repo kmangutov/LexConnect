@@ -1,4 +1,9 @@
 
+.loginBox p {
+	font-size: 1.7rem;
+	font-family: 'Open Sans', sans-serif;
+}
+
 .card {
 	border-style: solid;
 	border-width: 1px;
@@ -55,6 +60,7 @@
 .header-short {
 	margin-top: 8rem;
 	text-align: center;
+	margin-bottom: 5rem;
 }
 
 .loginBox {

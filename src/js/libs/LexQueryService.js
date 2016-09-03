@@ -37,7 +37,7 @@ var LexQueryService = function() {
 
 		connectAttorney: function(queryId, query, attorneyId) {
 
-			alert(JSON.stringify(query));
+			//alert(JSON.stringify(query));
 			
 			console.log("Interested attorneys " + query.interestedAttorneys);
 			
