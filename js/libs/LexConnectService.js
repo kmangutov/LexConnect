@@ -58,6 +58,25 @@ var LexConnectService = function(type) {
 
   return {
   
+    drop: function() {
+      //alert("drop " + db);
+      $.ajax({
+        url: db,
+        data: JSON.stringify([]),
+        type: "PUT",
+        contentType: "application/json",
+
+        success: function(data) {
+          //alert(db + " " + JSON.stringify(data));
+        },
+
+        fail: function(data) {
+          //alert(db + " " + JSON.stringify(data));
+        }
+
+      });
+    },
+
     getAll: function(f) {
       $.get(db, function(data) {
         f(data);

@@ -5,6 +5,10 @@ var LexQueryService = function() {
 
 	return {
 
+		clearCollections: function() {
+			
+		}
+
 		postQuery: function(query, pass, fail) {
 
 			var struct = {
@@ -33,7 +37,6 @@ var LexQueryService = function() {
 			service.get(userIdFilter, f);
 	
 		},
-
 
 		connectAttorney: function(queryId, query, attorneyId) {
 
@@ -66,8 +69,6 @@ var LexQueryService = function() {
 				dump("LexQueryService::connectClientToAttorney ", resp);
 				next();
 			});
-
-
 		}
 	}
 }
