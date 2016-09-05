@@ -5,10 +5,6 @@ var LexQueryService = function() {
 
 	return {
 
-		clearCollections: function() {
-			
-		}
-
 		postQuery: function(query, pass, fail) {
 
 			var struct = {
