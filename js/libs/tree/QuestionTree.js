@@ -42,20 +42,54 @@ var QuestionTree = (function() {
 	var YES = "Yes";
 	var NO = "No";
 
-	
-	var entry = 
-	q("Are you an employee?",
-		a(YES, q("Was this an accidental injury?",
-			a("Gradual injury",
-				q("Was this a pre-existing condition?",
-					a(YES),
-					a(NO))),
-			a("Definite-time injury",
-				q("Can it be traced to a specific date, time, or cause?",
-					a(YES),
-					a(NO))))),
-		a(NO));
 
+	var workers_comp = 
+			q("Are you an employee?",
+				a(YES, q("Was this an accidental injury?",
+					a("Gradual injury",
+						q("Was this a pre-existing condition?",
+							a(YES),
+							a(NO))),
+					a("Definite-time injury",
+						q("Can it be traced to a specific date, time, or cause?",
+							a(YES),
+							a(NO))))),
+				a(NO));
+
+	var employee_misclassification_c = 
+			q("Are any of the following true: ",
+				a("Distinct occupation from principal"),
+				a("Relatively high degree of skill required in occupation"),
+				a("The worker supplies necessary tools and instruments to him or herself"),
+				a("None of the above"))
+
+	var employee_misclassification_b = 
+			q("Is the work part of the regular business of the principal?",
+				a(YES, employee_misclassification_c),
+				a(NO));
+
+	var employee_misclassification_a =
+			q("Are any of the following true: ",
+				a("There was ability to control the worker", employee_misclassification_b),
+				a("The work is usually supervised by the principal or an agent of the principal", employee_misclassification_b),
+				a("None are true"));
+
+
+
+	var employee_discrimination = 
+			q("Employee discrimination",
+				a("Discrimination"),
+				a("Sexual harassment"),
+				a("Retaliation"));
+
+	var labor_subfield = 
+			q("Labor/employment issues",
+				a("Workers` Comp", workers_comp),
+				a("Employee Misclassification", employee_misclassification_a),
+				a("Employment Discrimination", employee_discrimination))
+
+
+	var entry = labor_subfield	;
 
 	return {
 		get: function() {
