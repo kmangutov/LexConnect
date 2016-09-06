@@ -70,7 +70,7 @@
 			<br>
 		</template>
 
-		<button id="signup" class="button-primary" v-on:click="connect(selectedItem['_id']['$oid'])">Connect</button>
+		<button id="signup" class="button-primary" v-on:click="connect(selectedItem['_id']['$oid'])" v-if="!selectedItem.connected">Connect</button>
 
 	</div>
 </div>
