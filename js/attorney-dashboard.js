@@ -52,6 +52,7 @@ var vue_queries = new Vue({
 			alert("We will inform the client about your interest!");
 
 			queryService.connectAttorney(id, this.selectedItem, attorneyId);
+			this.selectedInterestExpressed = true;
 		}
 	}
 });
