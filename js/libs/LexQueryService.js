@@ -36,17 +36,34 @@ var LexQueryService = function() {
 
 		connectAttorney: function(queryId, query, attorneyId) {
 
+
+			//console.log("LexQueryService::connectAttorney \nqueryId:" + queryId + "\n\n query:" + JSON.stringify(query) + "\n\n attorneyId:" + attorneyId);
+
+
 			//alert(JSON.stringify(query));
+			var clone = JSON.parse(JSON.stringify(query));
 			
-			console.log("Interested attorneys " + query.interestedAttorneys);
-			
-			var interestedAttorneys = [] || query.interestedAttorneys;
-			interestedAttorneys.push({attorneyId: attorneyId, timestamp: new Date()});
 
-			query.interestedAttorneys = interestedAttorneys;
+			dump("---clone.interestedAttorneys", clone.interestedAttorneys);
+			var interestedAttorneys = clone.interestedAttorneys || [];
+			dump("---interestedAttorneys", interestedAttorneys);
 
-			service.put(queryId, query, function(resp) {
-				//alert(JSON.stringify(resp));
+			var me = [{attorneyId: attorneyId, timestamp: new Date()}];
+			dump("---me", me);
+
+			var newArray = interestedAttorneys.concat(me);
+			dump("---newArray", newArray)
+
+			clone.interestedAttorneys = newArray;
+
+			dump("===newArray", newArray);
+			dump("===interestedAttorneys", clone.interestedAttorneys);
+			dump("query", clone);
+
+			//console.log("==== PUT " + JSON.stringify(query));
+
+			service.put(queryId, clone, function(resp) {
+				alert(JSON.stringify(resp));
 			});
 		},
 

@@ -2,9 +2,17 @@
 
 var _getLoggedInUser = function() {
 	var user = Lockr.get("user");
-	return user[0];
 
+	if(user === undefined) {
+		return {};
+	}
+
+	return user[0];
 }
+
+console.log("======== LOGGED IN AS");
+console.log(JSON.stringify(_getLoggedInUser()));
+console.log("========");
 
 var _getLoggedInUserId = function() {
 	var user = _getLoggedInUser();
