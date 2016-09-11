@@ -20,8 +20,9 @@ var vue_queries = new Vue({
 		selectedId: -1,
 		connectedIds: [],
 
-		selectedConnected: false,
-		selectedClientData: {},
+		selectedInterestExpressed: false,
+		//selectedConnected: false,
+		//selectedClientData: {},
 	},
 
 	// id refers to obj.id, not array index...
@@ -32,8 +33,17 @@ var vue_queries = new Vue({
 			})[0];
 
 			this.showSelected = true;
-			//this.selectedItem = this.queries[id];
 			this.selectedId = id;
+
+			dump("selectedItem.interestedAttorneys", this.selectedItem.interestedAttorneys);
+			dump("selectedItem.connectedAttorneys", this.selectedItem.connectedAttorneys);
+
+			var expressedInterest = this.selectedItem.interestedAttorneys.find(function(element, index, array) {
+				return _getLoggedInUserId() == element['attorneyId'];
+			});
+
+			this.selectedInterestExpressed = expressedInterest;
+			dump("expressedInterest", expressedInterest);
 		},
 
 		connect: function(id) {

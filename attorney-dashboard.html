@@ -55,6 +55,10 @@
 
 	<div class="six columns card" v-bind:class="{'card-connected':(selectedItem.connected)}" v-if="selectedId != -1">
 
+		<div v-if="selectedInterestExpressed && !selectedItem.connected">
+			<b>You already expressed interest in this candidate. We will email you if the candidate wishes to chat.</b>
+		</div>
+
 		<div v-if="selectedItem.connected"><b>{{ selectedItem.firstName }} {{ selectedItem.lastName }} has connected with you!</b><br> Reach out to {{ selectedItem.firstName }} at <u>{{ selectedItem.user }}</u> or <u>{{ selectedItem.phone }}</u>.</div><br><br>
 
 		<template v-for="item in selectedItem.query">
@@ -70,7 +74,10 @@
 			<br>
 		</template>
 
-		<button id="signup" class="button-primary" v-on:click="connect(selectedItem['_id']['$oid'])" v-if="!selectedItem.connected">Connect</button>
+		<div v-if="!selectedInterestExpressed">
+			<button id="signup" class="button-primary" v-on:click="connect(selectedItem['_id']['$oid'])" v-if="!selectedItem.connected">Connect</button>
+		</div>
+
 
 	</div>
 </div>
