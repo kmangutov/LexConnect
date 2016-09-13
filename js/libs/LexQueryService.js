@@ -88,15 +88,6 @@ var LexQueryService = function() {
 
 			query.connectedAttorneys = connectedAttorneys;
 
-			//TODO: alert attorney via email
-
-			//send email to attorney
-			/*emailjs.send("gmail","client_connect", {
-				recipientEmail: attorneyObject.user 
-			});*/
-
-
-
 			console.log("=============== entering userService getId")
 			attorneyService.getId(attorneyId, function(attorney) {
 				console.log("============= connectClientToAttorney");
@@ -125,10 +116,10 @@ var LexQueryService = function() {
 			});
 			
 
-			/*service.put(queryId, query, function(resp) {
+			service.put(queryId, query, function(resp) {
 				dump("LexQueryService::connectClientToAttorney ", resp);
 				next();
-			});*/
+			});
 		}
 	}
 }
