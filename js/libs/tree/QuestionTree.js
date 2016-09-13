@@ -43,6 +43,28 @@ var QuestionTree = (function() {
 	var NO = "No";
 
 
+	// ==== CONTRACTS 1
+
+	var contracts_subfield =
+			q("Contracts",
+				a("Breach of contract"));
+
+	// ==== FAMILY 2
+
+	var family_subfield = 
+			q("Family law",
+				a("Divorce"),
+				a("Probate"));
+
+	// ==== CRIMINAL 3
+
+	var criminal_subfield = 
+			q("Criminal defense",
+				a("DUI - Alcohol"),
+				a("DUI - Drugs"));
+
+	// ==== LABOR 4
+
 	var workers_comp = 
 			q("Are you an employee?",
 				a(YES, q("Was this an accidental injury?",
@@ -74,8 +96,6 @@ var QuestionTree = (function() {
 				a("The work is usually supervised by the principal or an agent of the principal", employee_misclassification_b),
 				a("None are true"));
 
-
-
 	var employee_discrimination = 
 			q("Employee discrimination",
 				a("Discrimination"),
@@ -88,8 +108,44 @@ var QuestionTree = (function() {
 				a("Employee Misclassification", employee_misclassification_a),
 				a("Employment Discrimination", employee_discrimination))
 
+	// ==== PERSONAL INJURY 5
 
-	var entry = labor_subfield	;
+	var personal_injury_subfield = 
+			q("Did the injury occur in Illinois?",
+				a(YES),
+				a(NO));
+
+	// ==== IMMIGRATION 6
+
+	var immigration_subfield = 
+			q("Are you seeking green card through Job or Family?",
+				a("Job"),
+				a("Family"));
+
+	// ==== UNSURE 7
+
+	var unsure_subfield = 
+			q("Unsure of issue",
+				a("Suffered an injury"),
+				a("I was arrested"),
+				a("Work related"),
+				a("Business disagreement"),
+				a("Divorce"),
+				a("Looking to apply for green card"),
+				a("Dealing with deceased person's property/will"));
+
+	// ==== ROOT
+
+	//var entry = labor_subfield;
+	var entry = q("Where does your issue fall?",
+			a("Contracts", contracts_subfield),
+			a("Family law", family_subfield),
+			a("Criminal defense", criminal_subfield),
+			a("Labor or employment", workers_comp),
+			a("Personal injury", personal_injury_subfield),
+			a("Immigration", immigration_subfield),
+			a("Unsure", unsure_subfield));
+
 
 	return {
 		get: function() {

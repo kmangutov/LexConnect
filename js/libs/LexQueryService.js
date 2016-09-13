@@ -2,6 +2,7 @@
 var LexQueryService = function() {
 
 	var service = LexConnectService("queries");
+	var attorneyService = LexConnectService("attorneys");
 
 	return {
 
@@ -34,39 +35,48 @@ var LexQueryService = function() {
 	
 		},
 
+		/**
+			An attorney expressed interest in a client query.
+
+			query: query object from database pertaining to the client's search query
+			attorneyId: the attorney expressing interest in the query
+		*/
 		connectAttorney: function(queryId, query, attorneyId) {
+			var clone = JSON.parse(JSON.stringify(query));			
 
-
-			//console.log("LexQueryService::connectAttorney \nqueryId:" + queryId + "\n\n query:" + JSON.stringify(query) + "\n\n attorneyId:" + attorneyId);
-
-
-			//alert(JSON.stringify(query));
-			var clone = JSON.parse(JSON.stringify(query));
-			
-
-			dump("---clone.interestedAttorneys", clone.interestedAttorneys);
 			var interestedAttorneys = clone.interestedAttorneys || [];
-			dump("---interestedAttorneys", interestedAttorneys);
-
 			var me = [{attorneyId: attorneyId, timestamp: new Date()}];
-			dump("---me", me);
-
 			var newArray = interestedAttorneys.concat(me);
-			dump("---newArray", newArray)
-
 			clone.interestedAttorneys = newArray;
 
-			dump("===newArray", newArray);
-			dump("===interestedAttorneys", clone.interestedAttorneys);
-			dump("query", clone);
+			//alert("send email to client");
+			//dump("information we know (query)", clone);
+			//dump("information we know (me)", _getLoggedInUser());
 
-			//console.log("==== PUT " + JSON.stringify(query));
+
+			attorneyService.getId(_getLoggedInUserId(), function(attorney) {
+				dump("attorney", attorney);
+
+				var obj = {
+					clientFirstName: query.firstName,
+					clientLastName: query.lastName,
+					attorneyFirstName: attorney.firstName,
+					attorneyLastName: attorney.lastName,
+					attorneyUrl: attorney.url,
+				}
+
+				dump("obj", obj);
+
+			});
 
 			service.put(queryId, clone, function(resp) {
 				alert(JSON.stringify(resp));
 			});
 		},
 
+		/**
+			A client confirms connection with an attorney.
+		*/
 		connectClientToAttorney: function(query, attorneyId, next) {
 
 			var queryId = query["_id"]["$oid"];
@@ -77,6 +87,12 @@ var LexQueryService = function() {
 			query.connectedAttorneys = connectedAttorneys;
 
 			//TODO: alert attorney via email
+
+			//send email to attorney
+			/*emailjs.send("gmail","client_connect", {
+				recipientEmail: attorneyObject.user 
+			});*/
+			
 
 			service.put(queryId, query, function(resp) {
 				dump("LexQueryService::connectClientToAttorney ", resp);

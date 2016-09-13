@@ -51,12 +51,6 @@ var vue_interestedAttorneys = new Vue({
 				});
 
 
-				//send email to attorney
-				emailjs.send("gmail","client_connect", {
-					recipientEmail: attorneyObject.user 
-				});
-			
-
 			});
 
 
