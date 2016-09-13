@@ -49,15 +49,16 @@ var LexQueryService = function() {
 			var newArray = interestedAttorneys.concat(me);
 			clone.interestedAttorneys = newArray;
 
-			//alert("send email to client");
-			//dump("information we know (query)", clone);
-			//dump("information we know (me)", _getLoggedInUser());
+			alert("send email to client");
+			dump("information we know (query)", clone);
+			dump("information we know (me)", _getLoggedInUser());
 
 
 			attorneyService.getId(_getLoggedInUserId(), function(attorney) {
 				dump("attorney", attorney);
 
 				var obj = {
+					recipientEmail: query.user,
 					clientFirstName: query.firstName,
 					clientLastName: query.lastName,
 					attorneyFirstName: attorney.firstName,

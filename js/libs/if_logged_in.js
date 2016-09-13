@@ -7,3 +7,8 @@ if(jQuery.isEmptyObject(user)) {
 } else {
 
 }
+
+$("#href-logout").click(function() {
+	Lockr.set("user", {});
+	window.location.href = _LOGIN_PAGE;
+});
