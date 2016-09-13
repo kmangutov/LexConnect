@@ -3,6 +3,7 @@ var LexQueryService = function() {
 
 	var service = LexConnectService("queries");
 	var attorneyService = LexConnectService("attorneys");
+	var userService = LexConnectService("attorneys");
 
 	return {
 
@@ -93,12 +94,41 @@ var LexQueryService = function() {
 			/*emailjs.send("gmail","client_connect", {
 				recipientEmail: attorneyObject.user 
 			});*/
+
+
+
+			console.log("=============== entering userService getId")
+			attorneyService.getId(attorneyId, function(attorney) {
+				console.log("============= connectClientToAttorney");
+
+				//send to attorney from client
+				var obj = {
+					recipientEmail: attorney.user,
+					attorneyFirstName: attorney.firstName,
+					attorneyLastName: attorney.lastName,
+					clientFirstName: query.firstName,
+					clientLastName: query.lastName,
+					clientPhone: query.phone,
+					
+					clientOccupation: query.occupation,
+					clientEmployer: query.employer,
+					clientIncome: query.clientIncome,
+					clientEmail: query.user,
+
+					clientPrimaryAddress: query.primaryAddress,
+					clientSecondaryAddress: query.secondaryAddress,
+				}
+
+				dump("email_param_obj", obj);
+
+				emailjs.send("gmail", "on_connection_to_attorney", obj);
+			});
 			
 
-			service.put(queryId, query, function(resp) {
+			/*service.put(queryId, query, function(resp) {
 				dump("LexQueryService::connectClientToAttorney ", resp);
 				next();
-			});
+			});*/
 		}
 	}
 }
