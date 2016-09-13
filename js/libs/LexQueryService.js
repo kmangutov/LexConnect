@@ -65,8 +65,8 @@ var LexQueryService = function() {
 					attorneyUrl: attorney.url,
 				}
 
-				dump("obj", obj);
-
+				dump("email_param_obj", obj);
+				emailjs.send("gmail", "on_attorney_interest", obj);
 			});
 
 			service.put(queryId, clone, function(resp) {
