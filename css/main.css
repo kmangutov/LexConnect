@@ -1,4 +1,9 @@
 
+
+.secondary-font {
+	font-family: 'Open Sans', sans-serif;
+}
+
 .loginBox p {
 	font-size: 1.7rem;
 	font-family: 'Open Sans', sans-serif;
