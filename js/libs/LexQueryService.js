@@ -50,7 +50,7 @@ var LexQueryService = function() {
 			var newArray = interestedAttorneys.concat(me);
 			clone.interestedAttorneys = newArray;
 
-			alert("send email to client");
+			//alert("send email to client");
 			dump("information we know (query)", clone);
 			dump("information we know (me)", _getLoggedInUser());
 
@@ -72,7 +72,7 @@ var LexQueryService = function() {
 			});
 
 			service.put(queryId, clone, function(resp) {
-				alert(JSON.stringify(resp));
+				//alert(JSON.stringify(resp));
 			});
 		},
 
