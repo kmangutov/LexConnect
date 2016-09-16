@@ -1,4 +1,17 @@
 
+/*	The QuestionTree helps users communicate their situation without a law education quickly and easily.
+		QUESTION_MAP is a Map of Questions. Each Question resides under an id in the QUESTION_MAP.
+
+		An Answer is composed of a String _value_ (the answer text) and pointer _next_ to the question it leads to.
+		A _next_ of -1 indicates there are no more questions and the questionnaire is complete.
+
+		A Question is defined as a String _value_ (the prompt) and a list of possible Answers.
+
+		Answers are generated using the "a" function. Questions are generated using the "q" function that takes
+		a string value (The actual question) and a list of answers (The possible solutions).
+		The "q" function automatically inserts the resulting structure into the QUESTION_MAP.
+*/
+
 var QuestionTree = (function() {
 
 	var QUESTION_MAP = {};
@@ -8,18 +21,25 @@ var QuestionTree = (function() {
 	}
 
 	var none = function() {
-
 		return -1;
 	}
 
 	var q = function(value) {
-
 		var id = size() + 1;
 		var obj = {
 			value: value,
 			options: {}
 		};
 
+
+		/* Notice that that here we iterate through the arguments. This will be the answers.
+
+			e.g.
+				var criminal_subfield = 
+						q("Criminal defense",
+							a("DUI - Alcohol"),
+							a("DUI - Drugs"));
+		*/
 		for (var i = 1; i < arguments.length; i++) {
 			var ans = arguments[i];
 			obj.options[ans.value] = ans.next;
@@ -29,8 +49,9 @@ var QuestionTree = (function() {
 		return id;
 	}
 
+	// value: String, answer text.
+	// next: int, pointer to id of next question in QUESTION_MAP
 	var a = function(value, next) {
-		
 		next = next || -1;
 
 		return {
@@ -41,7 +62,6 @@ var QuestionTree = (function() {
 
 	var YES = "Yes";
 	var NO = "No";
-
 
 	// ==== CONTRACTS 1
 
@@ -152,7 +172,6 @@ var QuestionTree = (function() {
 			console.log(entry)
 			return QUESTION_MAP;
 		},
-
 		root: entry 
 	}
 })();
