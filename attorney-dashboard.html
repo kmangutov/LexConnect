@@ -44,7 +44,7 @@
 	</tr>
 	<template v-for="query in queries">
 		<tr v-bind:class="{'hovered':(query.id===selectedId && !query.connected), 'card-connected':(query.connected)}" class="card-hover" v-on:click="select(query.id)">
-			<td>{{ query.formatted_timestamp }} // {{ query.timestamp }} </td>
+			<td>{{ query.formatted_timestamp }}</td>
 			<td>{{ query.query[0].answer }}</td>
 			<td>{{ query.employer }}, {{ query.occupation }}</td>
 			<td>
