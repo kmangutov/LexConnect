@@ -72,7 +72,7 @@ var vue_queries = new Vue({
 					if(!query.interestedAttorneys) {
 						query.interestedAttorneys = [];
 					}
-					
+
 					query.interestedAttorneys.push({
 						attorneyId: _getLoggedInUserId()
 					});
@@ -128,7 +128,7 @@ var queriesLoaded = function(queries) {
 	queries.forEach(function(query) {
 
 		// Add a more refined timestamp we can use in our HTML
-		query.formatted_timestamp = new Date(query.timestamp).format("m/dd hh:mm TT");
+		query.formatted_timestamp = new Date(query.timestamp).format("m/dd hh:MM TT");
 
 		// Has the logged in attorney expressed interest in this candidate?
 		if (query.interestedAttorneys) {
