@@ -27,10 +27,12 @@ var vue_queries = new Vue({
 
 	// id refers to obj.id, not array index...
 	methods: {
+
 		select: function(id) {
 			this.selectedItem = this.queries.filter(function(query) {
 				return query.id == id;
 			})[0];
+			dump("selectedItem", this.selectedItem);
 
 			this.showSelected = true;
 			this.selectedId = id;
@@ -38,21 +40,51 @@ var vue_queries = new Vue({
 			dump("selectedItem.interestedAttorneys", this.selectedItem.interestedAttorneys);
 			dump("selectedItem.connectedAttorneys", this.selectedItem.connectedAttorneys);
 
-			var expressedInterest = this.selectedItem.interestedAttorneys.find(function(element, index, array) {
-				return _getLoggedInUserId() == element['attorneyId'];
-			});
+			// If this person isn't marked interestExpressed, check
 
-			this.selectedInterestExpressed = expressedInterest;
-			dump("expressedInterest", expressedInterest);
+				this.selectedInterestExpressed = false;
+				if(this.selectedItem.interestedAttorneys) {
+					var expressedInterest = this.selectedItem.interestedAttorneys.find(function(element, index, array) {
+						return _getLoggedInUserId() == element['attorneyId'];
+					});
+
+					dump("expressedInterest", expressedInterest);
+					this.selectedInterestExpressed = expressedInterest;
+				} 
+			
 		},
 
+		// TODO(kmangutov): fix these goddamnd interestExpressed vs expressInterest fuck
 		connect: function(id) {
 
 			var attorneyId = _getLoggedInUserId();
-			alert("We will inform the client about your interest!");
 
 			queryService.connectAttorney(id, this.selectedItem, attorneyId);
 			this.selectedInterestExpressed = true;
+
+			// update to "interest expressed"
+			var clone = [];
+			this.queries.forEach(function(query) {
+
+				//query.id is id in the array. so use query[_id][$oid]
+				if(query["_id"]["$oid"] === id) {
+					dump("query before", query);
+					if(!query.interestedAttorneys) {
+						query.interestedAttorneys = [];
+					}
+					
+					query.interestedAttorneys.push({
+						attorneyId: _getLoggedInUserId()
+					});
+					query.interestExpressed = true;
+					dump("query after", query);
+				}
+
+				clone.push(query);
+
+			});
+			this.queries = clone;
+			dump("this.queries", this.queries);
 		}
 	}
 });
@@ -94,6 +126,19 @@ var joinUserQuery = function(query, next) {
 
 var queriesLoaded = function(queries) {
 	queries.forEach(function(query) {
+
+		// Add a more refined timestamp we can use in our HTML
+		query.formatted_timestamp = new Date(query.timestamp).format("m/dd hh:mm TT");
+
+		// Has the logged in attorney expressed interest in this candidate?
+		if (query.interestedAttorneys) {
+			query.interestExpressed = query.interestedAttorneys.find(function(element, index, array) {
+				return _getLoggedInUserId() == element['attorneyId'];
+			});
+		} else {
+			query.interestExpressed = false;
+		}
+
 		joinUserQuery(query, function(joined){
 
 			dump("after joinUserQuery", joined);

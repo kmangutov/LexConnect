@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>LexConnect</title>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,500" rel="stylesheet"> 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
 <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -11,7 +11,7 @@
 <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script type="text/javascript">
    (function(){
-      emailjs.init("user_81tqLSAubmxRExsZGUvH5");
+      //emailjs.init("user_81tqLSAubmxRExsZGUvH5");
    })();
 </script>
 </head>
@@ -34,24 +34,28 @@
 
 <center>
 <div>
-<template v-for="query in queries">
-	<div v-bind:class="{'hovered':(query.id===selectedId && !query.connected), 'card-connected':(query.connected)}" class="card card-hover" v-on:click="select(query.id)">
 
+<table>
+	<tr>
+		<th>Submission date</th>
+		<th>Issue</th>
+		<th>Occupation</th>
+		<th>Status</th>
+	</tr>
+	<template v-for="query in queries">
+		<tr v-bind:class="{'hovered':(query.id===selectedId && !query.connected), 'card-connected':(query.connected)}" class="card-hover" v-on:click="select(query.id)">
+			<td>{{ query.formatted_timestamp }}</td>
+			<td>{{ query.query[0].answer }}</td>
+			<td>{{ query.employer }}, {{ query.occupation }}</td>
+			<td>
+				<span v-if="!query.interestExpressed && !query.connected">New</span>
+				<span v-if="query.interestExpressed && !query.connected">Reached out</span>
+				<span v-if="query.connected">Matched!</span>
+			</td>
+		</tr>
+	</template>
+</table>
 
-		<span class="timestamp">Query submitted {{ query.timestamp }}</span><br>		<div v-if="query.connected">
-			<b>Connected with {{ query.firstName }} {{ query.lastName }}!</b>
-		</div>
-
-		Works at <u>{{ query.employer }}</u> as a <u>{{ query.occupation }}</u>. ${{ query.income }} yearly income<br>
-
-		<br>{{ query.primaryAddress }}<br>{{ query.secondaryAddress }}<br><br>
-
-		{{ query.query[0].question }}: <B>{{ query.query[0].answer }}</B><br>
-
-
-
-	</div>
-</template>
 </div>
 </center>
 
@@ -87,6 +91,7 @@
 </div>
 
 
+<script src="js/libs/DateFormat.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 <script src="js/libs/tree/QuestionTree.js"></script>
