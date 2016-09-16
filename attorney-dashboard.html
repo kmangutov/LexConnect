@@ -56,6 +56,8 @@
 	</template>
 </table>
 
+
+
 </div>
 </center>
 
@@ -67,7 +69,15 @@
 			<b>You already expressed interest in this candidate. We will email you if the candidate wishes to chat.</b>
 		</div>
 
-		<div v-if="selectedItem.connected"><b>{{ selectedItem.firstName }} {{ selectedItem.lastName }} has connected with you!</b><br> Reach out to {{ selectedItem.firstName }} at <u>{{ selectedItem.user }}</u> or <u>{{ selectedItem.phone }}</u>.</div><br><br>
+		<div v-if="selectedItem.connected"><b>{{ selectedItem.firstName }} {{ selectedItem.lastName }} has connected with you!</b><br> Reach out to {{ selectedItem.firstName }} at <u>{{ selectedItem.user }}</u> or <u>{{ selectedItem.phone }}</u>.</div><br>
+
+
+		<div v-if="selectedItem.connected">
+			<br>Primary address: {{ query.primaryAddress }}
+			<br>Secondary address: {{ query.secondaryAddress }}
+			<br><br>
+		</div>
+
 
 		<template v-for="item in selectedItem.query">
 			<div class="row">
