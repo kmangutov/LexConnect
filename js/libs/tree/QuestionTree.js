@@ -85,18 +85,28 @@ var QuestionTree = (function() {
 
 	// ==== LABOR 4
 
+	var accident_prong_3 = 
+			q("Is there a connection between your occupation and the injury you suffered?", a(YES, q("Did this injury take place within the period of your employment?", a(YES, q("Did your injury take place in an area where the employee could reasonably be expected to be by the employer?", a(YES, q("Did the injury occur while fulfilling your work duties OR doing something related to them?", a(YES), a(NO))), a(NO))), a(NO))), a(NO));
+
 	var workers_comp = 
 			q("Are you an employee?",
-				a(YES, q("Was this an accidental injury?",
+				a(YES, q("Did your injury occur over a gradual period of time",
 					a("Gradual injury",
 						q("Was this a pre-existing condition?",
-							a(YES),
+							a(YES, 
+								q("Did your work worsen the pre-existing condition", 
+									a(YES, accident_prong_3), 
+									a(NO) )),
 							a(NO))),
 					a("Definite-time injury",
 						q("Can it be traced to a specific date, time, or cause?",
-							a(YES),
+							a(YES, accident_prong_3),
 							a(NO))))),
 				a(NO));
+
+
+	
+	var employee_misclassification_prong_c = q("Is this a distinct occupation from the principal?", a(YES, q("Is there a relatively high degree of skill required in your occupation?", a(YES, q("Do you supply your own tools and instrumentalities?", a(YES), a(NO))), a(NO))), a(NO));
 
 	var employee_misclassification_c = 
 			q("Are any of the following true: ",
@@ -107,7 +117,7 @@ var QuestionTree = (function() {
 
 	var employee_misclassification_b = 
 			q("Is the work part of the regular business of the principal?",
-				a(YES, employee_misclassification_c),
+				a(YES, employee_misclassification_prong_c),
 				a(NO));
 
 	var employee_misclassification_a =
@@ -116,11 +126,39 @@ var QuestionTree = (function() {
 				a("The work is usually supervised by the principal or an agent of the principal", employee_misclassification_b),
 				a("None are true"));
 
+	var mixed_motive_test = q("Are you in a protected class?", a(YES, q("Did you apply and were you minimally qualified for this position?", a(YES, q("Was there an adverse employment decision?", a(YES), a(NO))), a(NO))), a(NO));
+
+	var mcdonnell_douglas_test = q("Are you in a protected class?", a(YES, q("Did you apply and were you minimally qualified for this position?", a(YES, q("Was there an adverse employment decision?", a(YES, q("Do you suspect that there was pretext for discrimination?", a(YES), a(NO))), a(NO))), a(NO))), a(NO));
+	
+	var individual_disparate_treatment_prong = q("Is there direct evidence of intentional discrimination? (conduct, statements, etc.)", a(YES, mixed_motive_test), a(NO, mcdonnell_douglas_test));
+
+	var systemic_disparate_treatment_prong = q("Does a discriminatory policy exist? Or does an informal practice/pattern exist?", a(YES, q("Is there a legitimate bussiness reason for this policy/practice?", a(YES), a(NO))), a(NO));
+
+
+	var disparate_impact_theory = q("Are you in a protected class?", a(YES, q("Is there a policy/practice that has unequal effect on this protected class?", a(YES, q("Is there a legitimate bussiness reason for this policy/practice?", a(YES), a(NO))), a(NO))), a(NO));
+
+	var disparate_treatment_theory = q("Was this intentional discimination targeted only at you?", a(YES, individual_disparate_treatment_prong), a(NO, systemic_disparate_treatment_prong));
+
+	var discrimination_prong = q("Was there intentional conduct towards you that felt discriminatory?", a(YES, disparate_treatment_theory), a(NO, disparate_impact_theory))
+
+	// ===== Sexual Harassment in Employee Discrimination
+
+	var quid_pro_quo_prong = q("Were there unwelcome sexual demands?", a(YES, q("Were they made by a supervisor?", a(YES, q("As a result of refusing, did you suffer negative consequences at work?", a(YES), a(NO))), a(NO))), a(NO));
+
+	var hostile_work_environment_prong = q("Was there unwelcome sexual conduct by the supervisor because of your sex?", a(YES, q("Was the conduct severe eough to create a hostile enviroment?", a(YES, q("Did your employer take 'tangile employment action' against you?", a(YES), a(NO, q("Did you take reasonable measures to correct the abusive environment?", a(YES), a(NO))))), a(NO))), a(NO));
+
+	var sexual_harassment_prong = ("What kind of sexual harassment did you experience?", a("Quid Pro Quo (Sexual Favors)", quid_pro_quo_prong), a("Hostile Work Enviroment", hostile_work_environment_prong));
+
+	// ===== Retaliation in Employee Discrimination
+
+
+	var retaliation_prong = q("Were you engaged in a statutorily protected activity?", a(YES, q("Was a materially adverse action committed by the employer?", a(YES, q("Is there a casual connection between the protected activity and the employer's adverse action?", a(YES), a(NO))), a(NO))), a(NO));
+
 	var employee_discrimination = 
 			q("Employee discrimination",
-				a("Discrimination"),
-				a("Sexual harassment"),
-				a("Retaliation"));
+				a("Discrimination", discrimination_prong),
+				a("Sexual harassment", sexual_harassment_prong),
+				a("Retaliation", retaliation_prong));
 
 	var labor_subfield = 
 			q("Labor/employment issues",
@@ -161,7 +199,7 @@ var QuestionTree = (function() {
 			a("Contracts", contracts_subfield),
 			a("Family law", family_subfield),
 			a("Criminal defense", criminal_subfield),
-			a("Labor or employment", workers_comp),
+			a("Labor or employment", labor_subfield),
 			a("Personal injury", personal_injury_subfield),
 			a("Immigration", immigration_subfield),
 			a("Unsure", unsure_subfield));
