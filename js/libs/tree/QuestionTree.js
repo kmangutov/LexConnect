@@ -63,27 +63,27 @@ var QuestionTree = (function() {
 	var YES = "Yes";
 	var NO = "No";
 
-	// ==== CONTRACTS 1
+	// ==== CONTRACTS 1 ============================================
 
 	var contracts_subfield =
 			q("Contracts",
 				a("Breach of contract"));
 
-	// ==== FAMILY 2
+	// ==== FAMILY 2 ===============================================
 
 	var family_subfield = 
 			q("Family law",
 				a("Divorce"),
 				a("Probate"));
 
-	// ==== CRIMINAL 3
+	// ==== CRIMINAL 3 ==============================================
 
 	var criminal_subfield = 
 			q("Criminal defense",
 				a("DUI - Alcohol"),
 				a("DUI - Drugs"));
 
-	// ==== LABOR 4
+	// ==== LABOR 4 =================================================
 
 	var accident_prong_3 = 
 			q("Is there a connection between your occupation and the injury you suffered?", a(YES, q("Did this injury take place within the period of your employment?", a(YES, q("Did your injury take place in an area where the employee could reasonably be expected to be by the employer?", a(YES, q("Did the injury occur while fulfilling your work duties OR doing something related to them?", a(YES), a(NO))), a(NO))), a(NO))), a(NO));
@@ -166,21 +166,68 @@ var QuestionTree = (function() {
 				a("Employee Misclassification", employee_misclassification_a),
 				a("Employment Discrimination", employee_discrimination))
 
-	// ==== PERSONAL INJURY 5
+	// ==== PERSONAL INJURY 5 ====================================
+
+	// CAR ACCIDENT CHECKLIST
+
+	var checklist0 = 
+		q("Did the injuries prevent you from doing your normal day-to-day activities?",
+			a(YES),
+			a(NO));
+
+	var checklist1 = 
+		q("Were you prevented from working at your job because of your injuries from the accident?",
+			a(YES, checklist0),
+			a(NO, checklist0));
+
+	var checklist2 = 
+		q("Did you have any pre-existing injuries?",
+			a(YES,
+				q("Did the accident exacerbate those injuries?"),
+					a(YES, checklist1)),
+			a(NO), checklist1);
+
+	var checklist3 = 
+		q("Did you visit the hospital/doctor after the accident?",
+			a(YES, checklist2),
+			a(NO, checklist2));
+
+	var checklist4 = 
+		q("Was an ambulance called to the scene of the accident?",
+			a(YES, checklist3),
+			a(NO, checklist3));
+
+	var checklist5_ENTRY =
+		q("Were you wearing your seat belt at the time of the collision?",
+			a(YES, checklist4),
+			a(NO, checklist4),
+			a("N/A", checklist4));
+
+	// END CAR ACCIDENT CHECKLIST
+
+
+
+	var injuries_extent =
+		q("What is the extent of your injuries?",
+			a("W"));
 
 	var personal_injury_subfield = 
 			q("Did the injury occur in Illinois?",
-				a(YES),
+				a(YES, 
+					q("Were you personally injured?",
+						/***  TODO KIRILL PICK UP FROM HERE **/
+						a(YES, checklist5_ENTRY),
+						a(NO))),
 				a(NO));
 
-	// ==== IMMIGRATION 6
+	// ==== IMMIGRATION 6 =========================================
 
 	var immigration_subfield = 
 			q("Are you seeking green card through Job or Family?",
 				a("Job"),
 				a("Family"));
 
-	// ==== UNSURE 7
+	// ==== UNSURE 7 ==============================================
 
 	var unsure_subfield = 
 			q("Unsure of issue",
