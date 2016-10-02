@@ -185,7 +185,7 @@ var QuestionTree = (function() {
 			a(YES,
 				q("Did the accident exacerbate those injuries?"),
 					a(YES, checklist1)),
-			a(NO), checklist1);
+			a(NO, checklist1));
 
 	var checklist3 = 
 		q("Did you visit the hospital/doctor after the accident?",
@@ -205,19 +205,50 @@ var QuestionTree = (function() {
 
 	// END CAR ACCIDENT CHECKLIST
 
+	var car_accident_root =
+		q("Were you one of the drivers of the cars involved in the collision?",
+			a(YES,
+				q("Were you driving over the speed limit and/or following too closely prior to the collision?",
+					a(YES, checklist5_ENTRY),
+					a(NO, 
+						q("Did you fail to apply the brakes to avoid the collision?",
+							a(YES, checklist5_ENTRY),
+							a(NO, 
+								q("Did you fail to follow the rules of the road? (i.e. yielding right of way)",
+									a(YES, checklist5_ENTRY),
+									a(NO,
+										q("Did you fail to keep a proper lookout? (i.e. eyes on the road)",
+											a(YES, checklist5_ENTRY),
+											a(NO,
+												q("Was there anything you could have reasonable done to avoid the collision?",
+													a(YES, checklist5_ENTRY),
+													a(NO, checklist5_ENTRY))))))))))),
+			a(NO,
+				q("As a passenger did you distract/disturb your driver?",
+							a(YES, checklist5_ENTRY),
+							a(NO,
+								q("As a passenger did you have reason to believe that the driver was a negligent driver?",
+									a(YES),
+									a(NO))))));
 
-
-	var injuries_extent =
-		q("What is the extent of your injuries?",
-			a("W"));
-
+	var what_caused = 
+		q("What caused the injury?",
+			a("Car accident", car_accident_root),
+			a("Slip and fall", checklist5_ENTRY),
+			a("Consumer product"),
+			a("Medical mistake"),
+			a("Work-related injury" /** TODO(KIRILL) **/));
+	
 	var personal_injury_subfield = 
 			q("Did the injury occur in Illinois?",
 				a(YES, 
 					q("Were you personally injured?",
 						/***  TODO KIRILL PICK UP FROM HERE **/
-						a(YES, checklist5_ENTRY),
-						a(NO))),
+						a(YES, what_caused),
+						a(NO,
+							q("Do you have a special relationship with the person who was injured?",
+								a(YES, what_caused),
+								a(NO))))),
 				a(NO));
 
 	// ==== IMMIGRATION 6 =========================================
