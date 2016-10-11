@@ -71,17 +71,104 @@ var QuestionTree = (function() {
 
 	// ==== FAMILY 2 ===============================================
 
+	var child_has_medical_condition = q("Does the child have a medical condition/disability that requires financial assistance?", a(YES), a(NO));
+	
+	var child_intends_to_attend_college = q("Does the child intend to attend college?", a(YES), a(NO, child_has_medical_condition));
+
+	var custodial_parent_involuntary_reduction = q("Have you (the custodial parent) received an involuntary reduction in your income?", a(YES), a(NO, child_has_medical_condition));
+
+	var reduction_in_child_support = q("Was there an involuntary reduction in your income?", a(YES), a(NO, q("Has one of the children reached 18 years of age?", a(YES, child_intends_to_attend_college), a(NO))));
+	
+	var increase_in_child_support = q("Has the child become a non-minor (18 years or older)?", a(YES, q("Is the non-minor child still in high school?", a(YES), a(NO, child_intends_to_attend_college))), a(NO, q("Has the child graduated from high school?", a(YES, child_intends_to_attend_college), a(NO, custodial_parent_involuntary_reduction))));
+
+	var child_support_prong = q("Are you the parent paying for child support", a(YES, reduction_in_child_support), a(NO, increase_in_child_support));
+
+	
+	//----
+
+	var relocation_creates_burden = q("Will this relocation place a significant burden on visitation rights for the other parent?", a(YES, child_wants_to_live_with_you), a(NO, child_wants_to_live_with_you));
+
+	var active_involvement_in_upbringing = q("Have you been actively involved in decisions related to your child's upbringing?", a(YES), a(NO));
+
+	var primary_caretaker = q("Are you the primary caretaker?", a(YES), a(NO, active_involvement_in_upbringing));
+
+	var child_wants_to_live_with_you = q("Has the child stated that he/she would like to live with you?", a(YES, primary_caretaker), a(NO, primary_caretaker));
+
+	var relocating_out_of_state = q("Are you relocating out of the state?", a(YES, relocation_creates_burden), a(NO, child_wants_to_live_with_you));
+
+	var physical_verbal_abuse = q("Has the other parent every physically or verbally abused you and/or the child?", a(YES, relocating_out_of_state), a(NO, relocating_out_of_state));
+
+	var parent_mental_illness = q("Does the other parent have a history of mental illness?", a(YES, physical_verbal_abuse), a(NO, physical_verbal_abuse));
+
+	//var best_interest_of_child = q("We would like to ask about ", )
+
+	var wed_parent_custody = parent_mental_illness;
+
+	var unwed_parent_custody = q("Are you the male parent of the child?", a(YES, q("Have you established paternity of the child?", a(YES, parent_mental_illness), a(NO))), a(NO));
+
+	var parent_custody = q("Were the two parents ever married?", a(YES, wed_parent_custody), a(NO, unwed_parent_custody));
+
+	
+
+
+
+
+
+	var non_parent_custody = q("Are you the child's step-parent or relative?", a(YES, q("Are you currently in physical possesion of the child?", a(YES, q("Did one of the parents voluntarily hand the child into your possesion?", a(YES, q("Did you establish a parent-child relationship with the child?", a(YES, q("Are either parents (if still living) unfit to care for the child?", a(YES), a(NO))), a(NO))), a(NO))), a(NO))), a(NO));
+
+	var custody_rights_prong = q("Are you the child's parent", a(YES, parent_custody), a(NO, non_parent_custody));
+
+
+	var divorce = q("What's your divorce issue?", a("Child Support", child_support_prong), a("Custody Rights", custody_rights_prong));
+
 	var family_subfield = 
 			q("Family law",
-				a("Divorce"),
+				a("Divorce", divorce),
 				a("Probate"));
 
 	// ==== CRIMINAL 3 ==============================================
 
+	var officer_smelled_alcohol = q("Did the arresting officer report smelling alcohol on you?", a(YES), a(NO, q("Did the arresting officer report you having slurred speech?", a(YES), a(NO, q("Did you provide a statement to the arresting officer of how many drinks you have had?", a(YES), a(NO))))));
+
+	var field_sobriety_test = q("Was a field sobriety test (i.e. one leg stand) administered?", a("Yes - Passed", officer_smelled_alcohol), a("Yes - Failed"), a("Not administered", officer_smelled_alcohol));
+
+	var breathalyzer_test = q("Was a breathalyzer test administered?", a("Yes - Passed", officer_smelled_alcohol), a("Yes - Failed"), a("Not administered", field_sobriety_test));
+
+	var sobriety_tests_given = q("Was a blood/urine test administered?", a("Yes - Passed", officer_smelled_alcohol), a("Yes - Failed"), a("Not administered", breathalyzer_test))
+
+	var dui_alcohol = q("Were you ticketed in Illinois?", a(YES, q("Were you in possesion of the ignition keys?", a(YES, sobriety_tests_given), a(NO, q("Are you the owner of the vehicle that was pulled over by the police?", a(YES, sobriety_tests_given), a(NO, q("Were you in the driver's seat?", a(YES, sobriety_tests_given), a(NO))))))), a(NO))
+
+
+	
+
+
+
+	var found_drugs_in_vehicle = q("Found drugs in the vehicle", a(YES), a(NO));
+
+	var slurred_speech = q("Slurred speech", a(YES, found_drugs_in_vehicle), a(NO, found_drugs_in_vehicle));
+
+	var trouble_standing = q("Trouble standing and/or unsteady feet", a(YES, slurred_speech), a(NO, slurred_speech));
+
+	var dilated_pupils = q("Dilated pupils", a(YES, trouble_standing), a(NO, trouble_standing));
+	
+	var needle_marks_in_skin = q("Needle marks in skin", a(YES, dilated_pupils), a(NO, dilated_pupils));	
+
+	var driving_erratically = q("Driving erratically or in a dangerous manner?", a(YES, needle_marks_in_skin), a(NO, needle_marks_in_skin));
+
+	var reported_issues_by_arresting_officer = q("Please answer yes or no to whether the following issues were reported by the arresting officer", a("OK", driving_erratically));
+
+	var officer_conducted_field_sobriety_test = q("Did the arresting officer conduct a field sobriety test? (i.e one-leg stand, pupil reaction)", a("Yes - Passed", reported_issues_by_arresting_officer), a("Yes - Failed", q("Did the arresting officer report you driving erratically or in a dangerous manner?", a(YES), a(NO))), a("No - Did Not Conduct", reported_issues_by_arresting_officer));
+
+	var drug_has_intoxicating_effect = q("Does the drug have an intoxicating effect?", a(YES, officer_conducted_field_sobriety_test), a(NO, q("Were you also driving under the influence of alcohol?", a(YES, sobriety_tests_given), a(NO, officer_conducted_field_sobriety_test))));
+
+	var drug_was_controlled_substance = q("Was the alleged drug a controlled substance (illegal and/or doctor prescribed drug?", a(YES, q("Do you have a prescription?", a(YES, drug_has_intoxicating_effect), a(NO))), a(NO, drug_has_intoxicating_effect));
+
+	var dui_drugs = q("Were you ticketed in Illinois?", a(YES, q("Were you in possesion of the ignition keys?", a(YES, drug_was_controlled_substance), a(NO, q("Are you the owner of the vehicle that was pulled over by the police?", a(YES, drug_was_controlled_substance), a(NO, q("Were you in the driver's seat?", a(YES, drug_was_controlled_substance), a(NO))))))), a(NO));
+
 	var criminal_subfield = 
 			q("Criminal defense",
-				a("DUI - Alcohol"),
-				a("DUI - Drugs"));
+				a("DUI - Alcohol", dui_alcohol),
+				a("DUI - Drugs", dui_drugs));
 
 	// ==== LABOR 4 =================================================
 
@@ -113,7 +200,7 @@ var QuestionTree = (function() {
 				a("Distinct occupation from principal"),
 				a("Relatively high degree of skill required in occupation"),
 				a("The worker supplies necessary tools and instruments to him or herself"),
-				a("None of the above"))
+				a("None of the above"));
 
 	var employee_misclassification_b = 
 			q("Is the work part of the regular business of the principal?",
@@ -139,7 +226,7 @@ var QuestionTree = (function() {
 
 	var disparate_treatment_theory = q("Was this intentional discimination targeted only at you?", a(YES, individual_disparate_treatment_prong), a(NO, systemic_disparate_treatment_prong));
 
-	var discrimination_prong = q("Was there intentional conduct towards you that felt discriminatory?", a(YES, disparate_treatment_theory), a(NO, disparate_impact_theory))
+	var discrimination_prong = q("Was there intentional conduct towards you that felt discriminatory?", a(YES, disparate_treatment_theory), a(NO, disparate_impact_theory));
 
 	// ===== Sexual Harassment in Employee Discrimination
 
@@ -164,7 +251,7 @@ var QuestionTree = (function() {
 			q("Labor/employment issues",
 				a("Workers` Comp", workers_comp),
 				a("Employee Misclassification", employee_misclassification_a),
-				a("Employment Discrimination", employee_discrimination))
+				a("Employment Discrimination", employee_discrimination));
 
 	// ==== PERSONAL INJURY 5 ====================================
 

@@ -125,11 +125,30 @@ var joinUserQuery = function(query, next) {
 }
 
 var queriesLoaded = function(queries) {
+	vue_queries.queries = {}
+
 	queries.forEach(function(query) {
 
+		var current_timestamp = new Date()
 		// Add a more refined timestamp we can use in our HTML
 		query.formatted_timestamp = new Date(query.timestamp).format("m/dd hh:MM TT");
 
+		query_time = new Date(query.timestamp)
+
+
+		var time_diff = current_timestamp.getTime() - query_time.getTime();
+
+		var msec = time_diff;
+		var hh = Math.floor(msec / 1000 / 60 / 60);
+		msec -= hh * 1000 * 60 * 60;
+		var mm = Math.floor(msec / 1000 / 60);
+		msec -= mm * 1000 * 60;
+		var ss = Math.floor(msec / 1000);
+		msec -= ss * 1000;
+
+		//window.alert(hh);
+
+		//if(current_timestamp - query.timestamp)
 		// Has the logged in attorney expressed interest in this candidate?
 		if (query.interestedAttorneys) {
 			query.interestExpressed = query.interestedAttorneys.find(function(element, index, array) {
@@ -138,33 +157,34 @@ var queriesLoaded = function(queries) {
 		} else {
 			query.interestExpressed = false;
 		}
+		if (hh<24){
+			joinUserQuery(query, function(joined){
 
-		joinUserQuery(query, function(joined){
+				dump("after joinUserQuery", joined);
+				joined["id"] = joinedQueries.length;
 
-			dump("after joinUserQuery", joined);
-			joined["id"] = joinedQueries.length;
+				var connectedAttorneys = joined.connectedAttorneys || [];
+				joined["connected"] = false;
+				dump("connectedAttorneys ", connectedAttorneys);
 
-			var connectedAttorneys = joined.connectedAttorneys || [];
-			joined["connected"] = false;
-			dump("connectedAttorneys ", connectedAttorneys);
+				connectedAttorneys.forEach(function(connectionObject) {
 
-			connectedAttorneys.forEach(function(connectionObject) {
+					var connectedId = connectionObject["attorneyId"];
 
-				var connectedId = connectionObject["attorneyId"];
+					if(_getLoggedInUserId() === connectedId) {
+						//we are conneceted to this guy
+						joined["connected"] = true;
+					}
+				});
 
-				if(_getLoggedInUserId() === connectedId) {
-					//we are conneceted to this guy
-					joined["connected"] = true;
-				}
+				joinedQueries = appendToNewArray(joinedQueries, joined);
+				joinedQueries.sort(function(a, b) {
+					return new Date(b.timestamp) - new Date(a.timestamp);
+				});
+
+				vue_queries.queries = joinedQueries;
 			});
-
-			joinedQueries = appendToNewArray(joinedQueries, joined);
-			joinedQueries.sort(function(a, b) {
-				return new Date(b.timestamp) - new Date(a.timestamp);
-			});
-
-			vue_queries.queries = joinedQueries;
-		});
+		}
 	});
 }
 
