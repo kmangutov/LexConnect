@@ -12,8 +12,7 @@ var getForm = function() {
 		"secondaryAddress",
 		"firmSize",
 		"practice",
-		"consultation",
-		"updates"
+		"consultation"
 	];
 
 	var data = {};
