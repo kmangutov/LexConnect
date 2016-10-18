@@ -50,7 +50,8 @@
 
 				<br>{{ attorney.primaryAddress }}<br>{{ attorney.secondaryAddress }}<br><br>
 
-				Firm size: {{ attorney.firmSize }}
+				Firm size: {{ attorney.firmSize }}<br>
+				<b v-if="attorney.consultation == 'true'">Free consultation</b>
 
 			</div>
 		</template>
