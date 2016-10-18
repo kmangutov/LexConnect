@@ -36,6 +36,25 @@ var LexQueryService = function() {
 	
 		},
 
+		notifyMatchedAttorneys: function(breadcrumbs) {
+			attorneyService.getAll(function(allAttorneys) {
+				allAttorneys.forEach(function(attorney) {
+					attorneyService.getId(attorney['_id']['$oid'], function(attorneyData) {
+						var attorneyPractice = attorneyData.practice;
+
+						breadcrumbs.forEach(function(question) {
+							if (attorneyPractice.indexOf(question.answer) != -1) {
+								//email this attorney -- area of filter match
+
+								// TODO(kmangutov): create email datastructure and send it
+							}
+						});
+					});
+				});
+
+			});
+		},
+
 		/**
 			An attorney expressed interest in a client query.
 

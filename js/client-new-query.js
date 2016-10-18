@@ -47,6 +47,8 @@ var vue_submit = new Vue({
 	methods: {
 		submit: function() {
 
+			this.show = false;
+			queryService.notifyMatchedAttorneys(breadcrumbs);
 			queryService.postQuery(breadcrumbs, function(response) {
 				window.location.href = "client-dashboard.html";
 			});
