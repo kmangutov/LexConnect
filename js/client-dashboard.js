@@ -15,6 +15,7 @@ var vue_interestedAttorneys = new Vue({
 		attorneys: [],
 		selectedItem: {},
 		selectedId: -1,
+		selectedEnabled: true
 	},
 
 	methods: {
@@ -36,7 +37,9 @@ var vue_interestedAttorneys = new Vue({
 
 		connect: function(attorneyId) {
 			var queryId = this.query['_id']['$oid'];
+			var that = this;
 			queryService.connectClientToAttorney(this.query, attorneyId, function() {
+				that.selectedEnabled = false;
 				alert("We will inform this attorney of your desire to speak!");
 			});
 
