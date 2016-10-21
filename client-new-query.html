@@ -11,7 +11,7 @@
 
 <body>
 
-<div class="container">
+<div class="container" id="container">
 	<div class="header-short">
 		<h3 class="title"><img src="imgs/logo.png" width="32px" height="32px"> LexConnect</h3>
 	</div>
@@ -40,6 +40,7 @@
 	</div>
 
 
+
 		<div id="question">
 			{{ question }}
 		</div><Br>
@@ -50,11 +51,12 @@
 			</template>
 		</div>
 
+
+
 		<div class="row">
 			<button v-on:click="submit()" id="submit" class="button-primary u-pull-right" v-show="show">Find an attorney</button>
 		</div>
 
-	</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

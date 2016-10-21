@@ -147,17 +147,18 @@ var queriesLoaded = function(queries) {
 		msec -= ss * 1000;
 
 		//window.alert(hh);
-
+		if (hh<120){
 		//if(current_timestamp - query.timestamp)
 		// Has the logged in attorney expressed interest in this candidate?
-		if (query.interestedAttorneys) {
-			query.interestExpressed = query.interestedAttorneys.find(function(element, index, array) {
-				return _getLoggedInUserId() == element['attorneyId'];
-			});
-		} else {
-			query.interestExpressed = false;
-		}
-		if (hh<24){
+			
+			if (query.interestedAttorneys) {
+				query.interestExpressed = query.interestedAttorneys.find(function(element, index, array) {
+					return _getLoggedInUserId() == element['attorneyId'];
+				});
+			} else {
+				query.interestExpressed = false;
+			}
+		
 			joinUserQuery(query, function(joined){
 
 				dump("after joinUserQuery", joined);

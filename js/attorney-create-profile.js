@@ -10,6 +10,7 @@ var getForm = function() {
 		"url",
 		"primaryAddress",
 		"secondaryAddress",
+		"county",
 		"firmSize",
 		"practice",
 		"consultation",

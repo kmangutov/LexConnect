@@ -24,8 +24,18 @@ var vue_options = new Vue({
 
 	methods: {
 		select: function(id, text) {
+	
 			selectOption(id, text);
-		}
+			//need to wait till options div item updated with new height to scroll window to bottom 
+			Vue.nextTick(function () {
+				var elem = document.getElementById('options');
+				document.body.scrollTop = document.body.scrollHeight+elem.scrollHeight;
+
+			})
+
+		},
+
+
 	}
 });
 
@@ -94,12 +104,10 @@ var selectOption = function(id, text) {
 		vue_question.question = "";
 		vue_question.question_id = -1;
 		vue_options.items = [];
-
 		return;
 	}
 
 	var futureNode = tree[id];
-
 
 	loadTreeId(id);
 }
@@ -110,6 +118,7 @@ var loadTreeId = function(id) {
 	vue_question.question = node.value;
 	vue_question.question_id = id;
 	vue_options.items = mapToObjArr(node.options);
+	
 }
 
 loadTreeId(QuestionTree.root);
