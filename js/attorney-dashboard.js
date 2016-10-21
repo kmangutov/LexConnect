@@ -1,6 +1,7 @@
 
 var queryService = LexQueryService();
 var clientsService = LexConnectService("clients")
+var attorneysService = LexConnectService("attorneys");
 
 
 var isConnectedToAttorney = function(query) {
@@ -124,18 +125,35 @@ var joinUserQuery = function(query, next) {
 	});
 }
 
+// Only calls f if query matchies attorney specialty.
+var ifQueryMatchSpecialty = function(query, f) {
+	var me = _getLoggedInUserId();
+	attorneysService.getId(me, function(attorney) {
+		dump("me", attorney);
+		var mySpecialties = attorney.practice;
+		var questionnaire = query.query;
+
+		questionnaire.forEach(function(question) {
+			if (mySpecialties.indexOf(question.answer) != -1) {
+				// The answer to a question matches one of my specialties.
+				f();
+			}
+		});
+	});
+}
+
 var queriesLoaded = function(queries) {
 	vue_queries.queries = {}
 
 	queries.forEach(function(query) {
+
+		/////////////// 24 HOUR MATH
 
 		var current_timestamp = new Date()
 		// Add a more refined timestamp we can use in our HTML
 		query.formatted_timestamp = new Date(query.timestamp).format("m/dd hh:MM TT");
 
 		query_time = new Date(query.timestamp)
-
-
 		var time_diff = current_timestamp.getTime() - query_time.getTime();
 
 		var msec = time_diff;
@@ -146,12 +164,12 @@ var queriesLoaded = function(queries) {
 		var ss = Math.floor(msec / 1000);
 		msec -= ss * 1000;
 
-		//window.alert(hh);
+		/////////////// 24 HOUR MATH
+
 		if (hh<120){
 		//if(current_timestamp - query.timestamp)
 		// Has the logged in attorney expressed interest in this candidate?
-			
-			if (query.interestedAttorneys) {
+						if (query.interestedAttorneys) {
 				query.interestExpressed = query.interestedAttorneys.find(function(element, index, array) {
 					return _getLoggedInUserId() == element['attorneyId'];
 				});
@@ -159,31 +177,43 @@ var queriesLoaded = function(queries) {
 				query.interestExpressed = false;
 			}
 		
+
+
+
+			
+//////////// CONNECT USER PROFILE TO THE QUERY
 			joinUserQuery(query, function(joined){
 
-				dump("after joinUserQuery", joined);
-				joined["id"] = joinedQueries.length;
 
-				var connectedAttorneys = joined.connectedAttorneys || [];
-				joined["connected"] = false;
-				dump("connectedAttorneys ", connectedAttorneys);
+				/////////////////////////////////// AREA FILTER
 
-				connectedAttorneys.forEach(function(connectionObject) {
+				ifQueryMatchSpecialty(joined, function() {
 
-					var connectedId = connectionObject["attorneyId"];
+					dump("after joinUserQuery", joined);
+					joined["id"] = joinedQueries.length;
 
-					if(_getLoggedInUserId() === connectedId) {
-						//we are conneceted to this guy
-						joined["connected"] = true;
-					}
+					var connectedAttorneys = joined.connectedAttorneys || [];
+					joined["connected"] = false;
+					dump("connectedAttorneys ", connectedAttorneys);
+
+					connectedAttorneys.forEach(function(connectionObject) {
+
+						var connectedId = connectionObject["attorneyId"];
+
+						if(_getLoggedInUserId() === connectedId) {
+							//we are conneceted to this guy
+							joined["connected"] = true;
+						}
+					});
+
+					joinedQueries = appendToNewArray(joinedQueries, joined);
+					joinedQueries.sort(function(a, b) {
+						return new Date(b.timestamp) - new Date(a.timestamp);
+					});
+
+					vue_queries.queries = joinedQueries;
 				});
 
-				joinedQueries = appendToNewArray(joinedQueries, joined);
-				joinedQueries.sort(function(a, b) {
-					return new Date(b.timestamp) - new Date(a.timestamp);
-				});
-
-				vue_queries.queries = joinedQueries;
 			});
 		}
 	});

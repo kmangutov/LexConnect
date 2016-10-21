@@ -13,8 +13,7 @@ var getForm = function() {
 		"county",
 		"firmSize",
 		"practice",
-		"consultation",
-		"updates"
+		"consultation"
 	];
 
 	var data = {};

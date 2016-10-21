@@ -4,6 +4,15 @@ var clientsService = LexConnectService("clients")
 var attorneysService = LexConnectService("attorneys")
 
 
+var ifClientConnectedTo = function(query, attorneyId, next, end) {
+	query.connectedAttorneys.find(function(connectedAttorney) {
+		if(connectedAttorney.attorneyId === attorneyId) {
+			next();
+			return;
+		}
+		end();
+	});
+}
 
 
 var joinedQueries = [];
@@ -15,6 +24,7 @@ var vue_interestedAttorneys = new Vue({
 		attorneys: [],
 		selectedItem: {},
 		selectedId: -1,
+		selectedEnabled: true
 	},
 
 	methods: {
@@ -32,11 +42,22 @@ var vue_interestedAttorneys = new Vue({
 			this.showSelected = true;
 			this.selectedItem = attorney;
 			this.selectedId = id;
+
+			var that = this;
+			ifClientConnectedTo(this.query, id, function() {
+				// connected
+				that.selectedEnabled = false;
+			}, function() {
+				// not connected
+				that.selectedEnabled = true;
+			});
 		},
 
 		connect: function(attorneyId) {
 			var queryId = this.query['_id']['$oid'];
+			var that = this;
 			queryService.connectClientToAttorney(this.query, attorneyId, function() {
+				that.selectedEnabled = false;
 				alert("We will inform this attorney of your desire to speak!");
 			});
 

@@ -50,17 +50,21 @@
 
 				<br>{{ attorney.primaryAddress }}<br>{{ attorney.secondaryAddress }}<br><br>
 
-				Firm size: {{ attorney.firmSize }}
+				Firm size: {{ attorney.firmSize }}<br>
+				<b v-if="attorney.consultation == 'true'">Free consultation</b>
 
 			</div>
 		</template>
 	</center></div>
 
 	<div class="six columns card" v-if="selectedId != -1">
+			<b v-if="!selectedEnabled">We've informed this attorney of your interest!</b>
+			<br><br><br>
+
 			Website: <a href="{{attorney.url}}" target="_blank">{{selectedItem.url}}</a><br>
 			Practice address: {{ selectedItem.primaryAddress }}, {{ selectedItem.secondaryAddress }}
 			<Br><br>
-			<button id="connect" class="button-primary" v-on:click="connect(selectedItem['_id']['$oid'])">Connect</button>
+			<button v-if="selectedEnabled" id="connect" class="button-primary" v-on:click="connect(selectedItem['_id']['$oid'])">Connect</button>
 	</div>
 
 </div>

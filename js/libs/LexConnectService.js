@@ -91,10 +91,10 @@ var LexConnectService = function(type) {
     },
 
     getId: function(id, f) {
-      console.log("IN GETID " + id);
+      console.log("LexConnectService::getId " + id);
       //alert("get " + urlForObjectId(type, id))
       $.get(urlForObjectId(type, id), function(resp) {
-        console.log("ING GETID" + JSON.stringify(resp));
+        console.log("LexConnectService::getId " + JSON.stringify(resp));
         f(resp);
       });
     },
