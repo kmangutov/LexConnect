@@ -11,8 +11,7 @@ var getForm = function() {
 		"secondaryAddress",
 		"occupation",
 		"employer",
-		"income",
-		"updates"
+		"income"
 	];
 
 	var data = {};

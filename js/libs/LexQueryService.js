@@ -3,7 +3,7 @@ var LexQueryService = function() {
 
 	var service = LexConnectService("queries");
 	var attorneyService = LexConnectService("attorneys");
-	var userService = LexConnectService("attorneys");
+	var clientsService = LexConnectService("clients")
 
 	return {
 
@@ -36,6 +36,29 @@ var LexQueryService = function() {
 	
 		},
 
+		sendAttorneyEmail: function(attorneyData, breadcrumbs) {
+
+			clientsService.getId(_getLoggedInUserId(), function(clientData) {
+				
+				var queryString = "";
+				breadcrumbs.forEach(function(breadcrumb) {
+					
+				});
+
+				var obj = {
+					recipientEmail: attorneyData.user,
+					clientFirstName: clientData.firstName,
+					clientLastName: clientData.lastName,
+					attorneyFirstName: attorneyData.firstName,
+					attorneyLastName: attorneyData.lastName,
+					queryString: "fuck"// TODO(kmangutov);
+				}
+
+				dump("email_param_obj", obj);
+				emailjs.send("gmail", "on_attorney_interest", obj);
+			});
+		},
+
 		notifyMatchedAttorneys: function(breadcrumbs) {
 			attorneyService.getAll(function(allAttorneys) {
 				allAttorneys.forEach(function(attorney) {
@@ -47,6 +70,9 @@ var LexQueryService = function() {
 								//email this attorney -- area of filter match
 
 								// TODO(kmangutov): create email datastructure and send it
+
+								dump("attorneyData", attorneyData);
+								dump("breadcrumbs", breadcrumbs);
 							}
 						});
 					});
