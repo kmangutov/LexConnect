@@ -1,0 +1,78 @@
+
+.loginBox p {
+	font-size: 1.7rem;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.card {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #BBB;
+
+
+	padding: 15px;
+	margin: 10px;
+
+	text-align: left;
+}
+
+.card-connected {
+	background-color: #90EE90;
+}
+
+.timestamp {
+	color: #AAA;
+	font-style: italic;
+	font-family: Lato;
+}
+
+.card-hover:hover {
+	background-color: #DDD;
+}
+
+.hovered {
+	background-color: #EEE;
+}
+
+.app_container {
+	padding: 20px;
+}
+
+.container {
+	max-width: 800px;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.title {
+	margin-bottom: 2rem;
+}
+
+.sub-title {
+	font-size: 1.5em;
+}
+
+.header {
+	margin-top: 18rem;
+	text-align: center;
+}
+
+.header-short {
+	margin-top: 8rem;
+	text-align: center;
+	margin-bottom: 5rem;
+}
+
+.loginBox {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.equidistant {
+	display: flex;
+ 	justify-content: space-between;
+}
+
+select {
+	height: auto !important;
+}

@@ -1,0 +1,46 @@
+
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet"> 
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<div class="container">
+	<div class="header-short">
+		<h3 class="title"><img src="imgs/logo.png" width="32px" height="32px"> LexConnect for Attorneys</h3>
+	</div>
+	<div class="row">
+		<div class="twelve columns">
+			<div class="loginBox">
+
+				<p>If you don't have an account, you can <a href="attorney-signup.html">sign-up</a> for free!</p>
+
+				<label for="textEmail">Your email</label>
+				<input class="u-full-width" type="text" name="email" placeholder="Email address" id="emailInput" required>
+
+				<label for="password">Password</label>
+				<input class="u-full-width" type="password" name="password" placeholder="Password" id="passwordInput" required>
+
+				<button id="login" class="button-primary">Login</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.10.0/validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js"></script>
+<script src="js/libs/md5.js"></script>
+<script src="js/libs/LexConnectService.js"></script>
+<script src="js/libs/LexUserService.js"></script>
+<script src="js/libs/const/ATTORNEY_REDIRECT.js"></script>
+<script src="js/login.js"></script>
+
+
+</body>
+</html>
