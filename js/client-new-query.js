@@ -59,9 +59,9 @@ var vue_submit = new Vue({
 
 			this.show = false;
 			queryService.notifyMatchedAttorneys(breadcrumbs);
-			/*queryService.postQuery(breadcrumbs, function(response) {
+			queryService.postQuery(breadcrumbs, function(response) {
 				window.location.href = "client-dashboard.html";
-			});*/
+			});
 		}
 	}
 });

@@ -19,21 +19,19 @@ var LexQueryService = function() {
 
 			// Check before assigning them because not all queries are over 5 questions in length.
 
-			queryString = "";
-			breadcrumbs.forEach(function(breadcrumb) {
-				queryString += breadcrumb.question;
-				queryString += "/t/t";
-				queryString += breadcrumb.answer;
-				queryString += "/n/n";
-			});
-
 			var obj = {
 				recipientEmail: attorneyData.user,
 				clientFirstName: clientData.firstName,
 				clientLastName: clientData.lastName,
 				attorneyFirstName: attorneyData.firstName,
 				attorneyLastName: attorneyData.lastName,
-				queryString: queryString
+			}
+
+			for (var i = 0; i < breadcrumbs.length && i < 5; i++) {
+				var variableName = "queryString" + (i + 1);
+				var breadcrumb = breadcrumbs[i];
+				var span = breadcrumb.question + " " + breadcrumb.answer;
+				obj[variableName] = span;
 			}
 
 			dump("email_param_obj", obj);
