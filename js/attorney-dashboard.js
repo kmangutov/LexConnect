@@ -169,7 +169,7 @@ var queriesLoaded = function(queries) {
 		if (hh<120){
 		//if(current_timestamp - query.timestamp)
 		// Has the logged in attorney expressed interest in this candidate?
-						if (query.interestedAttorneys) {
+			if (query.interestedAttorneys) {
 				query.interestExpressed = query.interestedAttorneys.find(function(element, index, array) {
 					return _getLoggedInUserId() == element['attorneyId'];
 				});

@@ -66,8 +66,7 @@ var QuestionTree = (function() {
 	// ==== CONTRACTS 1 ============================================
 
 	var contracts_subfield =
-			q("Contracts",
-				a("Breach of contract"));
+			q("Is there a valid contract?", a(YES, q("Did you perform your duties under the contract?", a(YES, q("Were you harmed as a result of that breach?", a(YES), a(NO))), a(NO))), a(NO));
 
 	// ==== FAMILY 2 ===============================================
 
@@ -349,13 +348,13 @@ var QuestionTree = (function() {
 
 	var unsure_subfield = 
 			q("Unsure of issue",
-				a("Suffered an injury"),
-				a("I was arrested"),
-				a("Work related"),
-				a("Business disagreement"),
-				a("Divorce"),
-				a("Looking to apply for green card"),
-				a("Dealing with deceased person's property/will"));
+				a("Suffered an injury", personal_injury_subfield),
+				a("I was arrested", criminal_subfield),
+				a("Work related", labor_subfield),
+				a("Business disagreement", contracts_subfield),
+				a("Divorce", family_subfield),
+				a("Looking to apply for green card", immigration_subfield),
+				a("Dealing with deceased person's property/will", contracts_subfield));
 
 	// ==== ROOT
 
