@@ -7,6 +7,7 @@ var LexQueryService = function() {
 	var service = LexConnectService("queries");
 	var attorneyService = LexConnectService("attorneys");
 	var clientsService = LexConnectService("clients")
+	var logService = LexLogService()
 
 
 	var sendAttorneyEmail = function(attorneyData, breadcrumbs) {
@@ -115,6 +116,8 @@ var LexQueryService = function() {
 			attorneyService.getId(_getLoggedInUserId(), function(attorney) {
 				dump("attorney", attorney);
 
+				logService.log("Attorney " + attorney.user + " expressed interest in client", attorney, query);
+
 				var obj = {
 					recipientEmail: query.user,
 					clientFirstName: query.firstName,
@@ -148,6 +151,10 @@ var LexQueryService = function() {
 			console.log("=============== entering userService getId")
 			attorneyService.getId(attorneyId, function(attorney) {
 				console.log("============= connectClientToAttorney");
+
+				logService.log("Client " + query.user + " has accepted connection from attorney " + attorney.user,
+					query,
+					attorney);
 
 				//send to attorney from client
 				var obj = {

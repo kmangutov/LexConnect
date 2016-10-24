@@ -1,6 +1,7 @@
 
 
 var userService = LexUserService(_USE_DB);
+var logService = LexLogService();
 
 var getForm = function() {
 	var user = $("#emailInput").val();
@@ -25,8 +26,11 @@ $(document).ready(function() {
 		setButtonsEnabled(false);
 
 		var success = function(data) {
-			Lockr.set("user", data);	
-			window.location.href = _LOGIN_NEXT_PAGE;
+			logService.log(_USE_DB + " successful login: " + getForm().user, function(){
+				Lockr.set("user", data);	
+				window.location.href = _LOGIN_NEXT_PAGE;
+			});
+
 		};
 
 		var fail = function(data) {
@@ -43,9 +47,12 @@ $(document).ready(function() {
 		setButtonsEnabled(false);
 
 		var success = function(data) {
-			console.log("SIGNUP SUCCESS: " + JSON.stringify(data))
-			Lockr.set("user", data);
-			window.location.href = _REGISTER_NEXT_PAGE;
+			logService.log(_USE_DB + " successful signup: " + getForm().user, function(){
+				console.log("SIGNUP SUCCESS: " + JSON.stringify(data))
+				Lockr.set("user", data);
+				window.location.href = _REGISTER_NEXT_PAGE;
+			});
+
 		};
 
 		var fail = function(data) {

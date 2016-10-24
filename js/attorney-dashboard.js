@@ -2,6 +2,7 @@
 var queryService = LexQueryService();
 var clientsService = LexConnectService("clients")
 var attorneysService = LexConnectService("attorneys");
+var logService = LexLogService();
 
 
 var isConnectedToAttorney = function(query) {
@@ -86,6 +87,7 @@ var vue_queries = new Vue({
 			});
 			this.queries = clone;
 			dump("this.queries", this.queries);
+			
 		}
 	}
 });

@@ -1,5 +1,6 @@
 
 var userService = LexUserService("attorneys")
+var logService = LexLogService();
 
 var getForm = function() {
 
@@ -38,7 +39,10 @@ $(document).ready(function() {
 		setButtonsEnabled(false);
 
 		var success = function(response) {
-			window.location.href = "attorney-dashboard.html";
+			logService.log("Attorney " + getForm().lastName + " successfully finished profile creation", function() {
+				window.location.href = "attorney-dashboard.html";
+			}, getForm());
+
 		};
 
 		var fail = function() {

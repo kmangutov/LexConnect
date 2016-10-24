@@ -5,6 +5,8 @@ var breadcrumbs = [];
 var loadTreeId = function() {}
 
 var queryService = LexQueryService();
+var logService = LexLogService();
+
 
 var vue_question = new Vue({
 	el: '#question',
@@ -60,7 +62,9 @@ var vue_submit = new Vue({
 			this.show = false;
 			queryService.notifyMatchedAttorneys(breadcrumbs);
 			queryService.postQuery(breadcrumbs, function(response) {
-				window.location.href = "client-dashboard.html";
+				logService.log("Client submitted new query", function(){
+					window.location.href = "client-dashboard.html";
+				}, breadcrumbs);
 			});
 		}
 	}

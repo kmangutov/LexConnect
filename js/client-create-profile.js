@@ -1,5 +1,6 @@
 
-var userService = LexUserService("clients")
+var userService = LexUserService("clients");
+var logService = LexLogService();
 
 var getForm = function() {
 
@@ -38,7 +39,11 @@ $(document).ready(function() {
 
 		var success = function(response) {
 			//alert(JSON.stringify(response));
-			window.location.href = "client-new-query.html";
+
+			logService.log("Client " + getForm().lastName + " successfully finished profile creation", function() {
+				window.location.href = "client-new-query.html";
+			}, getForm());
+
 		};
 
 		var fail = function(response) {
