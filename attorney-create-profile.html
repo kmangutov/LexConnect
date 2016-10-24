@@ -55,8 +55,18 @@
 
 				<!-- URL -->
 				<label for="countyInput">County</label>
-				<input class="u-full-width" type="text" name="county" id="countyInput" required>
-
+				<select class="u-full-width" name="county" id="countyInput" name="county" required>
+					<option value=""></option>
+					<option value="Champaign">Champaign</option>
+					<option value="Cook">Cook</option>
+					<option value="DuPage">DuPage</option>
+					<option value="Ford">Ford</option>
+					<option value="Iroquois">Iroquois</option>
+					<option value="Kankakee">Kankakee</option>
+					<option value="McLean">McLean</option>
+					<option value="Vermilion">Vermilion</option>
+					<option value="Will">Will</option>				
+				</select>
 
 			</div>
 		</div>
@@ -77,6 +87,7 @@
 
 				<!-- PRACTICE -->
 				<label for="practiceInput">Practice area(s)</label>
+				(Use control-click to select multiple areas).
 				<select multiple="multiple" class="u-full-width" size="7" id="practiceInput" name="practices">
 					<option value="Contracts">Contracts</option>
 					<option value="Family law">Family law</option>
