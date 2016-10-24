@@ -80,7 +80,7 @@ var QuestionTree = (function() {
 	
 	var increase_in_child_support = q("Has the child become a non-minor (18 years or older)?", a(YES, q("Is the non-minor child still in high school?", a(YES), a(NO, child_intends_to_attend_college))), a(NO, q("Has the child graduated from high school?", a(YES, child_intends_to_attend_college), a(NO, custodial_parent_involuntary_reduction))));
 
-	var child_support_prong = q("Are you the parent paying for child support", a(YES, reduction_in_child_support), a(NO, increase_in_child_support));
+	var child_support_prong = q("Are you the parent paying for child support?", a(YES, reduction_in_child_support), a(NO, increase_in_child_support));
 
 	
 	//----
@@ -115,7 +115,7 @@ var QuestionTree = (function() {
 
 	var non_parent_custody = q("Are you the child's step-parent or relative?", a(YES, q("Are you currently in physical possesion of the child?", a(YES, q("Did one of the parents voluntarily hand the child into your possesion?", a(YES, q("Did you establish a parent-child relationship with the child?", a(YES, q("Are either parents (if still living) unfit to care for the child?", a(YES), a(NO))), a(NO))), a(NO))), a(NO))), a(NO));
 
-	var custody_rights_prong = q("Are you the child's parent", a(YES, parent_custody), a(NO, non_parent_custody));
+	var custody_rights_prong = q("Are you the child's parent?", a(YES, parent_custody), a(NO, non_parent_custody));
 
 
 	var divorce = q("What's your divorce issue?", a("Child Support", child_support_prong), a("Custody Rights", custody_rights_prong));
@@ -152,11 +152,11 @@ var QuestionTree = (function() {
 	
 	var needle_marks_in_skin = q("Needle marks in skin", a(YES, dilated_pupils), a(NO, dilated_pupils));	
 
-	var driving_erratically = q("Driving erratically or in a dangerous manner?", a(YES, needle_marks_in_skin), a(NO, needle_marks_in_skin));
+	var driving_erratically = q("Driving erratically or in a dangerous manner", a(YES, needle_marks_in_skin), a(NO, needle_marks_in_skin));
 
 	var reported_issues_by_arresting_officer = q("Please answer yes or no to whether the following issues were reported by the arresting officer", a("OK", driving_erratically));
 
-	var officer_conducted_field_sobriety_test = q("Did the arresting officer conduct a field sobriety test? (i.e one-leg stand, pupil reaction)", a("Yes - Passed", reported_issues_by_arresting_officer), a("Yes - Failed", q("Did the arresting officer report you driving erratically or in a dangerous manner?", a(YES), a(NO))), a("No - Did Not Conduct", reported_issues_by_arresting_officer));
+	var officer_conducted_field_sobriety_test = q("Did the arresting officer conduct a field sobriety test (i.e one-leg stand, pupil reaction)?", a("Yes - Passed", reported_issues_by_arresting_officer), a("Yes - Failed", q("Did the arresting officer report you driving erratically or in a dangerous manner?", a(YES), a(NO))), a("No - Did Not Conduct", reported_issues_by_arresting_officer));
 
 	var drug_has_intoxicating_effect = q("Does the drug have an intoxicating effect?", a(YES, officer_conducted_field_sobriety_test), a(NO, q("Were you also driving under the influence of alcohol?", a(YES, sobriety_tests_given), a(NO, officer_conducted_field_sobriety_test))));
 
@@ -176,11 +176,11 @@ var QuestionTree = (function() {
 
 	var workers_comp = 
 			q("Are you an employee?",
-				a(YES, q("Did your injury occur over a gradual period of time",
+				a(YES, q("Did your injury occur over a gradual period of time?",
 					a("Gradual injury",
 						q("Was this a pre-existing condition?",
 							a(YES, 
-								q("Did your work worsen the pre-existing condition", 
+								q("Did your work worsen the pre-existing condition?", 
 									a(YES, accident_prong_3), 
 									a(NO) )),
 							a(NO))),
