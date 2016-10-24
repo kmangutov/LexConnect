@@ -66,6 +66,20 @@ var vue_submit = new Vue({
 	}
 });
 
+var vue_reset = new Vue({
+	el: '#reset',
+
+	data: {
+		show: false
+	},
+
+	methods: {
+		reset: function() {
+			window.location.href = "client-new-query.html"
+		}
+	}
+});
+
 ///////////////////////////////////////////////////
 
 var mapToObjArr = function(map) {
