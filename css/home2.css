@@ -1,0 +1,48 @@
+
+.mobile-header {
+	height: 50px;
+}
+
+@media only screen and (min-width : 1000px) {
+	.mobile-header {
+		height: 100px;
+	}
+}
+
+
+.top-bar {
+	padding-top: 5px;
+	padding-left: 15px;
+}
+
+.bigger {
+	font-size: 1.5em;
+}
+
+.gray {
+	color: gray;
+}
+
+.banner {
+	width: 100%;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background-image: url("../imgs/splash.jpg");
+	background-size: cover !important;
+}
+
+.white {
+	color: #fff;
+}
+
+button:hover {
+	color: gray;
+}
+
+.person-div {
+
+	background-color: gray;
+	height: 300px;
+	padding: 5px;
+	margin-bottom: 10px;
+}
