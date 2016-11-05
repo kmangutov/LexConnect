@@ -9,7 +9,6 @@ var getForm = function() {
 		"lastName",
 		"phone",
 		"primaryAddress",
-		"secondaryAddress",
 		"occupation",
 		"employer",
 		"income"
@@ -30,16 +29,24 @@ var setButtonsEnabled = function(enabled) {
 }
 
 $(document).ready(function() {
-
 	setButtonsEnabled(true);
-	$("#signup").click(function() {
-		setButtonsEnabled(false);
 
-		//TODO: VALIDATE FORM
+	$("#client-create-profile-form").validate({
+		rules: {
 
-		var success = function(response) {
+		},
+		messages: {
+
+		}
+
+	});
+
+	
+	document.getElementById("client-create-profile-form").addEventListener("submit", function(event) {
+		event.preventDefault();
+		  // actual logic, e.g. validate the form
+	  	var success = function(response) {
 			//alert(JSON.stringify(response));
-
 			logService.log("Client " + getForm().lastName + " successfully finished profile creation", function() {
 				window.location.href = "client-new-query.html";
 			}, getForm());
@@ -50,9 +57,42 @@ $(document).ready(function() {
 			alert("Fail: " + JSON.stringify(response));
 			setButtonsEnabled(true);
 		}
+		var passed_required = $("#client-create-profile-form").valid({});
 
-		var userId = _getLoggedInUserId();
-		userService.put(userId, getForm(), success, fail);
+		if (passed_required ==true){
+			var userId = _getLoggedInUserId();			
+			userService.put(userId, getForm(), success, fail);
+		}
+	});
+
+/*
+	$("#signup").click(function() {
+		setButtonsEnabled(false);
+
+		//TODO: VALIDATE FORM
+		var passed_required = $("#client-create-profile-form").valid({});
+
+		if (passed_required == true){
+			var success = function(response) {
+			//alert(JSON.stringify(response));
+
+			logService.log("Client " + getForm().lastName + " successfully finished profile creation", function() {
+				window.location.href = "client-new-query.html";
+			}, getForm());
+
+			};
+
+			var fail = function(response) {
+				alert("Fail: " + JSON.stringify(response));
+				setButtonsEnabled(true);
+			}
+
+			var userId = _getLoggedInUserId();
+			userService.put(userId, getForm(), success, fail);
+
+		}
+
 
 	});
+*/
 });

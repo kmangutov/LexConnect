@@ -6,6 +6,11 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style> 
+#attorney-create-profile-form label.error {color: purple;font-size: small;}
+</style>
+
 </head>
 
 <body>
@@ -22,6 +27,8 @@
 			</div>
 		</div>
 	</div>
+
+	<form novalidate="true" id="attorney-create-profile-form">
 	<div class="row">
 
 		<div class="six columns">
@@ -46,16 +53,16 @@
 
 				<!-- URL -->
 				<label for="urlInput">Website</label>
-				<input class="u-full-width" type="text" name="url" id="urlInput" required>
+				<input class="u-full-width" type="text" name="url" id="urlInput">
 
 				<!-- ADDR -->
 				<label for="primaryAddressInput">Business address</label>
 				<input class="u-full-width" type="text" name="primaryAddress" id="primaryAddressInput" placeholder="Primary" required>
-				<input class="u-full-width" type="text" name="secondaryAddress" id="secondaryAddressInput" placeholder="Secondary" required>
+				<input class="u-full-width" type="text" name="secondaryAddress" id="secondaryAddressInput" placeholder="Secondary" >
 
 				<!-- URL -->
 				<label for="countyInput">County</label>
-				<select class="u-full-width" name="county" id="countyInput" name="county" required>
+				<select class="u-full-width" name="county" id="countyInput" name="county">
 					<option value=""></option>
 					<option value="Champaign">Champaign</option>
 					<option value="Cook">Cook</option>
@@ -76,7 +83,7 @@
 
 				<!-- FIRM SIZE -->
 				<label for="firmSizeInput">Firm size</label>
-				<select class="u-full-width"  id="firmSizeInput" name="firmSize" required>
+				<select class="u-full-width"  id="firmSizeInput" name="firmSize" >
 					<option value="solo">Solo</option>
 					<option value="2-9">2-9</option>
 					<option value="10-24">10-24</option>
@@ -109,13 +116,13 @@
 
 	</div>
 	<div class="row">
-		<button id="signup" class="button-primary u-pull-right">Sign Up</button>
+		<button id="signup" type="submit" class="button-primary u-pull-right">Sign Up</button>
 	</div>
-
+	</form>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.10.0/validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js"></script>
 <script src="js/libs/md5.js"></script>
 <script src="js/libs/LexConnectService.js"></script>

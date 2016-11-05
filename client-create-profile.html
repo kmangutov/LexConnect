@@ -6,6 +6,11 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style> 
+#client-create-profile-form label.error {color: purple;font-size: small;}
+</style>
+
 </head>
 
 <body>
@@ -22,11 +27,14 @@
 			</div>
 		</div>
 	</div>
+
+	<form novalidate="true" id="client-create-profile-form">	
 	<div class="row">
 
 
 
 		<div class="six columns">
+
 			<div class="loginBox">
 
 				<!-- NAME -->
@@ -50,7 +58,6 @@
 				<!-- ADDR -->
 				<label for="primaryAddressInput">Address</label>
 				<input class="u-full-width" type="text" name="primaryAddress" id="primaryAddressInput" placeholder="Primary" required>
-				<input class="u-full-width" type="text" name="secondaryAddress" id="secondaryAddressInput" placeholder="Secondary" required>
 
 
 
@@ -64,33 +71,37 @@
 
 				<!-- OCCUPATION -->
 				<label for="occupationInput">Occupation</label>
-				<input class="u-full-width" type="text" name="occupation" id="occupationInput" required>
+				<input class="u-full-width" type="text" name="occupation" id="occupationInput" >
 
 				<!-- EMPLOYER -->
 				<label for="employerInput">Current employer</label>
-				<input class="u-full-width" type="text" name="employer" id="employerInput" required>
+				<input class="u-full-width" type="text" name="employer" id="employerInput" >
 
 				<!-- INCOME -->
 				<label for="incomeInput">Gross yearly income</label>
-				<input class="u-full-width" type="text" name="income" id="incomeInput" required>
+				<input class="u-full-width" type="text" name="income" id="incomeInput" >
 
 			</div>
 		</div>
 
+
 	</div>
 	<div class="row">
-		<button id="signup" class="button-primary u-pull-right">Sign Up</button>
+		<button id="signup" type="submit" class="button-primary u-pull-right">Sign Up</button>
 	</div>
+	</form>
+
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.10.0/validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js"></script>
 <script src="js/libs/md5.js"></script>
 <script src="js/libs/LexConnectService.js"></script>
 <script src="js/libs/LexUserService.js"></script>
 <script src="js/libs/LexLogService.js"></script>
 <script src="js/client-create-profile.js"></script>
+<script src="js/libs/vue-validator.min.js"></script>
 
 
 
