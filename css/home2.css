@@ -1,4 +1,15 @@
 
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+
 .mobile-header {
 	height: 50px;
 }
@@ -9,6 +20,9 @@
 	}
 }
 
+.not-too-wide {
+	max-width: 70%;
+}
 
 .top-bar {
 	padding-top: 5px;
@@ -23,7 +37,21 @@
 	color: gray;
 }
 
+.border {
+	/*border: 5px;
+	border-color: black;
+	border-style-top: gray;
+	border-style-bottom: gray;*/
+	border-bottom: 1px solid gray !important;
+	border-top: 1px solid gray !important;
+}
+
 .banner {
+
+	margin: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	left: 0;
 	width: 100%;
 	padding-top: 40px;
 	padding-bottom: 40px;

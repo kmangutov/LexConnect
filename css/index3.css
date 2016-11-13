@@ -1,0 +1,21 @@
+.top-bar {
+	background: transparent !important; 
+	li {
+		background: transparent !important; 
+	}
+}
+
+.top-bar a {
+	color: #000 !important;
+}
+
+header {
+	background-image: url("../imgs/ocean-real.png");
+	background-size: 100% auto;
+	background-position: left 0px bottom 0px;
+	background-repeat: no-repeat;
+
+	height: 400px;
+	width: 100%;
+	max-width: 1000px;
+}
