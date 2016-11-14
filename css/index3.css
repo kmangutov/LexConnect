@@ -3,10 +3,12 @@
 	max-width: 300px;
 	height: 200px;
 	margin-top: 60px;
-	vertical-align: center !important;
+	vertical-align: text-center !important;
 }
 .about-us-img {
-	vertical-align: center !important;
+	vertical-align: text-center !important;
+	height: 150px;
+	width: auto;
 }
 
 .steps-icon {
