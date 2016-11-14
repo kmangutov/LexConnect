@@ -1,3 +1,45 @@
+
+.about-us-frame {
+	max-width: 300px;
+	height: 200px;
+	margin-top: 60px;
+	vertical-align: center !important;
+}
+.about-us-img {
+	vertical-align: center !important;
+}
+
+.steps-icon {
+	/*width: 170px;
+	max-width: 170px;*/
+	height: 230px;
+	padding: 30px;
+	display: block;
+}
+
+.gray-border {
+	border-color: #E0E0E0;
+	border-style: solid;
+	border-width: 2px;
+}
+
+section {
+	padding-top: 70px;
+	padding-bottom: 70px;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.blue-bg {
+	background-color: #236F8E !important;
+	color: white !important;
+}
+
+.container {
+	width: 100%;
+	max-width: 1200px;
+}
+
 .top-bar {
 	background: transparent !important; 
 	li {
@@ -9,13 +51,41 @@
 	color: #000 !important;
 }
 
-header {
+#ctoa {
+	padding: 15px;
+	background-color: #FB6C80;
+	color: white;
+	box-shadow: 0px 3px 5px 3px white;
+	border-color: white;
+} 
+
+#splash-bg {
 	background-image: url("../imgs/ocean-real.png");
-	background-size: 100% auto;
-	background-position: left 0px bottom 0px;
+	background-size: auto 800px;
+	background-position: left 0px top -110px;
 	background-repeat: no-repeat;
 
-	height: 400px;
-	width: 100%;
-	max-width: 1000px;
+	height: 600px;
+}
+
+.top-bar ul {
+	background-color: transparent !important;
+}
+
+header {
+	height: 800px;
+	text-align: center;
+	padding-top: 80px;
+}
+
+.top-bar a {
+	color: #3D839E !important;
+}
+
+.pill-button {
+    width: 50%;
+    height: 5em;
+    margin: 2em auto;
+    border-radius: 20%/50%;
+    background-color: #000;
 }
