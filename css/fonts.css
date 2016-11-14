@@ -2,10 +2,12 @@ h1 {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     color: #3D3C3C !important;
+    letter-spacing: 2.12px;
 }
 
 h4 {
 	font-family: 'Open Sans', sans-serif;
+	letter-spacing: 1.32px;
 }
 
 a {
@@ -24,6 +26,7 @@ h2 {
 	text-align: center;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
+    letter-spacing: 1.71px;
 }
 
 .margin-bottom {
@@ -42,12 +45,14 @@ span {
 	font-family: 'Hind', sans-serif;
 	font-size: 1.3rem;
 	color: #4a4a4a;
+	letter-spacing: 0.47;
 }
 
 p {
 	text-align: center;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
+    letter-spacing: 0.5px;
 }
 
 .text-left {
