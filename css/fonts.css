@@ -9,9 +9,10 @@ li a {
     font-weight: 500px;
 }
 
-h4 {
+h5 {
 	font-family: 'Open Sans', sans-serif;
 	letter-spacing: 1.32px;
+	color: #4a4a4a;
 }
 
 a {
