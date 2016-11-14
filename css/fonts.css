@@ -1,8 +1,10 @@
 h1 {
     font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #3D3C3C !important;
 }
 
-h3 {
+h4 {
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -21,7 +23,7 @@ body {
 h2 {
 	text-align: center;
     font-family: 'Roboto', sans-serif;
-    font-size: 1.7rem;
+    font-weight: 500;
 }
 
 .margin-bottom {
@@ -32,9 +34,14 @@ h2 {
 	color: #3D839E;
 }
 
+.gray2 {
+	color: #4a4a4a;
+}
+
 span {
 	font-family: 'Hind', sans-serif;
 	font-size: 1.3rem;
+	color: #4a4a4a;
 }
 
 p {
@@ -49,4 +56,12 @@ p {
 
 a:hover {
 	text-decoration: underline;
+}
+
+.semibold {
+    font-weight: 600px;
+}
+
+.white {
+	color: white;
 }

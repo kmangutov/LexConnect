@@ -55,7 +55,9 @@ section {
 
 #ctoa {
 	padding: 15px;
-	background-color: #FB6C80;
+	padding-left: 25px;
+	padding-right: 25px;
+	background-color: #FB777E;
 	color: white;
 	box-shadow: 0px 3px 5px 3px white;
 	border-color: white;
