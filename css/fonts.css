@@ -1,0 +1,52 @@
+h1 {
+    font-family: 'Roboto', sans-serif;
+}
+
+h3 {
+	font-family: 'Open Sans', sans-serif;
+}
+
+a {
+	font-family: 'Roboto', sans-serif;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;	
+}
+
+#ctoa {
+	font-family: 'Open Sans', sans-serif;	
+}
+
+h2 {
+	text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.7rem;
+}
+
+.margin-bottom {
+	margin-bottom: 40px;
+}
+
+.cyan {
+	color: #3D839E;
+}
+
+span {
+	font-family: 'Hind', sans-serif;
+	font-size: 1.3rem;
+}
+
+p {
+	text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.text-left {
+	text-align: left;
+}
+
+a:hover {
+	text-decoration: underline;
+}
