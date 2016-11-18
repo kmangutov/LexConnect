@@ -1,4 +1,26 @@
 
+
+#hero-title {
+	padding-top: 40px;
+	margin-bottom: 60px;
+}
+
+.full {
+	height: 100%;
+}
+
+.half-top {
+	height: 50%;
+	vertical-align: bottom;
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+.half-bottom {
+	height: 50%;
+	vertical-align: top;
+}
+
 .about-us-frame {
 	max-width: 300px;
 	height: 200px;
@@ -16,7 +38,7 @@
 	max-width: 170px;*/
 	height: 230px;
 	padding: 30px;
-	display: block;
+	/*display: block;*/
 }
 
 .gray-border {
@@ -30,6 +52,26 @@ section {
 	padding-right: 40px;
 }
 
+#splash-bg {
+	background-image: url("../imgs/ocean-real.png");
+	background-size: 100% 100%;
+	background-position: left 0px top 0px;
+	background-repeat: no-repeat;
+}
+
+
+@media screen and (min-width: 480px) {
+	#splash-bg {
+		height: 50vh;
+	}
+}
+
+@media screen and (min-width: 960px) {
+	#splash-bg {
+		height: 90vh;
+	}
+}
+
 .blue-bg {
 	background-color: #236F8E !important;
 	color: white !important;
@@ -37,7 +79,7 @@ section {
 
 .container {
 	width: 100%;
-	max-width: 1200px;
+	max-width: 600px;
 }
 
 .top-bar {
@@ -51,6 +93,11 @@ section {
 	color: #000 !important;
 }
 
+header {
+	width: 100%;
+	max-width: 1200px;
+}
+
 #ctoa {
 	padding: 15px;
 	padding-left: 25px;
@@ -61,23 +108,13 @@ section {
 	border-color: white;
 } 
 
-#splash-bg {
-	background-image: url("../imgs/ocean-real.png");
-	background-size: auto 800px;
-	background-position: left 0px top -110px;
-	background-repeat: no-repeat;
-
-	height: 600px;
-}
 
 .top-bar ul {
 	background-color: transparent !important;
 }
 
-header {
-	height: 800px;
+.text-center {
 	text-align: center;
-	padding-top: 80px;
 }
 
 .top-bar a {
@@ -90,4 +127,6 @@ header {
     margin: 2em auto;
     border-radius: 20%/50%;
     background-color: #000;
+    padding: 40px;
 }
+

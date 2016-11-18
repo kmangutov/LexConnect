@@ -10,8 +10,9 @@
 <body>
 
 <center>
-<div class="container">
-	<div id="splash-bg">
+
+<div id="splash-bg">
+	<header>
 		<div class="top-bar">
 			<div class="top-bar-left">
 				<ul class="menu">
@@ -20,24 +21,38 @@
 			</div>
 			<div class="top-bar-right">
 				<ul class="menu">
-				  <li><a href="client-login.html" class="semibold">Sign in</a></li>
-				  <li class="divider"></li>
-				  <li><a href="client-signup.html" class="semibold">Join</a></li>
+				  <li><a href="#about" class="semibold">About</a></li>
 				</ul>
 			</div>
 		</div>
 
-		<header>
-			<h1>Find peace of mind</h1>
+		<div class="full">
+		<div class="half-top">
+			<h1 id="hero-title">Find peace of mind</h1>
 			<h5>Tell us about your issue and get a legal consultation</h5>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<a id="ctoa" href="client-signup.html" class="pill-button">Get started</a>
-		</header>
-	</div>
+		</div>
+		<div class="half-bottom">
+			<div class="row">
+				<div class="small-8 columns">	
+					<select>
+						<option>Contracts</option>
+						<option>Family law</option>
+						<option>Criminal defense</option>
+						<option>Labor and employment</option>
+						<option>Personal injury</option>
+						<option>Immigration</option>
+						<option>Not sure</option>
+					</select>
+				</div>
+				<div class="small-4 columns">
+					<a id="ctoa" href="client-signup.html" class="pill-button">Get started</a>
+				</div>
+			</div>
+		</div>
+		</div>
+	</header>
+</div>
+
 	<section class="roomy gray-border">
 		<h2 class="cyan">You've got legal problems. Finding the right attorney shouldn't be one of them.</h2>
 	</section>
@@ -68,7 +83,7 @@
 		</div>
 	</section>
 	<section class="blue-bg">
-		<h2 class="margin-bottom white">About us</h2>
+		<h2 id="about" class="margin-bottom white">About us</h2>
 		<p>We are a team of law students, designers, and engineers who are passionate about bringing technology to the legal consumer. Our mission is to help you better navigate the legal system and connect with the best attorneys possible. We do this by combining data analytics with intuitive design into one seamless experience.</p>
 
 		<div class="row">
@@ -129,7 +144,6 @@
 
 
 	</section>
-</div>
 </center>
 
 
