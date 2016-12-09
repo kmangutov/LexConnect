@@ -80,3 +80,21 @@ a:hover {
 .white {
 	color: white;
 }
+
+#top-strip h4 {
+	color: white;
+}
+
+p {
+	font-family: .HelveticaNeueDeskInterface-Regular;
+	font-weight: 400;
+	color: #313131;
+	letter-spacing: 1.25px;
+
+	text-align: left;
+}
+
+
+li a.black {
+	color: black !important;
+}
