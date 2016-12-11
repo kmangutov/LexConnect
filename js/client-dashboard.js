@@ -105,6 +105,13 @@ var withMyQuery = function(query, f) {
 
 $(document).ready(function() {
 
+	//setButtonsEnabled(true);
+	$("#new-query").click(function() {
+		window.location.href = "client-new-query.html"
+	});
+
+
+
 	queryService.getMyQuery(function(result) {
 		vue_interestedAttorneys.query = result[0];
 		withMyQuery(result[0], function(query) {
