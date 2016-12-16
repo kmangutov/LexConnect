@@ -56,11 +56,13 @@
 	<br>
 	<br>
 	<div id="main">
-		<h4>Is there a valid contract?</h4>
+		<h4>{{ questionString }}</h4>
 		<br>
-		<a href="email.html" class="button option">Yes</a>
-		<br>
-		<a href="email.html" class="button option">No</a>
+
+		<div v-for="(value, index) in answerMap">
+			<a @click="selectOption(value, index)" class="button option">{{ index }}</a>
+		</div>
+
 	</div>
 	
 	</div>
@@ -70,6 +72,7 @@
 
 
 </body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/loglevel/1.4.0/loglevel.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
