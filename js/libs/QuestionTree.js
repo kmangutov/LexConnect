@@ -62,7 +62,14 @@ var QuestionTree = (function() {
 	// ==== CONTRACTS 1 ============================================
 
 	var contracts_subfield =
-			q("Contracts: Is there a valid contract?", a(YES, q("Did you perform your duties under the contract?", a(YES, q("Were you harmed as a result of that breach?", a(YES), a(NO))), a(NO))), a(NO));
+			q("Is there a valid contract?", 
+				a(YES, q("Did you perform your duties under the contract?", 
+					a(YES, 
+						q("Were you harmed as a result of that breach?", 
+							a(YES), 
+							a(NO))), 
+					a(NO))), 
+			a(NO));
 
 	// ==== FAMILY 2 ===============================================
 
@@ -117,7 +124,7 @@ var QuestionTree = (function() {
 	var divorce = q("What's your divorce issue?", a("Child Support", child_support_prong), a("Custody Rights", custody_rights_prong));
 
 	var family_subfield = 
-			q("Family law",
+			q("What do you need help with?",
 				a("Divorce", divorce),
 				a("Probate"));
 
@@ -161,7 +168,7 @@ var QuestionTree = (function() {
 	var dui_drugs = q("Were you ticketed in Illinois?", a(YES, q("Were you in possesion of the ignition keys?", a(YES, drug_was_controlled_substance), a(NO, q("Are you the owner of the vehicle that was pulled over by the police?", a(YES, drug_was_controlled_substance), a(NO, q("Were you in the driver's seat?", a(YES, drug_was_controlled_substance), a(NO))))))), a(NO));
 
 	var criminal_subfield = 
-			q("Criminal defense:",
+			q("",
 				a("DUI - Alcohol", dui_alcohol),
 				a("DUI - Drugs", dui_drugs));
 
@@ -322,7 +329,7 @@ var QuestionTree = (function() {
 			a("Work-related injury" /** TODO(KIRILL) **/));
 	
 	var personal_injury_subfield = 
-			q("Personal Injury: Did the injury occur in Illinois?",
+			q("Did the injury occur in Illinois?",
 				a(YES, 
 					q("Were you personally injured?",
 						/***  TODO KIRILL PICK UP FROM HERE **/
@@ -336,7 +343,7 @@ var QuestionTree = (function() {
 	// ==== IMMIGRATION 6 =========================================
 
 	var immigration_subfield = 
-			q("Immigration: Are you seeking green card through Job or Family?",
+			q("Are you seeking green card through Job or Family?",
 				a("Job"),
 				a("Family"));
 
