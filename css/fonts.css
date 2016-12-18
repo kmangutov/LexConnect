@@ -9,6 +9,10 @@ li a {
     font-weight: 500px;
 }
 
+small {
+	color: white;
+}
+
 h5 {
 	font-family: 'Open Sans', sans-serif;
 	letter-spacing: 1.32px;
@@ -30,6 +34,10 @@ body {
 
 #ctoa {
 	font-family: 'Open Sans', sans-serif;	
+}
+
+#ctoa_text {
+	font-size: 2rem;
 }
 
 h2 {
@@ -73,7 +81,24 @@ a:hover {
 	text-decoration: underline;
 }
 
-
 .white {
 	color: white;
+}
+
+#top-strip h4 {
+	color: white;
+}
+
+p {
+	font-family: .HelveticaNeueDeskInterface-Regular;
+	font-weight: 400;
+	color: #313131;
+	letter-spacing: 1.25px;
+
+	text-align: left;
+}
+
+
+li a.black {
+	color: black !important;
 }

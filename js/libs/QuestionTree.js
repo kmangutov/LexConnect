@@ -1,12 +1,9 @@
 
 /*	The QuestionTree helps users communicate their situation without a law education quickly and easily.
 		QUESTION_MAP is a Map of Questions. Each Question resides under an id in the QUESTION_MAP.
-
 		An Answer is composed of a String _value_ (the answer text) and pointer _next_ to the question it leads to.
 		A _next_ of -1 indicates there are no more questions and the questionnaire is complete.
-
 		A Question is defined as a String _value_ (the prompt) and a list of possible Answers.
-
 		Answers are generated using the "a" function. Questions are generated using the "q" function that takes
 		a string value (The actual question) and a list of answers (The possible solutions).
 		The "q" function automatically inserts the resulting structure into the QUESTION_MAP.
@@ -33,7 +30,6 @@ var QuestionTree = (function() {
 
 
 		/* Notice that that here we iterate through the arguments. This will be the answers.
-
 			e.g.
 				var criminal_subfield = 
 						q("Criminal defense",
@@ -66,7 +62,14 @@ var QuestionTree = (function() {
 	// ==== CONTRACTS 1 ============================================
 
 	var contracts_subfield =
-			q("Contracts: Is there a valid contract?", a(YES, q("Did you perform your duties under the contract?", a(YES, q("Were you harmed as a result of that breach?", a(YES), a(NO))), a(NO))), a(NO));
+			q("Is there a valid contract?", 
+				a(YES, q("Did you perform your duties under the contract?", 
+					a(YES, 
+						q("Were you harmed as a result of that breach?", 
+							a(YES), 
+							a(NO))), 
+					a(NO))), 
+			a(NO));
 
 	// ==== FAMILY 2 ===============================================
 
@@ -121,7 +124,7 @@ var QuestionTree = (function() {
 	var divorce = q("What's your divorce issue?", a("Child Support", child_support_prong), a("Custody Rights", custody_rights_prong));
 
 	var family_subfield = 
-			q("Family law",
+			q("What do you need help with?",
 				a("Divorce", divorce),
 				a("Probate"));
 
@@ -165,7 +168,7 @@ var QuestionTree = (function() {
 	var dui_drugs = q("Were you ticketed in Illinois?", a(YES, q("Were you in possesion of the ignition keys?", a(YES, drug_was_controlled_substance), a(NO, q("Are you the owner of the vehicle that was pulled over by the police?", a(YES, drug_was_controlled_substance), a(NO, q("Were you in the driver's seat?", a(YES, drug_was_controlled_substance), a(NO))))))), a(NO));
 
 	var criminal_subfield = 
-			q("Criminal defense:",
+			q("",
 				a("DUI - Alcohol", dui_alcohol),
 				a("DUI - Drugs", dui_drugs));
 
@@ -326,7 +329,7 @@ var QuestionTree = (function() {
 			a("Work-related injury" /** TODO(KIRILL) **/));
 	
 	var personal_injury_subfield = 
-			q("Personal Injury: Did the injury occur in Illinois?",
+			q("Did the injury occur in Illinois?",
 				a(YES, 
 					q("Were you personally injured?",
 						/***  TODO KIRILL PICK UP FROM HERE **/
@@ -340,7 +343,7 @@ var QuestionTree = (function() {
 	// ==== IMMIGRATION 6 =========================================
 
 	var immigration_subfield = 
-			q("Immigration: Are you seeking green card through Job or Family?",
+			q("Are you seeking green card through Job or Family?",
 				a("Job"),
 				a("Family"));
 

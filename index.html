@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/fonts.css">
 
 
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -16,7 +17,6 @@
 
   ga('create', 'UA-88777785-1', 'auto');
   ga('send', 'pageview');
-
 </script>
 
 <!-- Facebook Pixel Code -->
@@ -46,34 +46,42 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 <body>
 
 <center>
-<div class="container">
-	<div id="splash-bg">
+
+<div id="splash-bg">
+	<header>
 		<div class="top-bar">
 			<div class="top-bar-left">
 				<ul class="menu">
-					<li class="menu-text">Zealous</li>
+					<li class="menu-text"><a href="index.html" class="black">Zealous</li>
 				</ul>
 			</div>
 			<div class="top-bar-right">
 				<ul class="menu">
-				  <li><a href="client-login.html" class="semibold">Sign in</a></li>
-				  <li class="divider"></li>
-				  <li><a href="client-signup.html" class="semibold">Join</a></li>
+				  <li><a href="#about" class="semibold">About</a></li>
 				</ul>
 			</div>
 		</div>
-
-		<header>
-			<h1>Find peace of mind</h1>
+			<h1 id="hero-title">Find peace of mind</h1>
 			<h5>Tell us about your issue and get a legal consultation</h5>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<a id="ctoa" href="client-signup.html" class="pill-button">Get started</a>
-		</header>
-	</div>
+			<div class="row">
+				<div class="small-12 columns">	
+					<span id="ctoa_text">Help me with</span> <select id="select-question1">
+						<option value="120">Immigration</option>
+						<option value="3">Contracts</option>
+						<option value="58">Criminal defense</option>
+						<option value="30">Family law</option>
+						<option value="100">Labor or employment</option>
+						<option value="119">Personal injury</option>
+						<option value="121">Not sure...</option>
+					</select>
+				</div>
+				<div class="small-12 columns">
+					<div class="margin"><a id="ctoa" class="pill-button">Get started</a></div>
+				</div>
+			</div>
+	</header>
+</div>
+
 	<section class="roomy gray-border">
 		<h2 class="cyan">You've got legal problems. Finding the right attorney shouldn't be one of them.</h2>
 	</section>
@@ -104,12 +112,12 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 		</div>
 	</section>
 	<section class="blue-bg">
-		<h2 class="margin-bottom white">About us</h2>
+		<h2 id="about" class="margin-bottom white">About us</h2>
 		<p>We are a team of law students, designers, and engineers who are passionate about bringing technology to the legal consumer. Our mission is to help you better navigate the legal system and connect with the best attorneys possible. We do this by combining data analytics with intuitive design into one seamless experience.</p>
 
 		<div class="row">
 
-			<div class="small-12 medium-4 large-3 columns">
+			<div class="small-12 medium-4 columns">
 				<div class="about-us-frame">
 					<img class="about-us-img" src="imgs/us/paul.png"/>
 				</div>
@@ -122,7 +130,7 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 				</div>
 			</div>
 
-			<div class="small-12 medium-4 large-3 columns">
+			<div class="small-12 medium-4 columns">
 				<div class="about-us-frame">
 					<img class="about-us-img" src="imgs/us/kirill.png"/>
 				</div>
@@ -135,20 +143,7 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 				</div>
 			</div>
 
-			<div class="small-12 medium-4 large-3 columns">
-				<div class="about-us-frame">
-					<img class="about-us-img" src="imgs/us/matt.png"/>
-				</div>
-				<div class="text-align-left">
-					<span class="white"><b>COO</b> Matt Lowe</span>
-					<small><br>
-						UIUC, JD Candidate.<br>
-						Founder Erriah Consulting Group.
-					</small>
-				</div>
-			</div>
-
-			<div class="small-12 medium-4 large-3 columns">
+			<div class="small-12 medium-4 columns">
 				<div class="about-us-frame">
 					<img class="about-us-img" src="imgs/us/aileen.png"/>
 				</div>
@@ -165,9 +160,10 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 
 
 	</section>
-</div>
 </center>
-
-
 </body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!--script type="text/javascript" src="./js/libs/QuestionTree.js"></script-->
+<script type="text/javascript" src="./js/index.js"></script>
 </html>
