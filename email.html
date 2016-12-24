@@ -89,7 +89,7 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 
 
 <div class="row">
-	<div class="small-1 large-2 columns">&nbsp;</div>
+	<div class="small-1 large-2 columns"  align="center">&nbsp;</div>
 	<div class="small-10 large-8 columns">
 	
 	<br>
@@ -98,22 +98,25 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 	<br>
 	<div id="main">
 		
-		<form>
+		<form novalidate="true" id="client-signup-form">
 			<div class="row">
 				<div class="large-12 columns">
 					<span>Enter your email</span>
-					<input id="email" type="text" placeholder="you@example.com"/>
+					<input id="email" name="email" type="text" placeholder="you@example.com"/>
 				</div>
 			</div>
 			<br>
 			<div class="row">
 				<div class="large-12 columns">
 					<span>Enter your zipcode</span>
-					<input id="zipcode" type="text" placeholder="61820"/>
+					<input id="zipcode" name="zipcode" type="text" placeholder="61820"/>
 				</div>
 			</div>
 			<br>
-			<center><a class="button option" id="submit">Get advice</a></center>
+			
+			<center><a button class="button option" id="Submit" type="submit">Get advice</a></center>
+			
+
 		</form>
 
 	</div>
@@ -126,15 +129,23 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 
 
 
-</body>
+<!--
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/loglevel/1.4.0/loglevel.min.js"></script>
+
+-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!--
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.min.js"></script>
+-->
 <script type="text/javascript" src="./js/base.js"></script>
 <script type="text/javascript" src="./js/libs/QuestionTree.js"></script>
 <script type="text/javascript" src="./js/email.js"></script>
+
+</body>
 </html>
 
 

@@ -170,7 +170,8 @@ var QuestionTree = (function() {
 	var criminal_subfield = 
 			q("",
 				a("DUI - Alcohol", dui_alcohol),
-				a("DUI - Drugs", dui_drugs));
+				a("DUI - Drugs", dui_drugs),
+				a("Other"));
 
 	// ==== LABOR 4 =================================================
 

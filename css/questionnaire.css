@@ -22,6 +22,18 @@
 	vertical-align: middle;
 }
 
+#description-row
+{
+	/*display: table;*/
+}
+
+#description-row p{
+	display: table-cell;
+  vertical-align: middle; 
+  text-align: center; 
+
+}
+
 #main {
 	/* Rectangle 13 Copy: */
 	background: #F7F7F8;
