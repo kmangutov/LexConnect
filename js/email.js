@@ -41,33 +41,12 @@ $(document).ready(function() {
 				email: $('#email').val(), 
 				html: html
 			}
-			emailjs.send("gmail", "form_submission", obj)
-				.then(function(response) {
+			emailjs.send("gmail", "form_submission", obj).then(function (response2) {
+				emailjs.send("gmail", "email_submission_thanks", obj).then(function (response) {
 					window.location.href = "thanks.html";
 				});
+			});
 		}
 
 	});
-
-/*
-	document.getElementById("client-signup-form").addEventListener("submit", function(event) {
-		event.preventDefault();
-
-		if($("#client-signup-form").valid()){
-
-			$('#Submit').text("Working...");
-			$('#Submit').prop('disabled', true);
-
-			var obj = {
-				zip: $('#zipcode').val(),
-				email: $('#email').val(), 
-				html: html
-			}
-			emailjs.send("gmail", "form_submission", obj)
-				.then(function(response) {
-					window.location.href = "thanks.html";
-				});
-		}
-	});
-*/
 });
