@@ -9,7 +9,7 @@
 
 /* Reset */
 
-	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 		margin: 0;
 		padding: 0;
 		border: 0;
@@ -236,6 +236,7 @@
 		display: block;
 		clear: both;
 		height: 0;
+		overflow:auto;
 	}
 
 	.row.uniform > * > :first-child {
@@ -263,11 +264,11 @@
 	}
 
 	.row > * {
-		padding: 50px 0 0 50px;
+		padding: 50px 50px 50px 50px;
 	}
 
 	.row {
-		margin: -50px 0 -1px -50px;
+
 	}
 
 	.row.uniform > * {
@@ -476,11 +477,11 @@
 	@media screen and (max-width: 1680px) {
 
 		.row > * {
-			padding: 40px 0 0 40px;
+			padding: 40px 40px 40px 40px;
 		}
 
 		.row {
-			margin: -40px 0 -1px -40px;
+
 		}
 
 		.row.uniform > * {
@@ -691,11 +692,11 @@
 	@media screen and (max-width: 1280px) {
 
 		.row > * {
-			padding: 40px 0 0 40px;
+			padding: 20px 20px 20px 20px;
 		}
 
 		.row {
-			margin: -40px 0 -1px -40px;
+
 		}
 
 		.row.uniform > * {
@@ -910,7 +911,7 @@
 		}
 
 		.row {
-			margin: -30px 0 -1px -30px;
+
 		}
 
 		.row.uniform > * {
@@ -1125,7 +1126,7 @@
 		}
 
 		.row {
-			margin: -30px 0 -1px -30px;
+
 		}
 
 		.row.uniform > * {
@@ -1337,11 +1338,10 @@
 
 		.row > * {
 			padding: 30px 0 0 30px;
+
 		}
 
-		.row {
-			margin: -30px 0 -1px -30px;
-		}
+
 
 		.row.uniform > * {
 			padding: 30px 0 0 30px;
@@ -1566,7 +1566,7 @@
 		}
 
 	body, input, select, textarea {
-		color: #7c8081;
+
 		font-family: 'Lato', sans-serif;
 		font-size: 15pt;
 		font-weight: 300;
@@ -1811,6 +1811,26 @@
 				width: 100%;
 			}
 
+		.about-photo{
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 2em;
+			width: 90%;
+			border-radius: 4em;
+			text-align: center;
+		}
+
+		.logo-about-photo{
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 2em;
+			width: 90%;
+			border-radius: 4em;
+			text-align: center;
+		}
+
 /* Icon */
 
 	.icon {
@@ -2046,8 +2066,8 @@
 		font-weight: 900;
 		letter-spacing: 2px;
 		min-width: 18em;
-		padding: 0 0.75em;
-		line-height: 3.75em;
+		padding: 1em 2em 1em 2em;
+
 		text-align: center;
 		text-decoration: none;
 		text-transform: uppercase;
@@ -2395,7 +2415,7 @@
 	#banner {
 		background-attachment: scroll, scroll, scroll, fixed;
 		background-color: #645862;
-		background-image: url("images/light-bl.svg"), url("images/light-br.svg"), url("images/overlay.png"), url("../../images/banner.jpg");
+		background-image: url("images/light-bl.svg"), url("images/light-br.svg"), url("images/overlay.png"), url("../../images/banner_pretty.jpg");
 		background-position: bottom left, bottom right, top left, top center;
 		background-repeat: no-repeat, no-repeat, repeat, no-repeat;
 		background-size: 25em, 25em, auto, cover;
@@ -3194,3 +3214,63 @@
 			}
 
 	}
+
+
+#top-strip {
+
+	/* Rectangle 2: */
+	margin-top: 5em; 
+	background-image: linear-gradient(90deg, #6478BA 0%, #429CBF 100%);
+}
+
+#question-logo{
+	color: #3fb1a3;
+}
+
+
+#question-main {
+    background: #f7f7f8 none repeat scroll 0 0;
+    border: 1px solid #f6f6f6;
+    box-shadow: 3px 8px 14px 3px rgba(147, 147, 147, 0.5);
+    padding: 30px;
+}
+
+
+#email-main {
+    background: #f7f7f8 none repeat scroll 0 0;
+    border: 1px solid #f6f6f6;
+    box-shadow: 3px 8px 14px 3px rgba(147, 147, 147, 0.5);
+    padding: 30px;
+}
+
+#blue-banner{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 75rem;
+    padding: 0;
+
+}
+
+#blue-banner h4{
+	margin:0;
+}
+
+#index-select {
+    -moz-appearance: none;
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid;
+    color: inherit;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: 900;
+    letter-spacing: 2px;
+	padding: 1em 2em 1em 2em;
+    min-width: 18em;
+    height: auto;
+
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, background-color 0.2s ease-in-out 0s;
+}
