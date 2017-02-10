@@ -23,8 +23,9 @@
 					<h1 id="logo"><a href="index.html">Zealous</a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">About us</a></li>
-							<li><a href="index.html">FAQ</a></li>
+							<li><a href="#about-us-section">About us</a></li>
+							<li><a href="#faq-section">FAQ</a></li>
+							<li><a href="#cta">Contact</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -44,9 +45,10 @@
 							<h2>Legal peace of mind</h2>
 						</header>
 						<p>Tell us about your<br> issue and get you<br> a <strong>legal consultation.</strong></p>
-						<footer>
+						<footer id = "input-row">
 				            <select id ="index-select">
-				                <option value="121" font-weight="bold">Click here to choose</option>
+				            <optgroup>
+				                <option value="121" >Click here to choose</option>
 				                <option value="120">Immigration</option>
 				                <option value="3">Contracts</option>
 				                <option value="58">Criminal defense</option>
@@ -54,6 +56,7 @@
 				                <option value="100">Labor or employment</option>
 				                <option value="119">Personal injury</option>
 				                <option value="121">Not sure...</option>
+			                </optgroup>
 			              	</select>
 
 							<a id="ctoa" class="button">Tell Me More</a>
@@ -69,9 +72,15 @@
 					<header class="special container">
 						<span class="icon fa-gavel"></span>
 						<h2>You've got legal problems. <br>Finding the right attorney shouldn't be one of them.</h2>
-						<p>Zealous makes it easy and convenient for you to find attorneys appropriate to your personal circumstances.</p>
+						<p>Zealous makes it easy and convenient for you to find attorneys appropriate to your personal circumstances.</p><br>
 
-				     	<iframe id="vid" src="https://player.vimeo.com/video/194447199?byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					
+						<iframe class="js-resize" width="800" height="450"frameborder="0" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" src="https://player.vimeo.com/video/194447199?byline=0&portrait=0"></iframe>
+
+
+<!--
+						<iframe class="js-resize" frameborder="0" src="//player.vimeo.com/video/25924530?title=0&byline=0&portrait=0"  data-aspectratio="0.5625"  style="width: 433px; height: 243.563px;"></iframe>
+-->
 					</header>
 
 					<!-- Two -->
@@ -140,7 +149,7 @@
 					<!-- Three -->
 						<section class="wrapper style3 container special">
 
-							<header class="major">
+							<header id="about-us-section" class="major">
 								<h2>Our <strong>team</strong></h2>
 							</header>
 
@@ -151,8 +160,9 @@
 										<img class=" about-photo" src="images/Paul.png" alt="" />
 										<header>
 											<h3>Paul Min</h3>
+											<h3>CEO</h3>
 										</header>
-										<p>UIUC, JD Graduate, cum laude. <br>CALI Excellence for the Future Award.</p>
+										
 									</section>
 
 								</div>
@@ -162,8 +172,9 @@
 										<img class = "logo-about-photo" src="images/logo.svg" alt="" />
 										<header>
 											<h3>Kirill Mangutov</h3>
+											<h3>CTO</h3>
 										</header>
-										<p>UIUC, CS Bachelors & Masters. <br>Google, Jump Trading.</p>
+										
 									</section>
 
 								</div>
@@ -174,8 +185,9 @@
 										<img class = "about-photo" src="images/Peter.png" alt="" />
 										<header>
 											<h3>Peter Ivanov</h3>
+											<h3>VP of Engineering</h3>
 										</header>
-										<p>UIUC, CS Bachelors. <br>Dow Chemical.</p>
+										<p></p>
 									</section>
 
 								</div>							
@@ -187,8 +199,9 @@
 										<img class = "about-photo" src="images/Aileen.png" alt="" />
 										<header>
 											<h3>Aileen Bai</h3>
+											<h3>Head of Design</h3>
 										</header>
-										<p>UIUC, MFA Candidate. <br>John Deere.</p>
+										
 									</section>
 
 								</div>
@@ -198,8 +211,9 @@
 										<img class="about-photo" src="images/Ben.png" alt="" />
 										<header>
 											<h3>Ben Lee</h3>
+											<h1>Head of Data Science</h1>
 										</header>
-										<p>UIUC, Statistics Bachelors. <br>Anheuser-Busch.</p>
+										
 									</section>
 
 								</div>
@@ -212,7 +226,7 @@
 
 					<header class="special container">
 						<span class="icon fa-laptop"></span>
-						<h2>Frequently asked questions</h2>
+						<h2 id = "faq-section">Frequently asked questions</h2>
 					</header>
 				<!-- One -->
 					<section class="wrapper style4 container">
@@ -227,8 +241,8 @@
 												<h3>Overview</h3>
 											</header>
 											<ul id="sidebar-links">
-												<li><a href="#">What is Zealous?</a></li>
-												<li><a href="#">What does Zealous mean?</a></li>
+												<li><a class="anchor" href="#zealous">What is Zealous?</a></li>
+												<li><a class="anchor" href="#zealous-meaning">What does Zealous mean?</a></li>
 											</ul>
 										</section>
 
@@ -237,14 +251,14 @@
 												<h3>Finding a lawyer</h3>
 											</header>
 											<ul id="sidebar-links">
-												<li><a href="#">Does this cost me money to use?</a></li>
-												<li><a href="#">Why do we ask you these questions?</a></li>
-												<li><a href="#">What happens after I submit a request?</a></li>
-												<li><a href="#">Can anyone see my personal information?</a></li>
-												<li><a href="#">Where is Zealous available?</a></li>
-												<li><a href="#">Are you going to add other areas of law?</a></li>
-												<li><a href="#">Does Zealous provide legal advice?</a></li>
-												<li><a href="#">What happens after I submit a request?</a></li>
+												<li><a class="anchor" href="#cost-money">Does this cost me money to use?</a></li>
+												<li><a class="anchor" href="#why-ask">Why do we ask you these questions?</a></li>
+												<li><a class="anchor" href="#after-submit">What happens after I submit a request?</a></li>
+												<li><a class="anchor" href="#personal-info">Can anyone see my personal information?</a></li>
+												<li><a class="anchor" href="#where-zealous">Where is Zealous available?</a></li>
+												<li><a class="anchor" href="#other-areas">Are you going to add other areas of law?</a></li>
+												<li><a class="anchor" href="#legal-advice">Does Zealous provide legal advice?</a></li>
+
 											</ul>
 										</section>
 									</div>
@@ -254,13 +268,59 @@
 
 								<!-- Content -->
 									<div class="content">
+
 										<section>
-											<header>
-												<h3>Dolore Amet Consequat</h3>
+
+											<header id = "zealous">
+												<h3>What is Zealous?</h3>
 											</header>
-											<p>Aliquam massa urna, imperdiet sit amet mi non, bibendum euismod est. Curabitur mi justo, tincidunt vel eros ullamcorper, porta cursus justo. Cras vel neque eros. Vestibulum diam quam, mollis at consectetur non, malesuada quis augue. Morbi tincidunt pretium interdum. Morbi mattis elementum orci, nec dictum massa. Morbi eu faucibus massa. Aliquam massa urna, imperdiet sit amet mi non, bibendum euismod est. Curabitur mi justo, tincidunt vel eros ullamcorper, porta cursus justo. Cras vel neque eros. Vestibulum diam.</p>
-											<p>Vestibulum diam quam, mollis at consectetur non, malesuada quis augue. Morbi tincidunt pretium interdum. Morbi mattis elementum orci, nec dictum porta cursus justo. Quisque ultricies lorem in ligula condimentum, et egestas turpis sagittis. Cras ac nunc urna. Nullam eget lobortis purus. Phasellus vitae tortor non est placerat tristique. Sed id sem et massa ornare pellentesque. Maecenas pharetra porta accumsan. </p>
-											<p>In vestibulum massa quis arcu lobortis tempus. Nam pretium arcu in odio vulputate luctus. Suspendisse euismod lorem eget lacinia fringilla. Sed sed felis justo. Nunc sodales elit in laoreet aliquam. Nam gravida, nisl sit amet iaculis porttitor, risus nisi rutrum metus, non hendrerit ipsum arcu tristique est.</p>
+											<p>We are a team of law school graduates, designers, and engineers who are passionate about increasing everyone’s access to justice in the legal system. Our mission is to help you better navigate the legal system and connect with the best attorney possible for your particular circumstance. We do this by combining data analytics with intuitive design into one seamless experience. </p>
+
+											<header id = "zealous-meaning">
+												<h3>What does Zealous mean?</h3>
+											</header>
+											<p>To be “zealous” means to be passionate, driven, dedicated, and committed. It also holds special meaning within the legal profession, alluding to an ethical code that frames the unique responsibilities placed upon a lawyer’s shoulders — lawyers are bound by a duty to zealously advocate on behalf of their clients. At Zealous, we embrace and welcome that same responsibility upon ourselves. </p>
+										</section>
+									</div>
+
+									<div class="content">
+										<section>
+											<header id="cost-money">
+												<h3>Does this cost me money to use?</h3>
+											</header>
+											<p>No, we do not charge the general public anything to use our service. Doing so would go directly against our mission statement to increase people’s access to justice in our legal system. </p>
+
+											<header id = "why-ask">
+												<h3>Why do we ask you these questions?</h3>
+											</header>
+											<p>We crafted an adaptive questionnaire that probes and tests your self-reported facts given your chosen legal issue. The purpose behind this probing is to see what potential legal complications could be raised as red flags requiring further exploration when you meet with your attorney. This helps streamline the delivery of legal services while also providing you with a snapshot overview of your circumstances. </p>
+
+											<header id="after-submit">
+												<h3>What happens after I submit a request?</h3>
+											</header>
+											<p>Once you submit a request, your questionnaire is sent to attorneys who specialize in your particular legal issue and who are within your geographic area. And then, get on with your day. You’ll be hearing back from interested attorneys soon! Most importantly, you’ll have ultimate control of who you would like to meet — there is absolutely zero obligation to meet with any attorney when using Zealous. </p>					
+											
+											<header id="personal-info">
+												<h3>Can anyone see my personal information?</h3>
+											</header>
+											<p>No, they cannot. We understand that legal issues and/or complications can be a sensitive topic and confidentiality is one of our top priorities. Consistent with that, your contact information is kept hidden. Only when an attorney has expressed interest in meeting with you will your contact information be revealed to only that attorney. </p>		
+
+											<header id="where-zealous">
+												<h3>Where is Zealous available?</h3>
+											</header>
+											<p>We are currently conducting a beta trial of our platform solely in the state of Illinois. But fear not, we do have plans for expansion to other states.  </p>		
+
+											<header id="other-areas">
+												<h3>Are you going to add other areas of law?</h3>
+											</header>
+											<p>Yes, we are exploring other areas of law to add to our adaptive questionnaire. If there are any particular legal issues you would like us to complete faster, please let us know at <a href="mailto:founders@tryzealous.com">founders@tryzealous.com</a></p>	
+
+											<header id="legal-advice">
+												<h3>Does Zealous provide legal advice?</h3>
+											</header>
+											<p>We do not engage in providing legal advice — our aim is solely to provide generalized guidance to the public. </p>	
+
+
 										</section>
 									</div>
 
@@ -278,19 +338,48 @@
 					</header>
 					<div class="row">
 						<div class="4u 12u(narrower)">
-							<section><br>
-								<p>Got questions that we forgot to address? Or feedback regarding our service? Please direct all correspondence to <a href="mailto:founders@tryzealous.com">founders@tryzealous.com</a>.</p>
+							<section>
+								<p align="left">Got questions that we forgot to address? Or feedback regarding our service? Please direct all correspondence to <a href="mailto:founders@tryzealous.com">founders@tryzealous.com</a>.</p>
 							</section>
 						</div>
+
+						<div class="4u 12u(narrower)">
+							<section>
+
+							</section>
+						</div>
+
+						<div class="4u 12u(narrower)">
+							<section id="contact-us-address">
+								<p align="right">Zealous</p>
+								<p align="right">206 W. Main St.</p>
+								<p align="right">Urbana, IL 61801</p>
+
+							</section>
+						</div>
+						<!--
 						<div class="8u 12u(narrower)">
 							<section>
 								<a href="https://www.google.com/maps/place/206+W.+Main+St.+Urbana+IL+61810/"><img src="https://maps.googleapis.com/maps/api/staticmap?center=206+W.+Main+St.+Urbana+IL+61810&zoom=16&scale=false&size=600x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C206+W.+Main+St.+Urbana+IL+61810" alt="Google Map of 206 W. Main St. Urbana IL 61810"></a>
 							</section>
 						</div>
+						-->
 					</div>
+<!--
+					<div class="row">
+						<div class="2u 12u(narrower)">
+							<section>
+								<p>Zealous</p>
+								<p>Zealous</p>
+							</section>
+						</div>
+					</div>
+
+-->
 				</section>
 
 			<!-- Footer -->
+			<!--
 				<footer id="footer">
 
 					<ul class="icons">
@@ -306,7 +395,7 @@
 					</ul>
 
 				</footer>
-
+			-->
 		</div>
 
 		<!-- Scripts -->
@@ -319,7 +408,6 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js"></script>
-
 			<script type="text/javascript" src="assets/js/index.js"></script>
 
 	</body>

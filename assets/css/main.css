@@ -1565,7 +1565,7 @@
 			transition: none !important;
 		}
 
-	body, input, select, textarea {
+	body, input, textarea {
 
 		font-family: 'Lato', sans-serif;
 		font-size: 15pt;
@@ -2043,6 +2043,58 @@
 				color: #fff;
 			}
 
+
+
+select{
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		-moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+		-webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+		-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+		background: none;
+		border: solid 1px;
+		color: inherit;
+		cursor: pointer;
+		display: inline-block;
+		font-size: 0.8em;
+		font-weight: 900;
+		letter-spacing: 2px;
+		min-width: 18em;
+		padding: 1.05em 2em 0.95em 2em;
+
+		line-height: 2em;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+
+		text-align-last:center;
+
+}
+
+
+select::-moz-focus-inner { /*Remove button padding in FF*/ 
+    border: 0;
+    padding: 0;
+}
+@-moz-document url-prefix() { /* targets Firefox only */
+    select {
+		padding: 1.33em 2em 1.35em 2em !important;
+
+    }
+}        
+@media screen\0 { /* IE Hacks: targets IE 8, 9 and 10 */        
+    select {
+        height:30px;
+        line-height:30px;
+    }     
+}
+#ctoa{
+
+}
+
 /* Button */
 
 	input[type="button"],
@@ -2067,10 +2119,12 @@
 		letter-spacing: 2px;
 		min-width: 18em;
 		padding: 1em 2em 1em 2em;
-
+		line-height: 2em;
+		height: auto;
 		text-align: center;
 		text-decoration: none;
 		text-transform: uppercase;
+
 	}
 
 		input[type="button"]:hover,
@@ -2131,7 +2185,7 @@
 			background-position: bottom left, bottom right;
 			background-repeat: no-repeat, no-repeat;
 			background-size: 25em, 25em;
-			color: #fff;
+			
 		}
 
 			.wrapper.style2 .button:hover {
@@ -2563,7 +2617,7 @@
 
 		/* Basic */
 
-			body, input, select, textarea {
+			body, input, textarea {
 				font-size: 14pt;
 			}
 
@@ -2582,7 +2636,7 @@
 
 		/* Basic */
 
-			body, input, select, textarea {
+			body, input, textarea {
 				font-size: 13pt;
 				letter-spacing: 0.025em;
 				line-height: 1.65em;
@@ -2646,7 +2700,7 @@
 
 		/* Basic */
 
-			body, input, select, textarea {
+			body, input, textarea {
 				font-size: 13pt;
 				letter-spacing: 0.025em;
 				line-height: 1.5em;
@@ -2757,6 +2811,12 @@
 				}
 
 		/* Button */
+
+		select{
+				font-size: 0.8em;
+				min-width: 18em;
+				padding: 0.75em 0;
+		}
 
 			input[type="button"].small,
 			input[type="submit"].small,
@@ -3082,6 +3142,12 @@
 
 		/* Button */
 
+
+		select{
+				max-width: 20em;
+				width: 100%;
+		}
+
 			input[type="button"],
 			input[type="submit"],
 			input[type="reset"],
@@ -3244,10 +3310,8 @@
 }
 
 #blue-banner{
-    margin-left: auto;
-    margin-right: auto;
     max-width: 75rem;
-    padding: 0;
+    padding: 1em 1em 1em 1em;
 
 }
 
@@ -3255,9 +3319,28 @@
 	margin:0;
 }
 
+#blue-banner p{
+	vertical-align: middle;
+	margin: 0;
+}
+
+
+
+#input-row{
+	position: relative;
+}
+
+#contact-us-address p{
+	margin: 0;
+	padding: 0;
+}
+
+/*
+
 #index-select {
     -moz-appearance: none;
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    background-color: transparent;
     border: 1px solid;
     color: inherit;
     cursor: pointer;
@@ -3265,12 +3348,26 @@
     font-size: 0.8em;
     font-weight: 900;
     letter-spacing: 2px;
-	padding: 1em 2em 1em 2em;
+	padding: 1em 2.25em 1em 2.25em;
     min-width: 18em;
-    height: auto;
-
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
     transition: color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, background-color 0.2s ease-in-out 0s;
 }
+*/
+
+
+#index-select{
+	background-image: none;
+	background-color: #5E474F;
+}
+
+#optgroup{
+    font: 13.3333px Arial;
+    font-weight: 300;
+    letter-spacing: 0.025em;
+    line-height: 1.75em;
+
+}
+
