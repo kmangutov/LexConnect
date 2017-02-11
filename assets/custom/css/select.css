@@ -1,5 +1,9 @@
 
-select{
+select {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
 
 	-moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 	-webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
@@ -22,4 +26,17 @@ select{
 	text-transform: uppercase;
 
 	text-align-last:center;
+}
+
+#index-select:after {
+    content:"▼";    
+    color: white;
+    padding: 12px 8px;
+    position: absolute; right: 10px; top: 0;    
+    z-index: 1;
+    text-align: center;
+    width: 10%;
+    height: 100%;      
+    pointer-events: none;
+    box-sizing: border-box;   
 }
