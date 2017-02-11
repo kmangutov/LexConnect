@@ -2043,38 +2043,6 @@
 				color: #fff;
 			}
 
-
-
-select{
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		-ms-appearance: none;
-		appearance: none;
-		-moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-		-webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-		-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-		background: none;
-		border: solid 1px;
-		color: inherit;
-		cursor: pointer;
-		display: inline-block;
-		font-size: 0.8em;
-		font-weight: 900;
-		letter-spacing: 2px;
-		min-width: 18em;
-		padding: 1.05em 2em 0.95em 2em;
-
-		line-height: 2em;
-		text-align: center;
-		text-decoration: none;
-		text-transform: uppercase;
-
-		text-align-last:center;
-
-}
-
-
 select::-moz-focus-inner { /*Remove button padding in FF*/ 
     border: 0;
     padding: 0;
@@ -2091,10 +2059,6 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
         line-height:30px;
     }     
 }
-#ctoa{
-
-}
-
 /* Button */
 
 	input[type="button"],
@@ -3283,91 +3247,7 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
 
 
 #top-strip {
-
 	/* Rectangle 2: */
 	margin-top: 5em; 
 	background-image: linear-gradient(90deg, #6478BA 0%, #429CBF 100%);
 }
-
-#question-logo{
-	color: #3fb1a3;
-}
-
-
-#question-main {
-    background: #f7f7f8 none repeat scroll 0 0;
-    border: 1px solid #f6f6f6;
-    box-shadow: 3px 8px 14px 3px rgba(147, 147, 147, 0.5);
-    padding: 30px;
-}
-
-
-#email-main {
-    background: #f7f7f8 none repeat scroll 0 0;
-    border: 1px solid #f6f6f6;
-    box-shadow: 3px 8px 14px 3px rgba(147, 147, 147, 0.5);
-    padding: 30px;
-}
-
-#blue-banner{
-    max-width: 75rem;
-    padding: 1em 1em 1em 1em;
-
-}
-
-#blue-banner h4{
-	margin:0;
-}
-
-#blue-banner p{
-	vertical-align: middle;
-	margin: 0;
-}
-
-
-
-#input-row{
-	position: relative;
-}
-
-#contact-us-address p{
-	margin: 0;
-	padding: 0;
-}
-
-/*
-
-#index-select {
-    -moz-appearance: none;
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    background-color: transparent;
-    border: 1px solid;
-    color: inherit;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 0.8em;
-    font-weight: 900;
-    letter-spacing: 2px;
-	padding: 1em 2.25em 1em 2.25em;
-    min-width: 18em;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, background-color 0.2s ease-in-out 0s;
-}
-*/
-
-
-#index-select{
-	background-image: none;
-	background-color: #5E474F;
-}
-
-#optgroup{
-    font: 13.3333px Arial;
-    font-weight: 300;
-    letter-spacing: 0.025em;
-    line-height: 1.75em;
-
-}
-

@@ -1,0 +1,25 @@
+
+select{
+
+	-moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+	-webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+	-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+	transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+	background: none;
+	border: solid 1px;
+	color: inherit;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 0.8em;
+	font-weight: 900;
+	letter-spacing: 2px;
+	min-width: 18em;
+	padding: 1.05em 2em 0.95em 2em;
+
+	line-height: 2em;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	text-align-last:center;
+}
