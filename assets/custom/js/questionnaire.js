@@ -20,7 +20,7 @@ dump("secondQuestion", currentNode);
 ];*/
 
 var vue = new Vue({
-	el: '#main',
+	el: '#question-main',
 	data: {
 		questionString: currentNode.value,
 		answerMap: currentNode.options,

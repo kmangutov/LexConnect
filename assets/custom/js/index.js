@@ -1,7 +1,7 @@
 
 Lockr.flush();
 var callToActionSubmit = $('#ctoa');
-var callToActionDropdown = $('#select-question1');
+var callToActionDropdown = $('#index-select');
 
 callToActionSubmit.click(function() {
 	var selected = callToActionDropdown.children("option").filter(":selected");

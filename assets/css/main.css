@@ -1746,7 +1746,7 @@
 	input[type="text"],
 	input[type="password"],
 	input[type="email"] {
-		line-height: 1em;
+		line-height: 1.5em;
 	}
 
 	::-webkit-input-placeholder {
@@ -2049,7 +2049,7 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
 }
 @-moz-document url-prefix() { /* targets Firefox only */
     select {
-		padding: 1.33em 2em 1.35em 2em !important;
+		padding: 1.275em 2em 1.3em !important;
 
     }
 }        
@@ -2082,12 +2082,13 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
 		font-weight: 900;
 		letter-spacing: 2px;
 		min-width: 18em;
-		padding: 1em 2em 1em 2em;
+		padding: 1.01em 2em 1em 2em;
 		line-height: 2em;
 		height: auto;
 		text-align: center;
 		text-decoration: none;
 		text-transform: uppercase;
+		margin: 0 0 1rem;
 
 	}
 
@@ -2097,6 +2098,8 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
 		.button:hover {
 			background: rgba(188, 202, 206, 0.15);
 			border-color: inherit;
+			color: #000;
+
 		}
 
 		input[type="button"].special,
@@ -2493,7 +2496,7 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
 				}
 
 			#banner .inner footer {
-				margin: 2em 0 0 0;
+				margin: 0em 0 0 0;
 			}
 
 /* Main */
@@ -2503,7 +2506,7 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
 		background-position: top left, top right, bottom left, bottom right;
 		background-repeat: no-repeat;
 		background-size: 25em;
-		padding: 7em 0;
+		padding: 5em 0;
 	}
 
 		#main > :last-child {
@@ -3065,6 +3068,10 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
 				text-align: justify;
 			}
 
+			b {
+				text-align: center;
+			}
+
 		/* Section/Article */
 
 			header {
@@ -3250,4 +3257,105 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
 	/* Rectangle 2: */
 	margin-top: 5em; 
 	background-image: linear-gradient(90deg, #6478BA 0%, #429CBF 100%);
+}
+
+
+#question-logo{
+	color: #3fb1a3;
+}
+
+
+#question-main {
+    background: #f7f7f8 none repeat scroll 0 0;
+    border: 1px solid #f6f6f6;
+    box-shadow: 3px 8px 14px 3px rgba(147, 147, 147, 0.5);
+    padding: 30px;
+    color: #000 !important;
+}
+
+
+#email-main {
+    background: #f7f7f8 none repeat scroll 0 0;
+    border: 1px solid #f6f6f6;
+    box-shadow: 3px 8px 14px 3px rgba(147, 147, 147, 0.5);
+    padding: 30px;
+}
+
+#blue-banner{
+	background: linear-gradient(90deg, #6478BA 0%, #429CBF 100%) !important;
+
+    max-width: 75rem;
+    padding: 1em 1em 1em 1em;
+    margin-bottom: 1em;
+
+}
+
+#blue-banner h4{
+	margin:0;
+}
+
+#blue-banner p{
+	vertical-align: middle;
+	margin: 0;
+	text-align: none !important;
+}
+
+
+
+#input-row{
+	position: relative;
+}
+
+#contact-us-address p{
+	margin: 0;
+	padding: 0;
+}
+
+/*
+
+#index-select {
+    -moz-appearance: none;
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    background-color: transparent;
+    border: 1px solid;
+    color: inherit;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: 900;
+    letter-spacing: 2px;
+	padding: 1em 2.25em 1em 2.25em;
+    min-width: 18em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, background-color 0.2s ease-in-out 0s;
+}
+*/
+
+
+#index-select{
+	background-image: none;
+	background-color: #5E474F;
+}
+
+#optgroup{
+    font: 13.3333px Arial;
+    font-weight: 300;
+    letter-spacing: 0.025em;
+    line-height: 1.75em;
+
+}
+
+#email-window{
+	margin-left:auto;
+	margin-right: auto;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: 0;
+}
+
+#description p {
+	margin:0.25em 1em 1em 1em;
+	padding:0;
 }

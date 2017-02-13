@@ -168,10 +168,10 @@ var QuestionTree = (function() {
 	var dui_drugs = q("Were you ticketed in Illinois?", a(YES, q("Were you in possesion of the ignition keys?", a(YES, drug_was_controlled_substance), a(NO, q("Are you the owner of the vehicle that was pulled over by the police?", a(YES, drug_was_controlled_substance), a(NO, q("Were you in the driver's seat?", a(YES, drug_was_controlled_substance), a(NO))))))), a(NO));
 
 	var criminal_subfield = 
-			q("",
+			q("Was it a DUI?",
 				a("DUI - Alcohol", dui_alcohol),
 				a("DUI - Drugs", dui_drugs),
-				a("Other"));
+				a("Something else"));
 
 	// ==== LABOR 4 =================================================
 
@@ -344,7 +344,7 @@ var QuestionTree = (function() {
 	// ==== IMMIGRATION 6 =========================================
 
 	var immigration_subfield = 
-			q("Are you seeking green card through Job or Family?",
+			q("Are you seeking a green card through Job or Family?",
 				a("Job"),
 				a("Family"));
 
