@@ -27,6 +27,7 @@
 
 #blue-banner {
 	background: linear-gradient(90deg, #6478BA 0%, #429CBF 100%) !important;
+	color: white;
 
     max-width: 75rem;
     padding: 1em 1em 1em 1em;

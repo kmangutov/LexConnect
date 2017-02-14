@@ -46,6 +46,10 @@
 	color: white !important;
 }
 
+.anchor {
+	color: #6478BA;
+}
+
 .video-responsive {
   position: relative;
   padding-bottom: 56.25%;
