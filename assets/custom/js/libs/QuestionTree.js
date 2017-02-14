@@ -272,9 +272,7 @@ var QuestionTree = (function() {
 
 	var checklist2 = 
 		q("Did you have any pre-existing injuries?",
-			a(YES,
-				q("Did the accident exacerbate those injuries?"),
-					a(YES, checklist1)),
+			a(YES, checklist1),
 			a(NO, checklist1));
 
 	var checklist3 = 
