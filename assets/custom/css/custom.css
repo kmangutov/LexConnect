@@ -41,6 +41,11 @@
 	background-color: #5E474F;
 }
 
+.blue-bg { 
+	background: linear-gradient(90deg, #6478BA 0%, #429CBF 100%) !important;
+	color: white !important;
+}
+
 .video-responsive {
   position: relative;
   padding-bottom: 56.25%;
