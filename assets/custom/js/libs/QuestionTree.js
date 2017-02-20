@@ -61,15 +61,25 @@ var QuestionTree = (function() {
 
 	// ==== CONTRACTS 1 ============================================
 
-	var contracts_subfield =
-			q("Is there a valid contract?", 
-				a(YES, q("Did you perform your duties under the contract?", 
+	var outside_investors = q("Do you plan to raise money from outside investors?", a(YES), a(NO));
+	
+	var business_formation =  q("Is there going to be more than 1 owner of the business?", a(YES, outside_investors), a(NO, q("Are you concerned about separating your personal assets from the business assets", a(YES, outside_investors), a(NO))));
+
+	var breach_of_contract = q("Did you perform your duties under the contract?", 
 					a(YES, 
 						q("Were you harmed as a result of that breach?", 
 							a(YES), 
 							a(NO))), 
-					a(NO))), 
-			a(NO));
+					a(NO))
+
+	var contracts_subfield =
+			q("What is your problem related to?", 
+				a("Breach of Contract", breach_of_contract), 
+				a("Business Formation", business_formation),
+				a("Real Estate or Other"));
+
+
+
 
 	// ==== FAMILY 2 ===============================================
 
@@ -222,10 +232,10 @@ var QuestionTree = (function() {
 	
 	var individual_disparate_treatment_prong = q("Is there direct evidence of intentional discrimination? (conduct, statements, etc.)", a(YES, mixed_motive_test), a(NO, mcdonnell_douglas_test));
 
-	var systemic_disparate_treatment_prong = q("Does a discriminatory policy exist? Or does an informal practice/pattern exist?", a(YES, q("Is there a legitimate bussiness reason for this policy/practice?", a(YES), a(NO))), a(NO));
+	var systemic_disparate_treatment_prong = q("Does a discriminatory policy exist? Or does an informal practice/pattern exist?", a(YES, q("Is there a legitimate business reason for this policy/practice?", a(YES), a(NO))), a(NO));
 
 
-	var disparate_impact_theory = q("Are you in a protected class?", a(YES, q("Is there a policy/practice that has unequal effect on this protected class?", a(YES, q("Is there a legitimate bussiness reason for this policy/practice?", a(YES), a(NO))), a(NO))), a(NO));
+	var disparate_impact_theory = q("Are you in a protected class?", a(YES, q("Is there a policy/practice that has unequal effect on this protected class?", a(YES, q("Is there a legitimate business reason for this policy/practice?", a(YES), a(NO))), a(NO))), a(NO));
 
 	var disparate_treatment_theory = q("Was this intentional discimination targeted only at you?", a(YES, individual_disparate_treatment_prong), a(NO, systemic_disparate_treatment_prong));
 

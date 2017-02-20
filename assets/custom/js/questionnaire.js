@@ -11,6 +11,7 @@ var currentNode = QuestionTree[firstAnswer.nodeId];
 
 dump("firstAnswer", firstAnswer);
 dump("secondQuestion", currentNode);
+dump("firstQuestion ", firstQuestion)
 
 /*var history = [
 	{
