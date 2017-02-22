@@ -1,5 +1,9 @@
 
 
+a:hover {
+	color: white !important;
+}
+
 #top-strip {
 	/* Rectangle 2: */
 	margin-top: 5em; 
