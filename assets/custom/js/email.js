@@ -44,8 +44,8 @@ $(document).ready(function() {
 				zip: $('#zipcode').val(),
 				email: $('#email').val(), 
 				html: html,
-				name: 0,
-				openEnded: 0
+				name: $('#name').val(),
+				openEnded: $('#freeform').val()
 			}
 
 			var clientEmail = emailjs.send("gmail", "email_submission_thanks", obj);
