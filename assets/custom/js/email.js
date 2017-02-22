@@ -32,7 +32,7 @@ $(document).ready(function() {
 			zipcode: "Please enter a valid 5 digit zipcode"
 		}
 
-});
+	});
 
 	$('#Submit').click(function() {
 		if($("#client-signup-form").valid()){
@@ -43,12 +43,15 @@ $(document).ready(function() {
 			var obj = {
 				zip: $('#zipcode').val(),
 				email: $('#email').val(), 
-				html: html
+				html: html,
+				name: 0,
+				openEnded: 0
 			}
-			emailjs.send("gmail", "form_submission", obj).then(function (response2) {
-				emailjs.send("gmail", "email_submission_thanks", obj).then(function (response) {
-					window.location.href = "thanks.html";
-				});
+
+			var clientEmail = emailjs.send("gmail", "email_submission_thanks", obj);
+			var adminEmail = emailjs.send("gmail", "form_submission", obj);
+			Promise.all([clientEmail, adminEmail]).then(function () {
+				window.location.href = "thanks.html";
 			});
 		}
 
