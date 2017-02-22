@@ -1,4 +1,12 @@
 
+.question-option {
+	/* Rectangle: */
+	background: #FFFFFF;
+	border-color: #6478BA !important;
+	border-radius: 4px;
+	width: 60%;
+	color: #333;
+}
 
 #question-logo {
 	color: #3fb1a3;
