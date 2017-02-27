@@ -1,6 +1,6 @@
 
 
-console.log("wtf " + JSON.stringify(Lockr.get("history")));
+var referralCode = Lockr.get('REFERRAL_CODE');
 
 var html = "<table>";
 
@@ -45,7 +45,8 @@ $(document).ready(function() {
 				email: $('#email').val(), 
 				html: html,
 				name: $('#name').val(),
-				openEnded: $('#freeform').val()
+				openEnded: $('#freeform').val(),
+				referralCode: referralCode
 			}
 
 			var clientEmail = emailjs.send("gmail", "email_submission_thanks", obj);
