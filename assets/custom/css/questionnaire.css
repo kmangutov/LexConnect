@@ -84,3 +84,7 @@
 	background-color: #6478BA; 
 	color: white;
 }
+
+#navButton {
+	visibility: hidden;
+}
