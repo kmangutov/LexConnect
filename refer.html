@@ -7,7 +7,20 @@
 -->
 <html>
 	<head>
+
+
+		<link rel="shortcut icon" href="">
 		<title>Zealous</title>
+
+		    <!-- You can use Open Graph tags to customize link previews.
+		    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+		  <meta property="og:url"           content="http://www.tryzealous.com" />
+		  <meta property="og:type"          content="website" />
+		  <meta property="og:title"         content="Zealous" />
+		  <meta property="og:description"   content="Find a Lawyer" />
+		  <meta property="og:image"   content = url("../../images/banner_pretty.jpg") />
+
+
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -52,6 +65,46 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 
 	</head>
 	<body class="no-sidebar">
+	<!-- apparantly needed for facebook linkis
+	https://developers.facebook.com/docs/plugins/share-button#configurator-->
+
+	 <!--zealous app
+	 appId      : 403623496664520 -->
+	<script>
+		  window.fbAsyncInit = function() {
+		    FB.init({
+		      appId      : 403627786664091,
+		      xfbml      : true,
+		      version    : 'v2.3'
+		    });
+		  };
+	</script>
+	
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+	<script>window.twttr = (function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0],
+	    t = window.twttr || {};
+	  if (d.getElementById(id)) return t;
+	  js = d.createElement(s);
+	  js.id = id;
+	  js.src = "https://platform.twitter.com/widgets.js";
+	  fjs.parentNode.insertBefore(js, fjs);
+
+	  t._e = [];
+	  t.ready = function(f) {
+	    t._e.push(f);
+	  };
+ 	 return t;
+	}(document, "script", "twitter-wjs"));</script>
+
+
 		<div id="page-wrapper">
 			<!-- Header -->
 			<header id="header" class="alt">
@@ -83,12 +136,28 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 				<div id="description-row" class="row">
 					<div class="2u 12u(narrower)"> </div>
 					<div id="description" class="8u 12u(narrower)">
-						<center><p>Your friend must meet with the attorney in person to be eligible for this gift.</p></center><br>
+						<center><p>Your friend must meet with the attorney in person to be eligible for this gift.</p></center>
 
-						<div id="hidden-form">
+						<div id="hidden-form" style="text-align:center">
 							<center><h1>Your referral link:</h1>
 							<h2 id="referral-link"></h2></center>
-							<br>
+
+
+							<ul class="icons"> 
+								<li><div id='fbshare' class="icon circle fa-facebook">
+								</div></li>
+
+								<li><a id='twtrshare'
+								href= "https://twitter.com/intent/tweet" class="icon circle fa-twitter" 
+								><span class="label">Twitter</span></a>
+								</li>
+								
+							</ul>
+
+ 
+									<button id="copyBtn" style="width=auto" type="button" class="button">Copy to Clipboard
+									</button>				
+
 						</div>
 
 						<div id="question-main">
@@ -113,6 +182,11 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 		<!-- Scripts -->
 
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js"></script>
+
+
+		<script>
+
+		</script>
 
 
 		<script src="assets/js/jquery.min.js"></script>
