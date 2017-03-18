@@ -1,13 +1,13 @@
 
-var QuestionTree = QuestionTree.get();
-var root = QuestionTree[QuestionTree.root];
+var questionTree = QuestionTree.get();
+var root = questionTree[QuestionTree.root];
 dump("question root", root)
 
 log.info("Question root", root);
 
 var firstQuestion = Lockr.get("FIRST_QUESTION");
 var firstAnswer = Lockr.get("FIRST_ANSWER");
-var currentNode = QuestionTree[firstAnswer.nodeId];
+var currentNode = questionTree[firstAnswer.nodeId];
 
 dump("firstAnswer", firstAnswer);
 dump("secondQuestion", currentNode);
@@ -43,17 +43,22 @@ var vue = new Vue({
 			this.history.push(historyElement);
 
 			if (newNodeId != -1) {
-				this.questionString = QuestionTree[newNodeId].value;
-				this.answerMap = QuestionTree[newNodeId].options;
+				this.questionString = questionTree[newNodeId].value;
+				this.answerMap = questionTree[newNodeId].options;
 			} else {
 				this.nextPage();
 			}
 		},
 
 		nextPage() {
-			dump("history", this.history);
 			Lockr.set("history", this.history);
 			window.location.href = "email.html";
+		},
+
+		reset() {
+			this.questionString = root.value;
+			this.answerMap = root.options;
+			this.history = [];
 		}	
 	}
 });

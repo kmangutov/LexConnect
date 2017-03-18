@@ -8,6 +8,21 @@
 	color: #333;
 }
 
+.question-special {
+	margin-top: 80px;
+	background: #6478BA;
+	border-color: #6478BA !important;
+	border-radius: 4px;
+	width: 60%;
+	color: #FFFFFF;
+}
+
+.question-special:hover {
+	background: #FFFFFF !important;
+	border-color: #6478BA !important;
+	color: #333 !important;
+} 
+
 #question-logo {
 	color: #3fb1a3;
 }
