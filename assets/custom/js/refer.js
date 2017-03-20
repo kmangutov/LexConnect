@@ -5,13 +5,8 @@ var emailTextField = $('#email');
 var referralInfoForm = $('#referral-info');
 var submitButton = $('#submit');
 
-
 var hiddenForm = $('#hidden-form');
 var linkText = $('#referral-link');
-
-
-
-var linkCode = "";
 
 var initValidation = function() {
 	referralInfoForm.validate({
@@ -52,9 +47,7 @@ var initListeners = function(ev) {
 				linkText.text("http://tryzealous.com/?r=" + generateCode());
 				submitButton.text('Thanks!');
 
-			});
-			linkCode = linkCode + linkText.text();
- 
+			}); 
 		}
 	});
 }
@@ -67,16 +60,16 @@ var generateCode = function() {
 //below are functions to set the share links for fb and twitter
 //copy function just copies it to clipbaord
 
-document.getElementById('twtrshare').onclick = function(ev) {
+$('#twtrshare').click(function(ev) {
 		    ev.preventDefault();
 		    // Remove existing iframe
 		    $('#twtrshare iframe').remove();
 		    // Generate new markup
 		    $('#twtrshare').attr('href', "https://twitter.com/intent/tweet?text="+ encodeURIComponent("Need a lawyer? Try Zealous!") +"&url="+ encodeURIComponent("http://tryzealous.com/?r="+generateCode()));
 		    twttr.widgets.load();
-}
+});
 
-document.getElementById('fbshare').onclick = function() {
+$('#fbshare').click(function() {
 	  FB.ui({
 	    method: 'share',
 	    mobile_iframe: true,
@@ -85,8 +78,9 @@ document.getElementById('fbshare').onclick = function() {
 	  }, function(response){
 	  	console.log(response);
 	  });
-}
+});
 
+/*
 document.getElementById('copyBtn').onclick = function() {
 			// Copies a string to the clipboard. Must be called from within an 
 			// event handler such as click. May return false if it failed, but
@@ -119,6 +113,7 @@ document.getElementById('copyBtn').onclick = function() {
 
 			copyToClipboard(linkText.text());
 }
+*/
 
 $(document).ready(function() {
 	submitButton.prop('disabled', false);

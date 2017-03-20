@@ -7,8 +7,6 @@
 -->
 <html>
 	<head>
-
-
 		<link rel="shortcut icon" href="">
 		<title>Zealous</title>
 
@@ -136,16 +134,15 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 				<div id="description-row" class="row">
 					<div class="2u 12u(narrower)"> </div>
 					<div id="description" class="8u 12u(narrower)">
-						<center><p>Your friend must meet with the attorney in person to be eligible for this gift.</p></center>
+						<center><p>Share your referral link with your friends via email, Facebook, or Twitter. You’ll receive your $50 gift card when they meet with at least one of our recommended attorneys in person.</p></center>
 
-						<div id="hidden-form" style="text-align:center">
+						<div id="hidden-form">
 							<center><h1>Your referral link:</h1>
 							<h2 id="referral-link"></h2></center>
 
-
 							<ul class="icons"> 
-								<li><div id='fbshare' class="icon circle fa-facebook">
-								</div></li>
+								<li><a id='fbshare' class="icon circle fa-facebook">
+								</a></li>
 
 								<li><a id='twtrshare'
 								href= "https://twitter.com/intent/tweet" class="icon circle fa-twitter" 
@@ -153,19 +150,19 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 								</li>
 								
 							</ul>
-
- 
-									<button id="copyBtn" style="width=auto" type="button" class="button">Copy to Clipboard
-									</button>				
+							<!-- Control C button 
+							<button id="copyBtn" style="width=auto" type="button" class="button">Copy to Clipboard
+							</button>	
+							-->			
 
 						</div>
 
 						<div id="question-main">
 							<form novalidate="true" id="referral-info">
-								<p><span>Name</span>
+								<p><span>Your Name (required)</span>
 								<input id="name" name="name" type="text" placeholder="Paul"/></p>
 
-								<p><span>Email (required)</span>
+								<p><span>Your Email (required)</span>
 								<input id="email" name="email" type="text" placeholder="you@example.com"/></p>
 								
 								<footer><center><button class="button question-option" id="submit" type="button">Get referral link</button></center></footer>
@@ -182,11 +179,6 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 		<!-- Scripts -->
 
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js"></script>
-
-
-		<script>
-
-		</script>
 
 
 		<script src="assets/js/jquery.min.js"></script>
