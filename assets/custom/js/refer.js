@@ -71,6 +71,7 @@ $('#twtrshare').click(function(ev) {
 
 $('#fbshare').click(function() {
 	  FB.ui({
+	  	app_id:  403623496664520,
 	    method: 'share',
 	    mobile_iframe: true,
 	    quote: 'Need a Lawyer? Try Zealous!',
