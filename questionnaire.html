@@ -83,9 +83,9 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 
 						<section id="email-window" class="wrapper style3 container special">
 					<center>
-					<div id = "description-row" class="row">
+					<div id="description-row" class="row">
 						<div class="2u 12u(narrower)"> </div>
-						<div id = "description" class="8u 12u(narrower)" display= "table">
+						<div id="description" class="8u 12u(narrower)" display="table">
 						<p align="center">Our legal questionnaire won't take more than 2 minutes. It helps us pinpoint attorneys with relevant expertise.</p><br>
 						<div id="question-main">
 							<p class="question-string">{{ questionString }}</p>
@@ -93,7 +93,12 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 							<div v-for="(value, index) in answerMap">
 								<a @click="selectOption(value, index)" class="button question-option">{{ index }}</a>
 							</div>
-							<a class="button question-special" @click="reset()" class="button">Reset your Query</a>
+
+							<div class="row">
+								<div class="6u 12u(narrower)"><a class="button question-special" @click="reset()">Start from scratch</a></div>
+
+								<div class="6u 12u(narrower)"><a class="button question-special" @click="nextPage()">I'm not sure...</a></div>
+							</div>
 						</div>
 						
 						</div>
