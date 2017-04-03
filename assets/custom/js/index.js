@@ -20,9 +20,7 @@ var submitForm = function(struct) {
 	window.location.href = "questionnaire.html";
 }
 
-callToActionSubmit.click(function() {
-	callToActionSubmit.prop('disabled', true);
-
+logService.bind("ctoa", function() {
 	var selected = callToActionDropdown.children("option").filter(":selected");
 	var text = selected.text();
 	var value = callToActionDropdown.val();
@@ -31,18 +29,9 @@ callToActionSubmit.click(function() {
 		nodeId: value
 	};
 
-	// We need to finish the logging POST request before we go to next page
-	logService.click("ctoa").then(function() {
-		submitForm(struct);
-	});
+	submitForm(struct);
 });
 
-ctoa2.click(function() {
-	ctoa2.prop('disabled', true);
-
-	
-	// We need to finish the logging POST request before we go to next page
-	logService.click("ctoa2").then(function() {
-		submitForm(DEFAULT_NODE);
-	});
+logService.bind("ctoa2", function() {
+	submitForm(DEFAULT_NODE);
 });

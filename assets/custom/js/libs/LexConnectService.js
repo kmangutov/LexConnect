@@ -54,7 +54,3 @@ var LexConnectService = function(type) {
 		},
 	}
 }
-
-// var LexConnectService = LexConnectService('events');
-// service.getAll().then(function (response) {alert(JSON.stringify(response))});
-
