@@ -4,10 +4,8 @@ var dump = function(text, obj) {
 }
 
 
-
+// 'type' represents the string name of the table
 var LexConnectService = function(type) {
-
-	var VERSION = 1;
 
 	// Advanced security (jk) so bots don't scrape our db pw
 	var a = "https://api.mon";
@@ -37,7 +35,6 @@ var LexConnectService = function(type) {
 	var wrap = function(data) {
 		var metadata = {
 			_TIME: timestamp(),
-			_VERSION: VERSION,
 			_URL: window.location.href,
 		}
 		return $.extend(data, metadata);
@@ -58,6 +55,6 @@ var LexConnectService = function(type) {
 	}
 }
 
-var service = LexConnectService('events');
-service.getAll().then(function (response) {alert(JSON.stringify(response))});
+// var LexConnectService = LexConnectService('events');
+// service.getAll().then(function (response) {alert(JSON.stringify(response))});
 

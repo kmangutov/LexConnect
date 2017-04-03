@@ -1,5 +1,7 @@
 
 
+var logService = LexLogService("index");
+
 Lockr.flush();
 var callToActionSubmit = $('#ctoa');
 var callToActionDropdown = $('#index-select');
@@ -19,6 +21,8 @@ var submitForm = function(struct) {
 }
 
 callToActionSubmit.click(function() {
+	callToActionSubmit.prop('disabled', true);
+
 	var selected = callToActionDropdown.children("option").filter(":selected");
 	var text = selected.text();
 	var value = callToActionDropdown.val();
@@ -26,9 +30,19 @@ callToActionSubmit.click(function() {
 		text: text,
 		nodeId: value
 	};
-	submitForm(struct);
+
+	// We need to finish the logging POST request before we go to next page
+	logService.click("ctoa").then(function() {
+		submitForm(struct);
+	});
 });
 
 ctoa2.click(function() {
-	submitForm(DEFAULT_NODE);
+	ctoa2.prop('disabled', true);
+
+	
+	// We need to finish the logging POST request before we go to next page
+	logService.click("ctoa2").then(function() {
+		submitForm(DEFAULT_NODE);
+	});
 });
