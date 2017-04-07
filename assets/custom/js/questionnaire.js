@@ -13,6 +13,8 @@ dump("firstAnswer", firstAnswer);
 dump("secondQuestion", currentNode);
 dump("firstQuestion ", firstQuestion)
 
+logService = LexLogService("questionnaire");
+
 /*var history = [
 	{
 		question: firstQuestion,
@@ -42,6 +44,9 @@ var vue = new Vue({
 			};
 			this.history.push(historyElement);
 
+			// Log step
+			logService.click("questionOption", historyElement);
+
 			if (newNodeId != -1) {
 				this.questionString = questionTree[newNodeId].value;
 				this.answerMap = questionTree[newNodeId].options;
@@ -52,10 +57,21 @@ var vue = new Vue({
 
 		nextPage() {
 			Lockr.set("history", this.history);
-			window.location.href = "email.html";
+			logService.click("questionnaireFinish", this.history).then(function() {
+				window.location.href = "email.html";
+			});
+		},
+
+		submitPressed() {
+			Lockr.set("history", this.history);
+			logService.click("questionnaireSubmit", this.history).then(function() {
+				window.location.href = "email.html";
+			});
 		},
 
 		reset() {
+			logService.click("questionnaireReset");
+
 			this.questionString = root.value;
 			this.answerMap = root.options;
 			this.history = [];

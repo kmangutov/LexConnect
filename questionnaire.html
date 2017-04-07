@@ -115,7 +115,7 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 							<div class="row">
 								<div class="6u 12u(narrower)"><a class="button question-special" @click="reset()">Start from scratch</a></div>
 
-								<div class="6u 12u(narrower)"><a class="button question-special" @click="nextPage()">I'm not sure...</a></div>
+								<div class="6u 12u(narrower)"><a class="button question-special" @click="submitPressed()">I'm not sure...</a></div>
 							</div>
 						</div>
 						
@@ -132,18 +132,23 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 		</div>
 
 		<!-- Scripts -->
+			<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/loglevel/1.4.0/loglevel.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lockr/0.8.4/lockr.min.js"></script>
 
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollgress.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollgress.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="assets/js/main.js"></script>
+
+
+<script type="text/javascript" src="assets/custom/js/libs/LexConnectService.js"></script>
+<script type="text/javascript" src="assets/custom/js/libs/LexLogService.js"></script>
 
 <script type="text/javascript" src="assets/js/base.js"></script>
 <script type="text/javascript" src="assets/custom/js/libs/QuestionTree.js"></script>

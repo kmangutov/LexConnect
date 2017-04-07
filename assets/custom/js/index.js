@@ -34,7 +34,9 @@ var clickCtoa2 = function() {
 	submitForm(DEFAULT_NODE);
 }
 
+// Logging + callbacks
 logService = LexLogService("index");
 logService.bind(callToActionSubmit, clickCtoa1);
 logService.bind(ctoa2, clickCtoa2);
+logService.bindDropdown(callToActionDropdown);
 
