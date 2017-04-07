@@ -57,7 +57,7 @@ var LexLogService = function(page) {
 			elem.click(function() {
 				elem.prop('disabled', true);
 				var obj = {
-					event: "CLICK",
+					event: "ELEMENT_CLICK",
 					source: elem.attr('id'),
 				};
 				logConnectService.post(wrap(obj)).then(function() {

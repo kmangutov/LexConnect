@@ -13,7 +13,7 @@ dump("firstAnswer", firstAnswer);
 dump("secondQuestion", currentNode);
 dump("firstQuestion ", firstQuestion)
 
-logService = LexLogService("index");
+logService = LexLogService("questionnaire");
 
 /*var history = [
 	{
