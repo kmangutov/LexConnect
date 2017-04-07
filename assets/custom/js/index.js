@@ -1,5 +1,6 @@
 
 
+
 Lockr.flush();
 var callToActionSubmit = $('#ctoa');
 var callToActionDropdown = $('#index-select');
@@ -15,10 +16,10 @@ var submitForm = function(struct) {
 	Lockr.set('FIRST_QUESTION', "What is your issue?");
 	Lockr.set('FIRST_ANSWER', struct);
 	Lockr.set('REFERRAL_CODE', referralCode);
-	window.location.href = "questionnaire.html";
+	location.href = "questionnaire.html";
 }
 
-callToActionSubmit.click(function() {
+var clickCtoa1 = function() {
 	var selected = callToActionDropdown.children("option").filter(":selected");
 	var text = selected.text();
 	var value = callToActionDropdown.val();
@@ -27,8 +28,13 @@ callToActionSubmit.click(function() {
 		nodeId: value
 	};
 	submitForm(struct);
-});
+}
 
-ctoa2.click(function() {
+var clickCtoa2 = function() {
 	submitForm(DEFAULT_NODE);
-});
+}
+
+logService = LexLogService("index");
+logService.bind(callToActionSubmit, clickCtoa1);
+logService.bind(ctoa2, clickCtoa2);
+
