@@ -64,5 +64,38 @@ var LexLogService = function(page) {
 				}).catch(function(result) {alert(result);});
 			});
 		},
+
+		/*
+			Binds dropdown changes to logging.
+		*/
+		bindDropdown: function(elem, callback) {
+			elem.change(function() {
+				var val = elem.val();
+				var text = elem.find('option:selected').text();
+
+				var obj = {
+					event: "CHANGE",
+					source: elem.attr('id'),
+					val: val,
+					text: text,
+				}
+				logConnectService.post(wrap(obj)).then(function() {
+					if (callback) {
+						callback();
+					}
+				}).catch(function(result) {alert(result);});
+			});
+		}
 	}
+
+
+
+
+
+
+
+
+
+
+
 }
