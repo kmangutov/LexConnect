@@ -34,11 +34,15 @@ var LexLogService = function(page) {
 	return {
 		pageLoad: pageLoad,
 
-		click: function(id) {
+		click: function(id, extras) {
 			var obj = {
 				event: "ELEMENT_CLICK",
 				source: id,
 			}
+			if (extras) {
+				obj = $.extend(obj, extras);
+			}
+			
 			return logConnectService.post(wrap(obj));
 		},
 
