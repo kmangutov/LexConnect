@@ -1,6 +1,7 @@
 
 
 var referralCode = Lockr.get('REFERRAL_CODE');
+logService = LexLogService("email");
 
 var html = "<table>";
 
@@ -49,9 +50,10 @@ $(document).ready(function() {
 				referralCode: referralCode
 			}
 
+			var logging = logService.click("submit", obj);
 			var clientEmail = emailjs.send("gmail", "email_submission_thanks", obj);
 			var adminEmail = emailjs.send("gmail", "form_submission", obj);
-			Promise.all([clientEmail, adminEmail]).then(function () {
+			Promise.all([clientEmail, adminEmail, logging]).then(function () {
 				window.location.href = "thanks.html";
 			});
 		}

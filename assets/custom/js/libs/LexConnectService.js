@@ -10,7 +10,7 @@ var LexConnectService = function(type) {
 	// Advanced security (jk) so bots don't scrape our db pw
 	var a = "https://api.mon";
 	var aa = "golab.com/api/1/databases/lex";
-	var b = "connect2/collections/" + type;
+	var b = "connect3/collections/" + type;
 	var c = "?ap";
 	var ca = "iKey="
 	var caa = "iILS";
@@ -21,7 +21,7 @@ var LexConnectService = function(type) {
 	var urlForObjectId = function(collection, id) {
 		var a = "https://api.mon";
 		var aa = "golab.com/api/1/databases/lex";
-		var b = "connect2/collections/" + collection;
+		var b = "connect3/collections/" + collection;
 		var c = "/" + id + "?apiKey=" + key;
 		return a + aa + b + c;
 	}
