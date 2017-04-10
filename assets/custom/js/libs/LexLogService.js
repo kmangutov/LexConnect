@@ -7,22 +7,34 @@ var instance = Math.random();
 var LexLogService = function(page) {
 
 	// Keep track of format backwards-compatability
-	var VERSION = 1;
+	var VERSION = 2;
 
 	// Add metadata (source, session) to an object
 	var wrap = function(data) {
 		var metadata = {
 			page: page,
 			instance: instance,
+			sessionId: _getSessionId(),
 			version: VERSION,
 		}
 		return $.extend(data, metadata);
 	}
 
 	var pageLoad = function() {
+
+		var vars = getUrlVars();
+
+
 		var obj = {
 			event: "PAGE_LOAD",
 		}
+
+		if (vars['r']) {
+			obj = $.extend(obj, {
+				referralCode: vars['r'],
+			});
+		}
+
 		return logConnectService.post(wrap(obj));
 	}
 
@@ -43,6 +55,18 @@ var LexLogService = function(page) {
 				obj = $.extend(obj, extras);
 			}
 			
+			return logConnectService.post(wrap(obj));
+		},
+
+		property: function(id, extras) {
+			var obj = {
+				event: "PROPERTY",
+				source: id,
+			}
+			if (extras) {
+				obj = $.extend(obj, extras);
+			}
+
 			return logConnectService.post(wrap(obj));
 		},
 
