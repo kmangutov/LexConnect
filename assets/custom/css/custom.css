@@ -1,4 +1,10 @@
 
+#banner {
+	background-image: url("../../css/images/light-bl.svg"), 
+		url("../../css/images/light-br.svg"), 
+		url("../../css/images/overlay.png"), 
+		url("../imgs/splash.jpg")
+}
 
 a:hover {
 	color: white !important;
