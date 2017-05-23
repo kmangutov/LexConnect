@@ -1,8 +1,8 @@
 
 #banner {
-	background-image: url("../../css/images/light-bl.svg"), 
-		url("../../css/images/light-br.svg"), 
-		url("../../css/images/overlay.png"), 
+	background-image: url("../imgs/light-bl.svg"), 
+		url("../imgs/light-br.svg"), 
+		url("../imgs/overlay.png"), 
 		url("../imgs/splash.jpg")
 }
 
