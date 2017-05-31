@@ -108,7 +108,11 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 					&nbsp; &nbsp; &nbsp; &nbsp;Please be sure to fill out all required fields, and indicate if you would like clients to be directed to a different email than the one you would like to receive lead information at. We also request that you submit a 125 x 125px image of yourself and a brief 2-3 sentence bio. This image and the bio you provide will be provided to potential clients after you have accepted a lead. (No information will be sent to a lead until you have indicated you would like your information passed on).</p><br>
 
 							<div id="question-main">
-								<form novalidate="true" id="attorney-signup-form">
+								<form novalidate="true" id="attorney-signup-form" 
+								action=""
+								method="post" 
+								enctype="multipart/form-data"
+								onsubmit="return redirect()">
 								
 
 								<div class = "row">
@@ -118,13 +122,13 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 									<input id="name" name="name" type="text" placeholder="John Lawson"/></p>
 
 									<p><span>Name of Practice</span>
-									<input id="name" name="name" type="text" placeholder="Lawson and Associates"/></p>									
+									<input id="name-practice" name="name-practice" type="text" placeholder="Lawson and Associates"/></p>									
 
 									<p><span>Primary Email (required)</span>
 									<input id="email" name="email" type="text" placeholder="lawson@example.com"/></p>
 
 									<p><span>Email to receive leads (required)</span>
-									<input id="email" name="email" type="text" placeholder="lawson@example.com"/></p>
+									<input id="lead-email" name="lead-email" type="text" placeholder="lawson@example.com"/></p>
 															
 									<p><span>Counties in which you practice law (required)</span><textarea id="counties" name="counties" placeholder="Champaign, Vermilion"></textarea></p>
 									
@@ -136,12 +140,12 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 									
 
 
-							<div id="checkboxes">
+							<div id="checkboxes" name="checkboxes">
 							  <p><span><label>Areas of Law (required)</label>
 							  <ul>
-							    <li><input id = "DUI" value="DUI" type="checkbox"> DUI</li>
-							    <li><input id = "Divorce" value="Divorce" type="checkbox"> Divorce</li>
-							    <li><input id = "Business Formation" value="Bussiness Formation" type="checkbox">Business Formation</li>
+							    <li><input id = "DUI" name = "DUI"   value="DUI" type="checkbox"> DUI</li>
+							    <li><input id = "Divorce" name = "Divorce" value="Divorce" type="checkbox"> Divorce</li>
+							    <li><input id = "BusinessFormation" name= "BusinessFormation" value="Bussiness Formation" type="checkbox"> Business Formation</li>
 							   
 
 							  </ul>
@@ -150,16 +154,22 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 
 							<p><span>Other areas of law you cover</span><textarea id="other_areas" name="other_areas" placeholder="Family Law, Criminal Defense"></textarea></p>		
 
-							<p><span>Bio (max 350 characters) </span><textarea id="freeform" name="freeform"></textarea></p>
+							<p><span>Bio (max 350 characters) </span><textarea id="bio" name="bio"></textarea></p>
+							
+							
+
 
 							<p><span>Picture</span><input  type="file"   id="pic" name="pic"></textarea></p>
 
 
+
 								</div>
 								</div>
 
+								<input type="hidden" name="redirect_to" value="http://tryzealous.com/thank_you.html" >
+
 								</form>
-								<footer><center><a class="button question-option" id="Submit" type="submit">Submit</a></center></footer>
+								<footer><center><a class="button question-option" id="Submit" >Submit</a></center></footer>
 							</div>
 						</div>
 
@@ -168,9 +178,6 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 
 						<div class="1u 12u(narrower)"></div>
 					</div>
-
-
-
 
 
 
