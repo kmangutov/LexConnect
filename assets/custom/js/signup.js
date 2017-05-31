@@ -225,6 +225,15 @@ $(document).ready(function() {
 				required: true,
 				minlength: 10
 			},
+			mailingAddress: {
+				required: true
+			},
+			city: {
+				required: true
+			},
+			state: {
+				required: true
+			},
 			years: {
 				required: true
 			},
