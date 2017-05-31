@@ -3251,3 +3251,8 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
 			}
 
 	}
+
+
+.error {
+  color: #F00;
+}
