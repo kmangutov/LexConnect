@@ -208,6 +208,10 @@ $(document).ready(function() {
 				required: true,
 				email: true
 			},
+			leadEmail: {
+				required: true,
+				email: true
+			},
 			zipcode: {
 				required: true,
 				digits: true,
@@ -216,6 +220,10 @@ $(document).ready(function() {
 			},
 			counties: {
 				required: true
+			},
+			phone: {
+				required: true,
+				minlength: 10
 			},
 			years: {
 				required: true
@@ -231,8 +239,10 @@ $(document).ready(function() {
 		},
 		messages: {
 			email: "Please enter a valid email address.",
+			leadEmail: "Please enter a valid email address.",
 			zipcode: "Please enter a valid 5 digit zipcode.",
-			pic: "Please upload an image of yourself."
+			pic: "Please upload an image of yourself.",
+			phone: "Please enter a phone number in the format xxx-xxx-xxxx."
 		}
 
 	});
@@ -254,7 +264,7 @@ $(document).ready(function() {
 
 			for (var i =0; i < checklist.length; i++){
 				if (checklist[i].checked) {
-					console.log(checklist[i].value)
+					//console.log(checklist[i].value)
 				}
 			}
 
@@ -285,6 +295,11 @@ $(document).ready(function() {
 
 
 
+
+		}
+
+		else{
+			$('#Submit').text("Submit");
 
 		}
 
