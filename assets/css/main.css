@@ -3256,3 +3256,8 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
 .error {
   color: #F00;
 }
+
+#signup-info{
+    display: block;
+    margin: 0 auto;
+}
