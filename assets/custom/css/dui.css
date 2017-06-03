@@ -1,0 +1,19 @@
+
+
+#question-main {
+	padding: 20px;
+}
+
+.aside {
+	font-style: italic;
+	font-weight: 200;
+}
+
+#description p {
+	margin: 0px !important;
+	margin-bottom: 20px !important;
+}
+
+textarea {
+	resize: none;
+}
