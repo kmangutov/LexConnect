@@ -79,7 +79,7 @@ function submitSimpleForm(){
 
 //function to make post request to convertkit 
 //works, but no response given which should be fine
-function convertkitPost(area, name, emailIn) {
+function convertkitPost(area, name, emailIn, primaryEmail) {
   // Add the iframe with a unique name
   var iframe = document.createElement("iframe");
   var uniqueString = "Tz4krNAWrdBuLkKO7v3U";
@@ -144,7 +144,10 @@ function convertkitPost(area, name, emailIn) {
 				    api_key: "bWEMgj_xI4srTSdjlFikWw",
 				    email: emailIn,
 				    first_name: name,
-				    tags: tags_final
+				    tags: tags_final,
+				    fields: {
+				    	"primary_email" : primaryEmail
+				    }
 				  },
 
 	    success: function(response) {
@@ -296,7 +299,7 @@ $(document).ready(function() {
 
 
 			//make sure both ajax posts finish, then we submit the simpleform, and after that we redirect to thanks page
-		$.when(convertkitPost(areas, $('#name').val(), $('#email').val())
+		$.when(convertkitPost(areas, $('#name').val(), $('#leadEmail').val(), $('#email').val())
 
 			/*, imgurPost()*/
 
