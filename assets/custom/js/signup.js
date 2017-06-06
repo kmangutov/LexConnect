@@ -183,7 +183,7 @@ function imgurPost(){
 	    data: formData,
 	    success: function(response) {
 
-	    	submitSimpleForm();
+	    	//submitSimpleForm();
 	      //console.log(response);
 
 	    },
@@ -296,7 +296,11 @@ $(document).ready(function() {
 
 
 			//make sure both ajax posts finish, then we submit the simpleform, and after that we redirect to thanks page
-		$.when(convertkitPost(areas, $('#name').val(), $('#email').val()), imgurPost()).done(function(a1, a2){
+		$.when(convertkitPost(areas, $('#name').val(), $('#email').val())
+
+			/*, imgurPost()*/
+
+			).done(function(a1){
 			submitSimpleForm();
 			//window.location = "http://tryzealous.com/thanks.html"
 		});
