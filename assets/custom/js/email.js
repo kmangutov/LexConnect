@@ -1,5 +1,26 @@
 
 
+var getDuiQuestionnaireObject = function() {
+	var vals = [
+		'questionnaire', 
+		'county_val',
+		'source',
+		'first_dui',
+		'vehicle_owner',
+		'physical_location',
+		'engine_running',
+		'tests_given',
+		'freeform'
+	];
+
+	var obj = {};
+	vals.forEach(function(val) {
+		obj[val] = getUrlVars()[val];
+	});
+	return obj;
+}
+console.log(JSON.stringify(getDuiQuestionnaireObject()));
+
 var referralCode = Lockr.get('REFERRAL_CODE');
 logService = LexLogService("email");
 
