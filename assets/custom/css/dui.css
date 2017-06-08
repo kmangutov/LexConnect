@@ -17,3 +17,7 @@
 textarea {
 	resize: none;
 }
+
+.label-left {
+	float: left;
+}
