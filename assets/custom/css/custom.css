@@ -6,6 +6,13 @@
 		url("../imgs/splash.jpg")
 }
 
+.banner-police {
+	background-image: url("../imgs/light-bl.svg"), 
+		url("../imgs/light-br.svg"), 
+		url("../imgs/overlay.png"), 
+		url("../imgs/policelol.jpg") !important
+}
+
 a:hover {
 	color: white !important;
 }
