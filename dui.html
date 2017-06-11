@@ -75,16 +75,7 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 				<article id="main">
 
 					<section id="blue-banner" class="wrapper style2 container special">
-						<div class="row">
-							<div class="4u 12u(mobile)">
-								<section id="">
-									<div id="arrow-container" class="small-2 columns" data-equalizer-watch>
-										<h4>Free DUI Consultation</h4>
-									</div>
-
-								</section>
-							</div>
-						</div>
+						<center><h4><strong>Free DUI Consultation</strong></h4></center>
 					</section>
 
 
@@ -103,24 +94,25 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 
 							<!-- PROMPT JUMBOTRON -->
 							<div id="question-main" v-if="step > 0">
-								<a v-on:click="back()" href="#">Go back...</a><br><Br>
+								<a v-on:click="back()" href="#" v-if="step > 2"><i class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+</a><br><Br>
 
 								<!-- ZIP CODE -->
 								<template v-if="step == 1">
 									<div class="row">
-										<div class="6u 12u(narrower)">
+										<div class="12u 12u(narrower)">
 											<p>In which zip code where were you ticketed?</p> <input placeholder="61820" type="text">
 										</div>
-										<div class="6u 12u(narrower) aside">
+										<!--<div class="6u 12u(narrower) aside">
 											Different zip codes may belong to different counties with their own interpretations of the law.
-										</div>
+										</div>-->
 									</div>
 								</template>
 
 								<!-- FIRST DUI -->
 								<template v-if="step == 2">
 									<div class="row">
-										<div class="6u 12u(narrower)">
+										<div class="12u 12u(narrower)">
 											<p>Is this your first DUI?</p>
 											<form action="">
 												<input id="f1" name="first_dui" type="radio" value="yes" checked><label for="f1"> Yes</label><br>
@@ -128,16 +120,13 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 											</form>
 
 										</div>
-										<div class="6u 12u(narrower) aside">
-											Court rulings for a first DUI may be more lenient than subsequent DUI cases.
-										</div>
 									</div>
 								</template>
 
 								<!-- VEHICLE OWNER -->
 								<template v-if="step == 3">
 									<div class="row">
-										<div class="6u 12u(narrower)">
+										<div class="12u 12u(narrower)">
 											<p>Are you the owner of the vehicle in question?</p>
 											<form action="">
 												<input id="o1" name="vehicle_owner" type="radio" value="yes" checked><label for="o1"> Yes</label><br>
@@ -145,16 +134,13 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 											</form>
 
 										</div>
-										<div class="6u 12u(narrower) aside">
-											I'm not sure how this influences your DUI case but I don't want to leave this part blank.
-										</div>
 									</div>
 								</template>
 
 								<!-- PHYSICAL LOCATION -->
 								<template v-if="step == 4">
 									<div class="row">
-										<div class="6u 12u(narrower)">
+										<div class="12u 12u(narrower)">
 											<p>Which best describes your physical location in the car?</p>
 											<form action="">
 												<input id="p1" name="physical_location" type="radio" value="driver_seat" checked><label for="p1"> Driver's seat</label><br>
@@ -163,25 +149,19 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 											</form>
 
 										</div>
-										<div class="6u 12u(narrower) aside">
-											Being in the driver's seat can make this case more challenging.
-										</div>
 									</div>
 								</template>
 
 								<!-- ENGINE RUNNING -->
 								<template v-if="step == 5">
 									<div class="row">
-										<div class="6u 12u(narrower)">
+										<div class="12u 12u(narrower)">
 											<p>Was the engine running at the time of the arrest?</p>
 											<form action="">
 												<input id="e1" name="engine_running" type="radio" value="yes" checked><label for="e1"> Yes</label><br>
 												<input id="e2" name="engine_running" type="radio" value="no"><label for="e2"> No</label><br>
 											</form>
 
-										</div>
-										<div class="6u 12u(narrower) aside">
-											
 										</div>
 									</div>
 								</template>

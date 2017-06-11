@@ -2456,7 +2456,7 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
 			-webkit-animation-fill-mode: forwards;
 			-ms-animation-fill-mode: forwards;
 			animation-fill-mode: forwards;
-			background: rgba(52, 27, 43, 0.5);
+			background: rgba(52, 27, 43, 0.7);
 			color: #fff;
 			display: inline-block;
 			opacity: 0;

@@ -23,7 +23,7 @@ var checkboxVal = function(name) {
 }
 
 var freeformVal = function(name) {
-  return $('textarea[name=' + name + ']').value;
+  return $('textarea[name=' + name + ']').val();
 }
 
 // you can only fucking access an element if it's visible fuck...
@@ -38,7 +38,7 @@ var saveState = function() {
     physical_location: radioVal('physical_location'),
     engine_running: radioVal('engine_running'),
     tests_given: checkboxVal('tests_given'),
-    freeform: freeformVal('freeform')
+    freeform: escape(freeformVal('freeform'))
   }
 
   console.log("curretnState: " + JSON.stringify(currentState));
