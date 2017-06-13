@@ -58,14 +58,14 @@ var vue = new Vue({
 		nextPage() {
 			Lockr.set("history", this.history);
 			logService.click("questionnaireFinish", this.history).then(function() {
-				window.location.href = "email.html";
+				window.location.href = "email2.html";
 			});
 		},
 
 		submitPressed() {
 			Lockr.set("history", this.history);
 			logService.click("questionnaireSubmit", this.history).then(function() {
-				window.location.href = "email.html";
+				window.location.href = "email2.html";
 			});
 		},
 

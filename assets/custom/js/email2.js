@@ -155,6 +155,9 @@ $(document).ready(function() {
 			}
 
 
+			var temp_freeform;
+
+			if ($('#countyIncident'))
 
 			var area_of_law = getUrlVars()['questionnaire'];
 
@@ -168,7 +171,7 @@ $(document).ready(function() {
 
 
 			var obj = {
-				countyIncident: county_of_incident,
+				countyIncident: $('#countyIncident').val(),
 				countyResidence: $('#county').val(),
 				email: $('#email').val(), 
 				html: html,
@@ -180,7 +183,8 @@ $(document).ready(function() {
 				monthlyIncome: $('#monthlyIncome').val(), 
 				dependents: $('#dependents').val(),
 				questionnaireInfo: questionnaire_info,
-				additionalInfo:  decodeURI(getUrlVars()['freeform'])
+				additionalInfo: $('#additionalInfo').val(),
+
 			}
 
 			var logging = logService.click("submit", obj);
