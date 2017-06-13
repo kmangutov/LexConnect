@@ -2082,7 +2082,7 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
 		font-size: 0.8em;
 		font-weight: 900;
 		letter-spacing: 2px;
-		min-width: 18em;
+		min-width: 14em;
 		padding: 1.01em 2em 1em 2em;
 		line-height: 2em;
 		height: auto;
@@ -3265,4 +3265,15 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
     margin: 0 auto;
 }
 
-/*
+.reveal-if-active {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+input[type="radio"]:checked ~ .reveal-if-active,
+input[type="checkbox"]:checked ~ .reveal-if-active {
+  opacity: 1;
+  max-height: 500px; /* little bit of a magic number :( */
+  overflow: visible;
+}
