@@ -110,6 +110,9 @@ $(document).ready(function() {
 				required: true,
 				email: true
 			},
+			countyIncident: {
+				required: true
+			},
 			county: {
 				required: true,
 			},
@@ -122,6 +125,7 @@ $(document).ready(function() {
 			email: "Please enter a valid email address.",
 			phone: "Please enter a valid 10 digit phone number.",
 			county: "Please enter the county in which you reside in.",
+			countyIncident: "Please enter the county in which your case occured in."
 		}
 
 	});
