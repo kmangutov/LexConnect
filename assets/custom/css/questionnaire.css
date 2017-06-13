@@ -1,4 +1,14 @@
 
+
+
+a {
+	color: #6478BA !important;
+}
+
+a:hover {
+	color: #333 !important;
+}
+
 .question-option {
 	/* Rectangle: */
 	background: #FFFFFF;
@@ -9,7 +19,8 @@
 }
 
 .question-special {
-	margin-top: 80px;
+	color: white !important;
+	margin-top: 0px;
 	background: #6478BA;
 	border-color: #6478BA !important;
 	border-radius: 4px;

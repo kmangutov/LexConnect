@@ -75,16 +75,7 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 				<article id="main">
 
 					<section id="blue-banner" class="wrapper style2 container special">
-						<div class="row">
-							<div class="4u 12u(mobile)">
-								<section id="">
-									<div id="arrow-container" class="small-2 columns" data-equalizer-watch>
-										<h4>Free DUI Consultation</h4>
-									</div>
-
-								</section>
-							</div>
-						</div>
+						<center><h4><strong>Free DUI Consultation</strong></h4></center>
 					</section>
 
 
@@ -103,33 +94,31 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 
 							<!-- PROMPT JUMBOTRON -->
 							<div id="question-main" v-if="step > 0">
-								<a v-on:click="back()" href="#">Go back...</a><br><Br>
+								<a v-on:click="back()" href="#" v-if="step > 2"><i class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+</a><br><Br>
 
 								<!-- ZIP CODE -->
 								<template v-if="step == 1">
 									<div class="row">
-										<div class="6u 12u(narrower)">
+										<div class="12u 12u(narrower)">
 											<p>In which zip code where were you ticketed?</p> <input placeholder="61820" type="text">
 										</div>
-										<div class="6u 12u(narrower) aside">
+										<!--<div class="6u 12u(narrower) aside">
 											Different zip codes may belong to different counties with their own interpretations of the law.
-										</div>
+										</div>-->
 									</div>
 								</template>
 
 								<!-- FIRST DUI -->
 								<template v-if="step == 2">
 									<div class="row">
-										<div class="6u 12u(narrower)">
+										<div class="12u 12u(narrower)">
 											<p>Is this your first DUI?</p>
 											<form action="">
-												<input id="f1" name="firstDui" type="radio" value="yes" checked><label for="f1"> Yes</label><br>
-												<input id="f2" name="firstDui" type="radio" value="no"><label for="f2"> No</label><br>
+												<input id="f1" name="first_dui" type="radio" value="yes" checked><label for="f1"> Yes</label><br>
+												<input id="f2" name="first_dui" type="radio" value="no"><label for="f2"> No</label><br>
 											</form>
 
-										</div>
-										<div class="6u 12u(narrower) aside">
-											Court rulings for a first DUI may be more lenient than subsequent DUI cases.
 										</div>
 									</div>
 								</template>
@@ -137,16 +126,13 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 								<!-- VEHICLE OWNER -->
 								<template v-if="step == 3">
 									<div class="row">
-										<div class="6u 12u(narrower)">
+										<div class="12u 12u(narrower)">
 											<p>Are you the owner of the vehicle in question?</p>
 											<form action="">
-												<input id="o1" name="vehicleOwner" type="radio" value="yes" checked><label for="o1"> Yes</label><br>
-												<input id="o2" name="vehicleOwner" type="radio" value="no"><label for="o2"> No</label><br>
+												<input id="o1" name="vehicle_owner" type="radio" value="yes" checked><label for="o1"> Yes</label><br>
+												<input id="o2" name="vehicle_owner" type="radio" value="no"><label for="o2"> No</label><br>
 											</form>
 
-										</div>
-										<div class="6u 12u(narrower) aside">
-											I'm not sure how this influences your DUI case but I don't want to leave this part blank.
 										</div>
 									</div>
 								</template>
@@ -154,17 +140,14 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 								<!-- PHYSICAL LOCATION -->
 								<template v-if="step == 4">
 									<div class="row">
-										<div class="6u 12u(narrower)">
+										<div class="12u 12u(narrower)">
 											<p>Which best describes your physical location in the car?</p>
 											<form action="">
-												<input id="p1" name="physicalLocation" type="radio" value="driver" checked><label for="p1"> Driver's seat</label><br>
-												<input id="p2" name="physicalLocation" type="radio" value="passenger"><label for="p2"> Passenger seat</label><br>
-												<input id="p3" name="physicalLocation" type="radio" value="back"><label for="p3"> Backseats</label><br>
+												<input id="p1" name="physical_location" type="radio" value="driver_seat" checked><label for="p1"> Driver's seat</label><br>
+												<input id="p2" name="physical_location" type="radio" value="passenger_seat"><label for="p2"> Passenger seat</label><br>
+												<input id="p3" name="physical_location" type="radio" value="backseat"><label for="p3"> Backseats</label><br>
 											</form>
 
-										</div>
-										<div class="6u 12u(narrower) aside">
-											Being in the driver's seat can make this case more challenging.
 										</div>
 									</div>
 								</template>
@@ -172,16 +155,13 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 								<!-- ENGINE RUNNING -->
 								<template v-if="step == 5">
 									<div class="row">
-										<div class="6u 12u(narrower)">
+										<div class="12u 12u(narrower)">
 											<p>Was the engine running at the time of the arrest?</p>
 											<form action="">
-												<input id="e1" name="engineRunning" type="radio" value="driver" checked><label for="e1"> Yes</label><br>
-												<input id="e2" name="engineRunning" type="radio" value="passenger"><label for="e2"> No</label><br>
+												<input id="e1" name="engine_running" type="radio" value="yes" checked><label for="e1"> Yes</label><br>
+												<input id="e2" name="engine_running" type="radio" value="no"><label for="e2"> No</label><br>
 											</form>
 
-										</div>
-										<div class="6u 12u(narrower) aside">
-											
 										</div>
 									</div>
 								</template>
@@ -192,11 +172,11 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 										<div class="12u 12u(narrower)">
 											<p>What tests were given? Select all that apply.</p>
 											<form action="">
-												<input id="t1" name="testsGiven" type="checkbox" value=""><label for="t1"> Refused test</label><br>
-												<input id="t2" name="testsGiven" type="checkbox" value=""><label for="t2"> Breathalyzer</label><br>
-												<input id="t3" name="testsGiven" type="checkbox" value=""><label for="t3"> Blood test</label><br>
-												<input id="t4" name="testsGiven" type="checkbox" value=""><label for="t4"> Urine test</label><br>
-												<input id="t5" name="testsGiven" type="checkbox" value=""><label for="t5"> Field test</label><br>
+												<input id="t1" name="tests_given" type="checkbox" value="refused_test"><label for="t1"> Refused test</label><br>
+												<input id="t2" name="tests_given" type="checkbox" value="breathalyzer"><label for="t2"> Breathalyzer</label><br>
+												<input id="t3" name="tests_given" type="checkbox" value="blood_test"><label for="t3"> Blood test</label><br>
+												<input id="t4" name="tests_given" type="checkbox" value="urine_test"><label for="t4"> Urine test</label><br>
+												<input id="t5" name="tests_given" type="checkbox" value="field_test"><label for="t5"> Field test</label><br>
 											</form>
 										</div>
 									</div>
@@ -207,7 +187,7 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 									<div class="row">
 										<div class="12u 12u(narrower)">
 											<p>If there are other details you believe can help explain your case, please write them below.</p>
-											<textarea></textarea>
+											<textarea name="freeform"></textarea>
 										</div>
 									</div>
 								</template>
