@@ -3277,3 +3277,8 @@ input[type="checkbox"]:checked ~ .reveal-if-active {
   max-height: 500px; /* little bit of a magic number :( */
   overflow: visible;
 }
+
+
+#email-window-analysis {
+	padding: 1em 5em 5em 5em;
+}

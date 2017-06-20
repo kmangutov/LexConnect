@@ -1,4 +1,8 @@
 
+function displayAnalysisText(){
+	
+}
+
 
 var getDuiQuestionnaireObject = function() {
 	var vals = [
@@ -101,6 +105,9 @@ html += "</table>";
 
 $(document).ready(function() {
 
+
+
+
 	$("#client-signup-form").validate({
 		rules: {
 			name: {
@@ -125,6 +132,28 @@ $(document).ready(function() {
 		}
 
 	});
+
+	var vehicleOwner= getUrlVars()['vehicle_owner'];
+
+	var physicalLocation= getUrlVars()['physical_location'];
+
+	var engineRunning = getUrlVars()['engine_running'];
+
+	if ((physicalLocation == "driver_seat" && engineRunning == "yes") || (vehicleOwner == "yes" && engineRunning == "yes")){
+		document.getElementById("analysisText").innerHTML =  "Based on statistical analysis of past cases, 77.3% of the cases that have a similar situation to yours have resulted in a conviction.";
+		document.getElementById("analysisText").style.color = "Red";
+		document.getElementById("analysisText").style.fontWeight = "bold";
+
+
+
+	}
+
+	else{
+		document.getElementById("analysisText").innerHTML =  "Based on statistical analysis of past cases, 96% of the cases that have a similar situation to yours have not resulted in a conviction.";
+		document.getElementById("analysisText").style.color = "Green";
+		document.getElementById("analysisText").style.fontWeight = "bold";
+
+	}
 
 
 
@@ -163,6 +192,8 @@ $(document).ready(function() {
 			if(area_of_law == "dui"){
 				var questionnaire_info = getDuiQuestionnaireObject();
 			}
+
+
 
 			convertkitPost(area_of_law, $('#name').val(), $('#email').val());
 
