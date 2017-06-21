@@ -242,7 +242,7 @@ $(document).ready(function() {
 			},
 			bio: {
 				required:true ,
-				maxlength: 350
+				maxlength: 1200
 			},
 			pic: {
 				required:true ,
