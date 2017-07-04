@@ -1,0 +1,10 @@
+header h2 {
+	text-transform: none !important;
+	letter-spacing: 0.05em !important;
+}
+
+.inner p {
+	text-transform: none !important;
+	letter-spacing: 0.05em !important;
+	font-size: 18pt;	
+}
