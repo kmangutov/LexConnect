@@ -193,6 +193,8 @@ $(document).ready(function() {
 
 	var engineRunning = getUrlVars()['engine_running'];
 
+
+/*
 	if ((physicalLocation == "driver_seat" && engineRunning == "yes") || (vehicleOwner == "yes" && engineRunning == "yes")){
 		document.getElementById("analysisText").innerHTML =  "Based on statistical analysis of past cases, 77.3% of the cases that have a similar situation to yours have resulted in a conviction.";
 		document.getElementById("analysisText").style.color = "Red";
@@ -208,7 +210,7 @@ $(document).ready(function() {
 		document.getElementById("analysisText").style.fontWeight = "bold";
 
 	}
-
+*/
 
 
 
