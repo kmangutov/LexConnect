@@ -1,4 +1,10 @@
 
+var textVal = function(name) {
+    var texts = $('input[type=text][name=' + name + ']');
+    if (!texts.val()) return;
+  return $('input[type=text][name=' + name + ']').val();
+}
+
 
 var radioVal = function(name) {
   var radios = $('input[type=radio][name=' + name + ']:checked');
@@ -32,16 +38,25 @@ var saveState = function() {
   var currentState = {
     county_val: getUrlVars()['c'],
     source: getUrlVars()['s'],
-    questionnaire: 'dui',
-    first_dui: radioVal('first_dui'),
-    vehicle_owner: radioVal('vehicle_owner'),
-    physical_location: radioVal('physical_location'),
-    engine_running: radioVal('engine_running'),
-    breathalyzer: radioVal('breathalyzer'),
-    blood_test: radioVal('blood_test'),
-    urine_test: radioVal('urine_test'),
-    field_test: radioVal('field_test'),
-    refused_test: radioVal('refused_test'),
+    questionnaire: 'divorce',
+    primary_earner: radioVal('primary_earner'),
+    minor_children: radioVal('minor_children'),
+    alimony: radioVal('alimony'),
+    employed: radioVal('employed'),
+    home_value: textVal('home_value'),
+    vehicle_value: textVal('vehicle_value'),
+    cash_value: textVal('cash_value'),
+    stocks_value: textVal('stocks_value'),
+    other_value: textVal('other_value'),
+
+    mortgage_debt: textVal('mortgage_debt'),
+    vehicle_debt: textVal('vehicle_debt'),
+    otherloan_debt: textVal('otherloan_debt'),
+    card_debt: textVal('card_debt'),
+    medical_debt: textVal('medical_debt'),
+    other_debt: textVal('other_debt'),
+
+
     freeform: escape(freeformVal('freeform'))
   }
 
@@ -67,7 +82,7 @@ var vue = new Vue({
   el: '#description-row',
   data: {
     step: DEFAULT_STEP,
-    lastStep: 7,
+    lastStep: 8,
   },
   methods: {
     back() {

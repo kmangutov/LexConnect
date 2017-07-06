@@ -4,6 +4,7 @@ function displayAnalysisText(){
 }
 
 
+
 var getDuiQuestionnaireObject = function() {
 	var vals = [
 		'questionnaire', 
@@ -13,7 +14,11 @@ var getDuiQuestionnaireObject = function() {
 		'vehicle_owner',
 		'physical_location',
 		'engine_running',
-		'tests_given',
+		'breathalyzer',
+		'blood_test',
+		'urine_test',
+		'field_test',
+		'refused_test',
 		'freeform'
 	];
 
@@ -35,6 +40,55 @@ var getDuiQuestionnaireObject = function() {
 
 	return res;
 }
+
+
+
+
+var getDivorceQuestionnaireObject = function() {
+	var vals = [
+		'questionnaire', 
+		'county_val',
+		'source',
+		'primary_earner',
+		'minor_children',
+		'alimony',
+		'employed',
+
+		'home_value',
+		'vehicle_value',
+		'cash_value',
+		'stocks_value',
+		'other_value',
+
+		'mortgage_debt',
+		'vehicle_debt',
+		'otherloan_debt',
+		'card_debt',
+		'medical_debt',
+		'other_debt',
+
+		'freeform'
+	];
+
+	var obj = {};
+	vals.forEach(function(val) {
+		obj[val] = getUrlVars()[val];
+	});
+
+
+	var res = "<table>";
+
+
+	for (var key in obj) {
+  		if (obj.hasOwnProperty(key)) {
+  			res += "<tr><td>" + key + "</td><td>" + obj[key] + "</td></tr>";
+  		}
+	}
+	res += "</table>";
+
+	return res;
+}
+
 //console.log(JSON.stringify(getDuiQuestionnaireObject()));
 
 //function to make post request to convertkit 
@@ -192,6 +246,11 @@ $(document).ready(function() {
 			if(area_of_law == "dui"){
 				var questionnaire_info = getDuiQuestionnaireObject();
 			}
+
+			if(area_of_law == "divorce"){
+				var questionnaire_info = getDivorceQuestionnaireObject();
+			}
+
 
 
 
