@@ -75,7 +75,7 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 				<article id="main">
 
 					<section id="blue-banner" class="wrapper style2 container special">
-						<center><h4><strong>Free DUI Consultation</strong></h4></center>
+						<center><h4><strong>Free Business Fromation Consultation</strong></h4></center>
 					</section>
 
 
@@ -88,7 +88,7 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 
 							<!-- INTRODUCTION -->
 							<div v-if="step == 0">
-								<p>Tell us about your DUI case in 7 steps and receive a free DUI consultation from one of our vetted attorneys.</p>
+								<p>Tell us about your Business Formation case and receive a free consultation from one of our vetted attorneys.</p>
 								<center><a class="button question-special" v-on:click="next()">Begin</a></center>
 							</div>
 
@@ -96,141 +96,152 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 							<div id="question-main" v-if="step > 0">
 								<a v-on:click="back()" href="#" v-if="step > 2"><i class="fa fa-2x fa-arrow-left" aria-hidden="true"></i></a><br><Br>
 
-								<!-- ZIP CODE -->
+								<!-- NEW OR EXISTING -->
 								<template v-if="step == 1">
 									<div class="row">
 										<div class="6u 12u(narrower)">
-											<p>In which zip code where were you ticketed?</p> <input placeholder="61820" type="text">
+											<p>Is this a new or existing business?</p> 
+											<form action="">
+												<input id="f1" name="new_existing" type="radio" value="yes" checked><label for="f1"> Yes</label><br>
+												<input id="f2" name="new_existing" type="radio" value="no"><label for="f2"> No</label><br>
+											</form>
 										</div>
 										<div class="6u 12u(narrower) aside">
-											Different zip codes may belong to different counties with their own interpretations of the law.
+											Forming a new business is fairly straightforward once a legal entity is chosen. Altering an existing (and operating) business can be a little more complicated depending on certain factors: length of operation, division of ownership, current legal entity, etc. 
 										</div>
 									</div>
 								</template>
 
-								<!-- FIRST DUI -->
+								<!-- MULTIPLE OWNERS -->
 								<template v-if="step == 2">
 									<div class="row">
 										<div class="6u 12u(narrower)">
-											<p>Is this your first DUI?</p>
+											<p>Is there going to be more than 1 owner?</p>
 											<form action="">
-												<input id="f1" name="first_dui" type="radio" value="yes" checked><label for="f1"> Yes</label><br>
-												<input id="f2" name="first_dui" type="radio" value="no"><label for="f2"> No</label><br>
+												<input id="a1" name="multiple_owners" type="radio" value="yes" checked><label for="a1"> Yes</label><br>
+												<input id="a2" name="multiple_owners" type="radio" value="no"><label for="a2"> No</label><br>
 											</form>
 
 										</div>
 
-											<div class="6u 12u(narrower) aside">
-											Knowing whether this is a first offense will allow an attorney to determine the strength of your case. 
+										<div class="6u 12u(narrower) aside">
+											Having more than a single owner to the company will typically make the formation of the business a more complicated undertaking – agreements in the division of equity and voting rights are among the two most common areas for potential conflict. 
 										</div>
 									</div>
 								</template>
 
-								<!-- VEHICLE OWNER -->
+								<!-- CITIZENSHIP -->
 								<template v-if="step == 3">
 									<div class="row">
 										<div class="6u 12u(narrower)">
-											<p>Are you the owner of the vehicle in question?</p>
+											<p>Are there any owners who are non-US citizens? </p>
 											<form action="">
-												<input id="o1" name="vehicle_owner" type="radio" value="yes" checked><label for="o1"> Yes</label><br>
-												<input id="o2" name="vehicle_owner" type="radio" value="no"><label for="o2"> No</label><br>
+												<input id="b1" name="any_non_citizens" type="radio" value="yes" checked><label for="b1"> Yes</label><br>
+												<input id="b2" name="any_non_citizens" type="radio" value="no"><label for="b2"> No</label><br>
 											</form>
 
 										</div>
 
-											<div class="6u 12u(narrower) aside">
-											If you aren’t the owner, it could potentially raise the risk of an unauthorized use of a motor vehicle charge.
+										<div class="6u 12u(narrower) aside">
+											Non-US citizens are able to form businesses in America. They can also hold officer positions within the company. However, there are restrictions to non-US citizens working under their own companies without a work permit or related visa. 
 										</div>
 									</div>
 								</template>
 
-								<!-- PHYSICAL LOCATION -->
+								<!-- PLAN TO RAISE MONEY -->
 								<template v-if="step == 4">
 									<div class="row">
 										<div class="6u 12u(narrower)">
-											<p>Which best describes your physical location in the car?</p>
+											<p>Do you plan to raise money from outside investors?</p>
 											<form action="">
-												<input id="p1" name="physical_location" type="radio" value="driver_seat" checked><label for="p1"> Driver's seat</label><br>
-												<input id="p2" name="physical_location" type="radio" value="passenger_seat"><label for="p2"> Passenger seat</label><br>
-												<input id="p3" name="physical_location" type="radio" value="backseat"><label for="p3"> Backseat</label><br>
+												<input id="c1" name="plan_to_raise_money" type="radio" value="yes" checked><label for="c1"> Yes</label><br>
+												<input id="c2" name="plan_to_raise_money" type="radio" value="no"><label for="c2"> No</label><br>
 											</form>
+
 
 										</div>
 										<div class="6u 12u(narrower) aside">
-											There is a presumption that someone in the driver’s seat is the driver of the vehicle, but you could still be charged with a DUI if you were in another location of the vehicle. 
+											Certain investors prefer businesses to be in a particular legal entity (i.e. C-Corp). However, depending on your personal circumstances, creating a C-Corp at the outset may not be a necessity. 
 										</div>
 
 									</div>
 								</template>
 
-								<!-- ENGINE RUNNING -->
+								<!-- HAVE FINANCING -->
 								<template v-if="step == 5">
 									<div class="row">
 										<div class="6u 12u(narrower)">
-											<p>Was the engine running at the time of the arrest?</p>
+											<p>Do you currently have financing or are in the process of securing it?</p>
 											<form action="">
-												<input id="e1" name="engine_running" type="radio" value="yes" checked><label for="e1"> Yes</label><br>
-												<input id="e2" name="engine_running" type="radio" value="no"><label for="e2"> No</label><br>
+												<input id="d1" name="have_financing" type="radio" value="yes" checked><label for="d1"> Yes</label><br>
+												<input id="d2" name="have_financing" type="radio" value="no"><label for="d2"> No</label><br>
 											</form>
 
 										</div>
 
-											<div class="6u 12u(narrower) aside">
-											The strength of this factor depends on the exact circumstances which should be discussed with your attorney.
+										<div class="6u 12u(narrower) aside">
+											Outside financing will often involve the dilution of existing equity or the addition of debts. This will be important to discuss with your attorney. 
 										</div>
 									</div>
 								</template>
 
-								<!-- TESTS GIVEN -->
+								<!-- DESCRIBE BUSINESS -->
 								<template v-if="step == 6">
 									<div class="row">
 										<div class="6u 12u(narrower)">
-											<p>What tests were given? Select all that apply.</p>
+											<p>Which of the following best describes your business? </p>
 											<form action="">
-													
-												<label for="t2"> Breathalyzer</label><br>
+												<input id="e1" name="describe_business" type="radio" value="brick_mortar" checked><label for="e1"> Brick-and-mortar retail store</label><br>
 
-													 &nbsp;  &nbsp; <input id="z1" name="breathalyzer" type="radio" value="breathalyzer_passed"><label for="z1"> Passed</label><br>
+												<input id="e2" name="describe_business" type="radio" value="restaurant_bar"><label for="e2"> Restaurant/bar</label><br>
 
-													 &nbsp;  &nbsp; <input id="z2" name="breathalyzer" type="radio" value="breathalyzer_failed"><label for="z2"> Failed</label><br>
+												<input id="e3" name="describe_business" type="radio" value="service-based"><label for="e3"> Service-based (i.e. accountant, masseuse, plumber) </label><br>
 
-												<span for="t3"> Blood test</span><br>
+												<input id="e4" name="describe_business" type="radio" value="startup"><label for="e4"> Startup</label><br>
 
-													&nbsp;  &nbsp;<input id="z3" name="blood_test" type="radio" value="blood_passed" ><label for="z3"> Passed</label><br>
-
-													&nbsp;  &nbsp;<input id="z4" name="blood_test" type="radio" value="blood_failed"><label for="z4"> Failed</label><br>
-
-												<label for="t4"> Urine test</label><br>
-
-													&nbsp;  &nbsp;<input id="z5" name="urine_test" type="radio" value="urine_passed" ><label for="z5"> Passed</label><br>
-
-													&nbsp;  &nbsp;<input id="z6" name="urine_test" type="radio" value="urine_failed"><label for="z6"> Failed</label><br>
-
-												<label for="t5"> Field test</label><br>
-
-													&nbsp;  &nbsp;<input id="z7" name="field_test" type="radio" value="field_passed" ><label for="z7"> Passed</label><br>
-
-													&nbsp;  &nbsp;<input id="z8" name="field_test" type="radio" value="field_failed"><label for="z8"> Failed</label><br><br>
-
-												<input id="z9" name="refused_test" type="checkbox" value="refused_test"><label for="z9"> Refused test</label><br>
+												<input id="e5" name="describe_business" type="radio" value="other"><label for="e5"> Other</label><br>
 											</form>
 										</div>
-
-											<div class="6u 12u(narrower) aside">
-											Police officers often apply a variety of tests before making an arrest for DUI. It is important for an attorney to know what tests were applied during your arrest. 
+										<div class="6u 12u(narrower) aside">
+											&nbsp;
 										</div>
+
+									</div>
+								</template>
+
+								<!-- WHICH ENTITY -->
+								<template v-if="step == 7">
+									<div class="row">
+										<div class="6u 12u(narrower)">
+											<p>What entity are you looking to become? </p>
+											<form action="">
+												<input id="f1" name="which_entity" type="radio" value="s-corp" checked><label for="f1"> S-Corp</label><br>
+
+												<input id="f2" name="which_entity" type="radio" value="c-corp"><label for="f2"> C-Corp</label><br>
+
+												<input id="f3" name="which_entity" type="radio" value="LLC"><label for="f3"> LLC</label><br>
+
+												<input id="f4" name="which_entity" type="radio" value="Other"><label for="f4"> Other</label><br>
+
+												<input id="f5" name="which_entity" type="radio" value="Not sure"><label for="f5"> Not sure</label><br>
+											</form>
+										</div>
+										<div class="6u 12u(narrower) aside">
+											&nbsp;
+										</div>
+
 									</div>
 								</template>
 
 								<!-- OTHER DETAILS -->
-								<template v-if="step == 7">
+								<template v-if="step == 8">
 									<div class="row">
 										<div class="6u 12u(narrower)">
-											<p>If there are other details you believe can help explain your case, please write them below.</p>
+											<p>If there are other details you believe can help explain your case, please write them below. </p>
 											<textarea name="freeform"></textarea>
 										</div>
 
-											<div class="6u 12u(narrower) aside">
+										<div class="6u 12u(narrower) aside">
 											Any information, no matter how minor, might be 
 											useful to your attorney.
 										</div>
@@ -273,7 +284,7 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 
 <script type="text/javascript" src="assets/js/base.js"></script>
 <script type="text/javascript" src="assets/custom/js/libs/QuestionTree.js"></script>
-<script type="text/javascript" src="assets/custom/js/dui.js"></script>
+<script type="text/javascript" src="assets/custom/js/business-formation.js"></script>
 
 	</body>
 </html>

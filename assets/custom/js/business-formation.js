@@ -30,18 +30,16 @@ var freeformVal = function(name) {
 var lastState = {};
 var saveState = function() {
   var currentState = {
-    county_val: getUrlVars()['c'],
+    new_existing: getUrlVars()['o'],
     source: getUrlVars()['s'],
-    questionnaire: 'dui',
-    first_dui: radioVal('first_dui'),
-    vehicle_owner: radioVal('vehicle_owner'),
-    physical_location: radioVal('physical_location'),
-    engine_running: radioVal('engine_running'),
-    breathalyzer: radioVal('breathalyzer'),
-    blood_test: radioVal('blood_test'),
-    urine_test: radioVal('urine_test'),
-    field_test: radioVal('field_test'),
-    refused_test: radioVal('refused_test'),
+    questionnaire: 'business-formation',
+    new_existing: radioVal('new_existing'),
+    multiple_owners: radioVal('multiple_owners'),
+    any_non_citizens: radioVal('any_non_citizens'),
+    plan_to_raise_money: radioVal('plan_to_raise_money'),
+    have_financing: radioVal('have_financing'),
+    describe_business: radioVal('describe_business'),
+    which_entity: radioVal('which_entity'),
     freeform: escape(freeformVal('freeform'))
   }
 
@@ -67,7 +65,7 @@ var vue = new Vue({
   el: '#description-row',
   data: {
     step: DEFAULT_STEP,
-    lastStep: 7,
+    lastStep: 8,
   },
   methods: {
     back() {

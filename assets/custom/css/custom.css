@@ -13,11 +13,19 @@
 		url("../imgs/policelol-min.jpg") !important
 }
 
+
 .banner-business {
 	background-image: url("../imgs/light-bl.svg"), 
 		url("../imgs/light-br.svg"), 
 		url("../imgs/overlay.png"), 
 		url("../imgs/business-splash-min.jpg") !important
+}
+
+.banner-coffee {
+	background-image: url("../imgs/light-bl.svg"), 
+		url("../imgs/light-br.svg"), 
+		url("../imgs/overlay.png"), 
+		url("../imgs/coffee2.jpg") !important
 }
 
 a:hover {
