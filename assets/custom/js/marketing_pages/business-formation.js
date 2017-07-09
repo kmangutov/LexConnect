@@ -6,7 +6,7 @@ var hrefExistingBusiness = $('#existing-business');
 
 var submitForm = function(option) {
   var source = "marketing_business-formation";
-  location.href = '../dui.html?o=' + option + '&s=' + source;
+  location.href = '../business-formation.html?o=' + option + '&s=' + source;
 }
 
 
@@ -24,4 +24,4 @@ var clickExistingBusiness = function() {
 // Logging + callbacks
 logService = LexLogService("marketing/business-formation");
 logService.bind(hrefNewBusiness, clickNewBusiness);
-logService.bind(hrefNewBusiness, clickExistingBusiness);
+logService.bind(hrefExistingBusiness, clickExistingBusiness);
