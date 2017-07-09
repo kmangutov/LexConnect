@@ -33,7 +33,6 @@ var saveState = function() {
     new_existing: getUrlVars()['o'],
     source: getUrlVars()['s'],
     questionnaire: 'business-formation',
-    new_existing: radioVal('new_existing'),
     multiple_owners: radioVal('multiple_owners'),
     any_non_citizens: radioVal('any_non_citizens'),
     plan_to_raise_money: radioVal('plan_to_raise_money'),

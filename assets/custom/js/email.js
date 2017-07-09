@@ -42,6 +42,35 @@ var getDuiQuestionnaireObject = function() {
 }
 
 
+var getBusinessFormationQuestionnaireObject = function() {
+	var vals = [
+		'questionnaire', 
+		'new_existing',
+		'source',
+		'multiple_owners',
+		'any_non_citizens',
+		'plan_to_raise_money',
+		'have_financing',
+		'describe_business',
+		'which_entity',
+		'freeform'
+	];
+
+	var obj = {};
+	vals.forEach(function(val) {
+		obj[val] = getUrlVars()[val];
+	});
+
+	var res = "<table>";
+	for (var key in obj) {
+  		if (obj.hasOwnProperty(key)) {
+  			res += "<tr><td>" + key + "</td><td>" + obj[key] + "</td></tr>";
+  		}
+	}
+	res += "</table>";
+
+	return res;
+}
 
 
 var getDivorceQuestionnaireObject = function() {
@@ -242,17 +271,16 @@ $(document).ready(function() {
 
 
 			var area_of_law = getUrlVars()['questionnaire'];
-
 			var county_of_incident= getUrlVars()['county_val'];
+			var questionnaire_info = {};
 
 			if(area_of_law == "dui"){
-				var questionnaire_info = getDuiQuestionnaireObject();
+				questionnaire_info = getDuiQuestionnaireObject();
+			} else if(area_of_law == "divorce"){
+				questionnaire_info = getDivorceQuestionnaireObject();
+			} else if(area_of_law == "business-formation"){
+				questionnaire_info = getBusinessFormationQuestionnaireObject();
 			}
-
-			if(area_of_law == "divorce"){
-				var questionnaire_info = getDivorceQuestionnaireObject();
-			}
-
 
 
 
