@@ -206,6 +206,9 @@ $(document).ready(function() {
 			phone: {
 				required: true,
 				minlength: 10
+			},
+			monthlyIncome: {
+				required: true
 			}
 		},
 		messages: {

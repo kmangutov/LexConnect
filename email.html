@@ -172,10 +172,15 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 									
 
 
-									<input type="radio" name="choice-animals" id="choice-animals-dogs">
-									<label for="choice-animals-dogs">If you would like to see if you qualify for reduced fees or free legal aid, please check the box and answer the following optional questions.</label>
+									<div name="choice-animals" id="choice-animals-dogs">
+									<label for="choice-animals-dogs">If you would like to see if you qualify for reduced fees or free legal aid, please answer the following questions.</label>
 									    
-									<div class="reveal-if-active">
+									<div >
+
+									 <p><span >Monthly income*</span>
+									  <input class="require-if-active" type="text" id="monthlyIncome" name="monthlyIncome" placeholder="$2,000">
+									  </p>
+
 
 									<div id="jobTime" name="jobTime">
   									  <p><span><label>Do you work full time or part time?</label>
@@ -191,12 +196,9 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 									  <input class="require-if-active" type="text" id="lengthOfEmployment" name="lengthOfEmployment" placeholder="6 months">
 									  </p>
 
-  									  <p><span >Monthly income</span>
-									  <input class="require-if-active" type="text" id="monthlyIncome" name="monthlyIncome" placeholder="$2,000">
-									  </p>
-
+  									 
 									  <p>
-  									  <span>Number of dependents in household </span>
+  									  <span>Number of depen&shy;dents in house&shy;hold </span>
 									  <input class="require-if-active" type="text" id="dependents" name="dependents" placeholder="3">
 									  </p>
 
@@ -212,8 +214,9 @@ src="https://www.facebook.com/tr?id=740954632721742&ev=PageView&noscript=1"
 								<input type="hidden" name="redirect_to" value="http://tryzealous.com/thank_you.html" >
 
 								</form>
-								<footer><center><a class="button question-option" id="Submit" >Submit</a></center></footer>
+								
 							</div>
+							<footer><center><a class="button question-option" id="Submit" >Submit</a></center></footer>
 						</div>
 
 						</section>
